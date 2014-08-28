@@ -1,0 +1,38 @@
+
+worldSettings
+{
+	windowTitle "Test Scene"
+	width 800
+	height 600
+	spp 4
+	backgroundColor [0.5 0.5 0.8]
+	backgroundMusic "bell.wav"
+}
+
+camera
+{
+	name "camera1"
+	eye [0 -1 4]
+	center [0 0.1 0]
+	vup [0 1 0]
+	fovy 0.4
+	znear 0.1
+	zfar 1000
+}
+
+mesh
+{
+	name "monkeyMesh"
+	file "monkeyTex.ply"
+}
+
+meshInstance
+{
+	name "monkey1"
+	mesh "monkeyMesh"
+	scale [0.5 0.5 0.5]
+	vertexShader basicVertexShader.vs
+	fragmentShader diffuseTexture.fs
+	diffuseTexture "hex.png"
+}
+
