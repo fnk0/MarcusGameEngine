@@ -26,11 +26,11 @@ uniform mat4 uObjectWorldInverseM;  // inverse object-world transform
 // Main shader code
 //---------------------------------------------------------------------------
 
-void main() 
+void main()
 {
-	// COMPUTE POSITION OF VERTEX IN WINDOW AND SEND 
-	gl_Position = uObjectPerpsectM * vec4(inPosition, 1.0);
-
+	// COMPUTE POSITION OF VERTEX IN WINDOW AND SEND
+	gl_Position = uObjectPerpsectM * vec4(inPosition, 0.5);
+    
 	// COMPUTE VALUES THAT WILL BE SENT TO NEXT STAGE
 	vPosition = uObjectWorldM * vec4(inPosition, 1.0);
 	vNormal = normalize(vec4(inNormal,0.0) * uObjectWorldInverseM);

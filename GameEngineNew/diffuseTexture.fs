@@ -31,7 +31,7 @@ uniform vec4 uAmbientLight = vec4(0.2, 0.2, 0.2, 1.0);
 // SURFACE PROPERTIES (diffuse only)
 uniform float uTextureScale = 1.0;
 uniform vec4 uDiffuseColor = vec4(1.0, 1.0, 1.0, 1.0);
-uniform sampler2D uDiffuseTex; // diffuse texture
+uniform sampler2D uDiffuseTex; // diffuse texture (can modulate the color over the surface)
 
 //---------------------------------------------------------------------------
 // Main shader code
@@ -45,7 +45,7 @@ void main()
 	// compute the diffuse color (uniformDiffuseColor * vertexColor * textureColor)
 	vec4 diffuseColor = uDiffuseColor;
 	diffuseColor *= vColor;
-	diffuseColor *= texture(uDiffuseTex, vTexCo*uTextureScale);
+	diffuseColor *= texture(uDiffuseTex, vTexCo*uTextureScale); // That gives the diffuse color for the shader
 
 	// START WITH BLACK
 	fColor = vec4(0,0,0,1);
@@ -54,8 +54,12 @@ void main()
 	fColor += uAmbientLight * diffuseColor;
 	
 	// DIFFUSE TERM 
-	float NdotL = max(0.0, dot(uLightDirection, N));
+	float NdotL = max(0.0, dot(uLightDirection, N)); // the dot product computes the cos
 	fColor += diffuseColor * NdotL * uLightColor;
+    
+    // To change the diffuse color needs to pass the value through the c++ code
+    // To compute reflect there's a reflection function in glsl
+    // something like.... vec3 R = reflect(uViewDirection, Normal)
 
 	// SET W VALUE TO 1
 	fColor.w = 1.0;

@@ -49,6 +49,8 @@
 		2C78F53719AF931900AC7D22 /* libglfw.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.0.dylib; path = ../../../../../../usr/local/lib/libglfw.3.0.dylib; sourceTree = "<group>"; };
 		2C78F53819AF931900AC7D22 /* libGLEW.1.10.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.10.0.dylib; path = ../../../../../../usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib; sourceTree = "<group>"; };
 		2C78F53919AF931900AC7D22 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = ../../../../../../usr/local/lib/libirrklang.dylib; sourceTree = "<group>"; };
+		2C86E94A19AFC9BC00876CDA /* phongShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phongShader.fs; sourceTree = "<group>"; };
+		2C86E94C19B0239100876CDA /* anotherVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = anotherVertexShader.vs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,8 @@
 				2C3AA1BE19AD6414002E40B2 /* lodepng.cpp */,
 				2C3AA1AE19AD63FE002E40B2 /* main.cpp */,
 				2C3AA1B019AD63FE002E40B2 /* GameEngineNew.1 */,
+				2C86E94A19AFC9BC00876CDA /* phongShader.fs */,
+				2C86E94C19B0239100876CDA /* anotherVertexShader.vs */,
 			);
 			path = GameEngineNew;
 			sourceTree = "<group>";

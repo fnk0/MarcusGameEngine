@@ -2,10 +2,10 @@
 worldSettings
 {
 	windowTitle "Test Scene"
-	width 800
-	height 600
+	width 1024
+	height 768
 	spp 4
-	backgroundColor [0.5 0.5 0.8]
+	backgroundColor [0.5 0.5 0.5]
 	backgroundMusic "bell.wav"
 }
 
@@ -23,7 +23,13 @@ camera
 mesh
 {
 	name "monkeyMesh"
-	file "monkeyTex.ply"
+	file "rock.ply"
+}
+
+mesh
+{
+	name "rockMesh"
+	file "rock.ply"
 }
 
 meshInstance
@@ -32,7 +38,16 @@ meshInstance
 	mesh "monkeyMesh"
 	scale [0.5 0.5 0.5]
 	vertexShader basicVertexShader.vs
-	fragmentShader diffuseTexture.fs
-	diffuseTexture "hex.png"
+	fragmentShader phongShader.fs
+	diffuseTexture "rock-texture.png"
 }
 
+meshInstance
+{
+	name "rockMesh1"
+	mesh "rockMesh"
+	scale [0.5 0.5 0.5]
+	vertexShader anotherVertexShader.vs
+	fragmentShader phongShader.fs
+	diffuseTexture "rock-texture.png"
+}

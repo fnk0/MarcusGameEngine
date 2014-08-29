@@ -619,27 +619,38 @@ void TriMeshInstance::draw(Camera &camera)
 	// class.
 	
 	GLint loc = glGetUniformLocation(shaderProgram, "uDiffuseColor");
-	if (loc != -1) glUniform4fv(loc, 1, &diffuseColor[0]);
+	if (loc != -1) {
+        glUniform4fv(loc, 1, &diffuseColor[0]);
+    }
 
 	loc = glGetUniformLocation(shaderProgram, "uDiffuseTex");
-	if (loc != -1) glBindSampler(loc, diffuseTexture.samplerId);
-	else ERROR("Could not bind texture", false);
-	//printVec(color);
+	if (loc != -1) {
+        glBindSampler(loc, diffuseTexture.samplerId);
+    } else {
+        ERROR("Could not bind texture", false);
+        //printVec(color);
+    }
     
-	T.refreshTransform();
+	T.refreshTransform(); // ensures that the transform matrice has been updated properly.
 	//printMat(transform);
 
 	loc = glGetUniformLocation(shaderProgram, "uObjectWorldM");
-	if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.transform));
+	if (loc != -1) {
+        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.transform));
+    }
 	//else ERROR("Could not load uniform uObjectWorldM", false);
 
 	loc = glGetUniformLocation(shaderProgram, "uObjectWorldInverseM");
-	if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.invTransform));
+	if (loc != -1) {
+        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.invTransform));
+    }
 	//else ERROR("Could not load uniform uObjectWorldInverseM", false);
 
 	glm::mat4x4 objectWorldViewPerspect = camera.worldViewProject * T.transform;
 	loc = glGetUniformLocation(shaderProgram, "uObjectPerpsectM");
-	if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(objectWorldViewPerspect));
+	if (loc != -1) {
+        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(objectWorldViewPerspect));
+    }
 	//else ERROR("Could not load uniform uObjectPerpsectM", false);
     
 	triMesh->draw();
