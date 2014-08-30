@@ -16,6 +16,7 @@
 		2C78F53B19AF931900AC7D22 /* libGLEW.1.10.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C78F53819AF931900AC7D22 /* libGLEW.1.10.0.dylib */; };
 		2C78F53C19AF931900AC7D22 /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C78F53919AF931900AC7D22 /* libirrklang.dylib */; };
 		2C80CD1819B1BB6900FBCF18 /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C80CD1619B1BB6900FBCF18 /* json11.cpp */; };
+		2C80CD2519B1C5A300FBCF18 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C80CD2319B1C5A300FBCF18 /* Camera.cpp */; };
 		2C8EE6A619B0C7A7003E8BFB /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C8EE6A419B0C7A7003E8BFB /* Scene.cpp */; };
 		BF8C727251E1147646A3F289 /* WorldSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C78D4EEE9ADDFF1AE5B2D /* WorldSettings.cpp */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,8 @@
 		2C78F53919AF931900AC7D22 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = ../../../../../../usr/local/lib/libirrklang.dylib; sourceTree = "<group>"; };
 		2C80CD1619B1BB6900FBCF18 /* json11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json11.cpp; sourceTree = "<group>"; };
 		2C80CD1719B1BB6900FBCF18 /* json11.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json11.hpp; sourceTree = "<group>"; };
+		2C80CD2319B1C5A300FBCF18 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		2C80CD2419B1C5A300FBCF18 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		2C86E94A19AFC9BC00876CDA /* phongShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phongShader.fs; sourceTree = "<group>"; };
 		2C86E94C19B0239100876CDA /* anotherVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = anotherVertexShader.vs; sourceTree = "<group>"; };
 		2C8EE6A319B056C9003E8BFB /* monkeyScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = monkeyScene.json; sourceTree = "<group>"; };
@@ -101,27 +104,15 @@
 		2C3AA1AD19AD63FE002E40B2 /* GameEngineNew */ = {
 			isa = PBXGroup;
 			children = (
+				2C80CD2219B1C43A00FBCF18 /* scenes */,
+				2C80CD1C19B1C20900FBCF18 /* openGL */,
+				2C80CD1B19B1C20000FBCF18 /* assets */,
+				2C80CD1A19B1C1CD00FBCF18 /* engineBase */,
+				2C80CD1919B1C1B400FBCF18 /* scene */,
 				2C80CD1519B1BB2800FBCF18 /* json */,
-				2C6DB50919AD68D100144047 /* diffuseTexture.fs */,
-				2C6DB50A19AD68D100144047 /* basicVertexShader.vs */,
 				2C6DB50B19AD68D100144047 /* monkeyScene.scene */,
-				2C6DB50C19AD68D100144047 /* bell.wav */,
-				2C6DB50D19AD68D100144047 /* textureShader.fs */,
-				2C6DB50E19AD68D100144047 /* hex.png */,
-				2C6DB50F19AD68D100144047 /* monkeyTex.ply */,
-				2C3AA1B719AD6414002E40B2 /* EngineUtil.h */,
-				2C3AA1B819AD6414002E40B2 /* EngineUtil.cpp */,
-				2C3AA1BD19AD6414002E40B2 /* lodepng.h */,
-				2C3AA1BE19AD6414002E40B2 /* lodepng.cpp */,
 				2C3AA1AE19AD63FE002E40B2 /* main.cpp */,
 				2C3AA1B019AD63FE002E40B2 /* GameEngineNew.1 */,
-				2C86E94A19AFC9BC00876CDA /* phongShader.fs */,
-				2C86E94C19B0239100876CDA /* anotherVertexShader.vs */,
-				2C8EE6A319B056C9003E8BFB /* monkeyScene.json */,
-				2C8EE6A419B0C7A7003E8BFB /* Scene.cpp */,
-				2C8EE6A519B0C7A7003E8BFB /* Scene.h */,
-				BF8C78D4EEE9ADDFF1AE5B2D /* WorldSettings.cpp */,
-				BF8C7B06E24FE8037606861A /* WorldSettings.h */,
 			);
 			path = GameEngineNew;
 			sourceTree = "<group>";
@@ -133,6 +124,100 @@
 				2C80CD1719B1BB6900FBCF18 /* json11.hpp */,
 			);
 			name = json;
+			sourceTree = "<group>";
+		};
+		2C80CD1919B1C1B400FBCF18 /* scene */ = {
+			isa = PBXGroup;
+			children = (
+				2C8EE6A419B0C7A7003E8BFB /* Scene.cpp */,
+				2C8EE6A519B0C7A7003E8BFB /* Scene.h */,
+				BF8C78D4EEE9ADDFF1AE5B2D /* WorldSettings.cpp */,
+				BF8C7B06E24FE8037606861A /* WorldSettings.h */,
+				2C80CD2319B1C5A300FBCF18 /* Camera.cpp */,
+				2C80CD2419B1C5A300FBCF18 /* Camera.h */,
+			);
+			name = scene;
+			sourceTree = "<group>";
+		};
+		2C80CD1A19B1C1CD00FBCF18 /* engineBase */ = {
+			isa = PBXGroup;
+			children = (
+				2C3AA1B719AD6414002E40B2 /* EngineUtil.h */,
+				2C3AA1B819AD6414002E40B2 /* EngineUtil.cpp */,
+				2C3AA1BD19AD6414002E40B2 /* lodepng.h */,
+				2C3AA1BE19AD6414002E40B2 /* lodepng.cpp */,
+			);
+			name = engineBase;
+			sourceTree = "<group>";
+		};
+		2C80CD1B19B1C20000FBCF18 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				2C80CD2119B1C25400FBCF18 /* images */,
+				2C80CD2019B1C24F00FBCF18 /* sound */,
+				2C80CD1F19B1C24900FBCF18 /* ply */,
+			);
+			name = assets;
+			sourceTree = "<group>";
+		};
+		2C80CD1C19B1C20900FBCF18 /* openGL */ = {
+			isa = PBXGroup;
+			children = (
+				2C80CD1E19B1C21800FBCF18 /* vertexShaders */,
+				2C80CD1D19B1C20F00FBCF18 /* fragmentShaders */,
+			);
+			name = openGL;
+			sourceTree = "<group>";
+		};
+		2C80CD1D19B1C20F00FBCF18 /* fragmentShaders */ = {
+			isa = PBXGroup;
+			children = (
+				2C6DB50919AD68D100144047 /* diffuseTexture.fs */,
+				2C86E94A19AFC9BC00876CDA /* phongShader.fs */,
+				2C6DB50D19AD68D100144047 /* textureShader.fs */,
+			);
+			name = fragmentShaders;
+			sourceTree = "<group>";
+		};
+		2C80CD1E19B1C21800FBCF18 /* vertexShaders */ = {
+			isa = PBXGroup;
+			children = (
+				2C86E94C19B0239100876CDA /* anotherVertexShader.vs */,
+				2C6DB50A19AD68D100144047 /* basicVertexShader.vs */,
+			);
+			name = vertexShaders;
+			sourceTree = "<group>";
+		};
+		2C80CD1F19B1C24900FBCF18 /* ply */ = {
+			isa = PBXGroup;
+			children = (
+				2C6DB50F19AD68D100144047 /* monkeyTex.ply */,
+			);
+			name = ply;
+			sourceTree = "<group>";
+		};
+		2C80CD2019B1C24F00FBCF18 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				2C6DB50C19AD68D100144047 /* bell.wav */,
+			);
+			name = sound;
+			sourceTree = "<group>";
+		};
+		2C80CD2119B1C25400FBCF18 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				2C6DB50E19AD68D100144047 /* hex.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		2C80CD2219B1C43A00FBCF18 /* scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2C8EE6A319B056C9003E8BFB /* monkeyScene.json */,
+			);
+			name = scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +273,7 @@
 			files = (
 				2C8EE6A619B0C7A7003E8BFB /* Scene.cpp in Sources */,
 				2C3AA1C119AD6414002E40B2 /* lodepng.cpp in Sources */,
+				2C80CD2519B1C5A300FBCF18 /* Camera.cpp in Sources */,
 				2C3AA1AF19AD63FE002E40B2 /* main.cpp in Sources */,
 				2C80CD1819B1BB6900FBCF18 /* json11.cpp in Sources */,
 				2C3AA1C019AD6414002E40B2 /* EngineUtil.cpp in Sources */,

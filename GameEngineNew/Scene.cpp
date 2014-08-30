@@ -10,7 +10,7 @@
 
 Scene::Scene(string fileName) {
 
-    ifstream file(fileName.c_str());
+    ifstream file(fileName);
 
     string jsonStr((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
     
