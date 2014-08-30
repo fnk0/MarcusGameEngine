@@ -8,15 +8,17 @@
 
 #include "Scene.h"
 
-Document doc;
-
 Scene::Scene(string fileName) {
 
     ifstream file(fileName.c_str());
 
     string jsonStr((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
-    doc.Parse(jsonStr.c_str());
     
-    WorldSettings worldSettings(doc);
+    string err;
+    auto json = Json::parse(jsonStr, err);
+    
+    WorldSettings worldSettings;
+    worldSettings.setJson(json);
+    worldSettings.init();
 };
 

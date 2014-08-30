@@ -10,24 +10,22 @@
 #include <iostream>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
-#include <rapidjson/document.h>
+#include "json11.hpp"
 
 using namespace std;
-using namespace rapidjson;
+using namespace json11;
 
 class WorldSettings {
 
 private:
-
+    Json json;
     string windowTitle, backgroundMusic;
     int width, height, spp;
     glm::vec4 backgroundColors;
-
+    
 public:
     
     WorldSettings();
-    
-    WorldSettings(Document doc);
     
     basic_string<char, char_traits<char>, allocator<char>> const &getWindowTitle() const {
         return windowTitle;
@@ -74,8 +72,16 @@ public:
     glm::vec4 getBackgroundColors() {
         return backgroundColors;
     }
-
-
+    
+    Json getJson() const {
+        return json;
+    }
+    
+    void setJson(Json json) {
+        WorldSettings::json = json;
+    }
+    
+    void init();
 };
 
 

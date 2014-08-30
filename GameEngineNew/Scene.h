@@ -18,13 +18,11 @@
 #include <glm/ext.hpp>
 #include <fstream>
 #include <streambuf>
-#include <rapidjson/writer.h>
-#include <rapidjson/stringbuffer.h>
-#include <rapidjson/document.h>
+#include "json11.hpp"
 #include "WorldSettings.h"
 
 using namespace std;
-using namespace rapidjson;
+using namespace json11;
 
 class Scene {
 

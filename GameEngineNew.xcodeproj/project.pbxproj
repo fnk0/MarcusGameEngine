@@ -15,6 +15,7 @@
 		2C78F53A19AF931900AC7D22 /* libglfw.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C78F53719AF931900AC7D22 /* libglfw.3.0.dylib */; };
 		2C78F53B19AF931900AC7D22 /* libGLEW.1.10.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C78F53819AF931900AC7D22 /* libGLEW.1.10.0.dylib */; };
 		2C78F53C19AF931900AC7D22 /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C78F53919AF931900AC7D22 /* libirrklang.dylib */; };
+		2C80CD1819B1BB6900FBCF18 /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C80CD1619B1BB6900FBCF18 /* json11.cpp */; };
 		2C8EE6A619B0C7A7003E8BFB /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C8EE6A419B0C7A7003E8BFB /* Scene.cpp */; };
 		BF8C727251E1147646A3F289 /* WorldSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C78D4EEE9ADDFF1AE5B2D /* WorldSettings.cpp */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,8 @@
 		2C78F53719AF931900AC7D22 /* libglfw.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.0.dylib; path = ../../../../../../usr/local/lib/libglfw.3.0.dylib; sourceTree = "<group>"; };
 		2C78F53819AF931900AC7D22 /* libGLEW.1.10.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.10.0.dylib; path = ../../../../../../usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib; sourceTree = "<group>"; };
 		2C78F53919AF931900AC7D22 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = ../../../../../../usr/local/lib/libirrklang.dylib; sourceTree = "<group>"; };
+		2C80CD1619B1BB6900FBCF18 /* json11.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json11.cpp; sourceTree = "<group>"; };
+		2C80CD1719B1BB6900FBCF18 /* json11.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json11.hpp; sourceTree = "<group>"; };
 		2C86E94A19AFC9BC00876CDA /* phongShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phongShader.fs; sourceTree = "<group>"; };
 		2C86E94C19B0239100876CDA /* anotherVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = anotherVertexShader.vs; sourceTree = "<group>"; };
 		2C8EE6A319B056C9003E8BFB /* monkeyScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = monkeyScene.json; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 		2C3AA1AD19AD63FE002E40B2 /* GameEngineNew */ = {
 			isa = PBXGroup;
 			children = (
+				2C80CD1519B1BB2800FBCF18 /* json */,
 				2C6DB50919AD68D100144047 /* diffuseTexture.fs */,
 				2C6DB50A19AD68D100144047 /* basicVertexShader.vs */,
 				2C6DB50B19AD68D100144047 /* monkeyScene.scene */,
@@ -120,6 +124,15 @@
 				BF8C7B06E24FE8037606861A /* WorldSettings.h */,
 			);
 			path = GameEngineNew;
+			sourceTree = "<group>";
+		};
+		2C80CD1519B1BB2800FBCF18 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				2C80CD1619B1BB6900FBCF18 /* json11.cpp */,
+				2C80CD1719B1BB6900FBCF18 /* json11.hpp */,
+			);
+			name = json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +189,7 @@
 				2C8EE6A619B0C7A7003E8BFB /* Scene.cpp in Sources */,
 				2C3AA1C119AD6414002E40B2 /* lodepng.cpp in Sources */,
 				2C3AA1AF19AD63FE002E40B2 /* main.cpp in Sources */,
+				2C80CD1819B1BB6900FBCF18 /* json11.cpp in Sources */,
 				2C3AA1C019AD6414002E40B2 /* EngineUtil.cpp in Sources */,
 				BF8C727251E1147646A3F289 /* WorldSettings.cpp in Sources */,
 			);
