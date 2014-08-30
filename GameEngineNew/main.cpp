@@ -220,6 +220,11 @@ void render(void)
 
 int main(int numArgs, char **args)
 {
+
+    Scene myScene("monkeyScene.json");
+    
+    exit(0); // exit for testing reading JSON
+
 	// check usage
 	if (numArgs < 2) {
 		cout << "Usage: Transforms sceneFile.scene" << endl;

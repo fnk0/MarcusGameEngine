@@ -20,6 +20,8 @@
 #include <thread>
 #include <chrono>
 #include <vector>
+
+#include <rapidjson/document.h>
 using namespace std;
 
 // lodePNG stuff (image reading)
@@ -36,6 +38,8 @@ using namespace std;
 // Sound (irrKlang)
 #include <irrKlang.h>
 using namespace irrklang;
+
+#include "scene.h"
 
 //-------------------------------------------------------------------------//
 // MISCELLANEOUS
