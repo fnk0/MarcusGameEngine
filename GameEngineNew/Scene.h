@@ -20,25 +20,37 @@
 #include <streambuf>
 #include "json11.hpp"
 #include "WorldSettings.h"
+#include "Camera.h"
 
 using namespace std;
 using namespace json11;
 
 class Scene {
 
-    private:
-        WorldSettings worldSettings;
+private:
+    WorldSettings worldSettings;
+    SceneCamera camera;
     
-    public:
-        Scene(string fileName);
+public:
+    Scene(string fileName);
     
-        void setWorldSettings(WorldSettings worldSettings) {
-            this->worldSettings = worldSettings;
-        }
+    void setWorldSettings(WorldSettings worldSettings) {
+        this->worldSettings = worldSettings;
+    }
     
-        WorldSettings getWorldSettings() {
-            return worldSettings;
-        }
+    WorldSettings getWorldSettings() {
+        return worldSettings;
+    }
+    
+    void setCamera(SceneCamera camera) {
+        this->camera = camera;
+    }
+    
+    SceneCamera getCamera() {
+        return camera;
+    }
+    
+    void testJSON();
 };
 
 

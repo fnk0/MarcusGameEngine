@@ -12,6 +12,7 @@
 #include <iostream>
 #include "json11.hpp"
 #include <glm/glm.hpp>
+#include <glm/ext.hpp>
 
 #endif /* defined(__GameEngineNew__Camera__) */
 
@@ -19,13 +20,14 @@ using namespace std;
 using namespace json11;
 using namespace glm;
 
-class Camera {
+class SceneCamera {
     
 private:
     Json json;
-    string cameraName;
+    std::string cameraName;
     // look from, look at, view up
     glm::vec3 eye, center, vup;
+    glm::mat4x4 worldViewProject;
     
     float fovy; // vertical field of view
     float znear, zfar; // near and far clip planes
@@ -33,14 +35,14 @@ private:
 public:
 
 
-    Camera() {};
+    SceneCamera() {};
 
     Json const &getJson() const {
         return json;
     }
 
     void setJson(Json const &json) {
-        Camera::json = json;
+        SceneCamera::json = json;
     }
 
     basic_string<char, char_traits<char>, allocator<char>> const &getCameraName() const {
@@ -48,7 +50,7 @@ public:
     }
 
     void setCameraName(basic_string<char, char_traits<char>, allocator<char>> const &cameraName) {
-        Camera::cameraName = cameraName;
+        SceneCamera::cameraName = cameraName;
     }
 
     vec3 getEye() const {
@@ -56,7 +58,7 @@ public:
     }
 
     void setEye(vec3 eye) {
-        Camera::eye = eye;
+        SceneCamera::eye = eye;
     }
 
     vec3 getCenter() const {
@@ -64,7 +66,7 @@ public:
     }
 
     void setCenter(vec3 center) {
-        Camera::center = center;
+        SceneCamera::center = center;
     }
 
     vec3 getVup() const {
@@ -72,7 +74,7 @@ public:
     }
 
     void setVup(vec3 vup) {
-        Camera::vup = vup;
+        SceneCamera::vup = vup;
     }
 
     float getFovy() const {
@@ -80,7 +82,7 @@ public:
     }
 
     void setFovy(float fovy) {
-        Camera::fovy = fovy;
+        SceneCamera::fovy = fovy;
     }
 
     float getZnear() const {
@@ -88,7 +90,7 @@ public:
     }
 
     void setZnear(float znear) {
-        Camera::znear = znear;
+        SceneCamera::znear = znear;
     }
 
     float getZfar() const {
@@ -96,8 +98,18 @@ public:
     }
 
     void setZfar(float zfar) {
-        Camera::zfar = zfar;
+        SceneCamera::zfar = zfar;
     }
+
+    mat4x4 const &getWorldViewProject() const {
+        return worldViewProject;
+    }
+
+    void setWorldViewProject(mat4x4 const &worldViewProject) {
+        SceneCamera::worldViewProject = worldViewProject;
+    }
+
+    void refreshTransform(float screenWidth, float screenHeight);
 
     void init();
 };

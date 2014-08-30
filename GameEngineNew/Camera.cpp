@@ -18,7 +18,7 @@ vec3 setVecXYZ(Json::object object, string objName) {
     return vec;
 }
 
-void Camera::init() {
+void SceneCamera::init() {
 
     if(getJson() == nullptr) {
         cout << "Failed to initialize JSON object!! \n";
@@ -37,4 +37,11 @@ void Camera::init() {
     setFovy(obj["fovy"].number_value());
     setZnear(obj["znear"].number_value());
     setZfar(obj["zfar"].number_value());
+}
+
+void SceneCamera::refreshTransform(float screenWidth, float screenHeight) {
+    glm::mat4x4 worldView = glm::lookAt(eye, center, vup);
+    glm::mat4x4 project = glm::perspective((float)fovy,
+            (float)(screenWidth / screenHeight), (float)znear, (float)zfar);
+    worldViewProject = project * worldView;
 }

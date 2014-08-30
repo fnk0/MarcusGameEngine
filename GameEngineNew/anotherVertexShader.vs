@@ -29,10 +29,10 @@ uniform mat4 uObjectWorldInverseM;  // inverse object-world transform
 void main()
 {
 	// COMPUTE POSITION OF VERTEX IN WINDOW AND SEND
-	gl_Position = uObjectPerpsectM * vec4(inPosition, 0.5);
+	gl_Position = uObjectPerpsectM * vec4(inPosition, 1.5);
     
 	// COMPUTE VALUES THAT WILL BE SENT TO NEXT STAGE
-	vPosition = uObjectWorldM * vec4(inPosition, 1.0);
+	vPosition = uObjectWorldM * vec4(inPosition, 1.5);
 	vNormal = normalize(vec4(inNormal,0.0) * uObjectWorldInverseM);
 	vTexCo = inTexCo;
 	if (dot(inColor,inColor) == 0) vColor = vec4(1,1,1,0);

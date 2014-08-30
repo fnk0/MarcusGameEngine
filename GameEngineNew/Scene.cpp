@@ -17,8 +17,25 @@ Scene::Scene(string fileName) {
     string err;
     auto json = Json::parse(jsonStr, err);
     
+    // Initialize World Settings object
     WorldSettings worldSettings;
     worldSettings.setJson(json);
     worldSettings.init();
+    setWorldSettings(worldSettings);
+    
+    // Initialize the Camera Object
+    SceneCamera camera;
+    camera.setJson(json);
+    camera.init();
+    setCamera(camera);
+    
+    testJSON();
+    
 };
+
+void Scene::testJSON() {
+    
+    cout << "Camera Name: " << camera.getCameraName() << "\n";
+    
+}
 
