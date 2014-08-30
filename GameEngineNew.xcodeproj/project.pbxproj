@@ -18,7 +18,10 @@
 		2C80CD1819B1BB6900FBCF18 /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C80CD1619B1BB6900FBCF18 /* json11.cpp */; };
 		2C80CD2519B1C5A300FBCF18 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C80CD2319B1C5A300FBCF18 /* Camera.cpp */; };
 		2C8EE6A619B0C7A7003E8BFB /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C8EE6A419B0C7A7003E8BFB /* Scene.cpp */; };
+		2CB85A2819B26CB800CB19E4 /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CB85A2619B26CB800CB19E4 /* Utils.cpp */; };
 		BF8C727251E1147646A3F289 /* WorldSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C78D4EEE9ADDFF1AE5B2D /* WorldSettings.cpp */; };
+		BF8C7432A319B61F1F6950A6 /* MeshInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C79B66FFF357918909AD8 /* MeshInstance.cpp */; };
+		BF8C7F4A948BDF7AE66877AB /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7A0D4A3A15389B57767E /* Mesh.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,7 +68,13 @@
 		2CB85A2219B23DAD00CB19E4 /* rock2.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock2.ply; sourceTree = "<group>"; };
 		2CB85A2319B23DAD00CB19E4 /* rock1.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock1.ply; sourceTree = "<group>"; };
 		2CB85A2519B240F000CB19E4 /* rock-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock-texture.png"; sourceTree = "<group>"; };
+		2CB85A2619B26CB800CB19E4 /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		2CB85A2719B26CB800CB19E4 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		BF8C74BA169C53304860D51F /* MeshInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshInstance.h; sourceTree = "<group>"; };
+		BF8C7528F031005F90664AE9 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		BF8C78D4EEE9ADDFF1AE5B2D /* WorldSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldSettings.cpp; sourceTree = "<group>"; };
+		BF8C79B66FFF357918909AD8 /* MeshInstance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeshInstance.cpp; sourceTree = "<group>"; };
+		BF8C7A0D4A3A15389B57767E /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		BF8C7B06E24FE8037606861A /* WorldSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldSettings.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +147,12 @@
 				BF8C7B06E24FE8037606861A /* WorldSettings.h */,
 				2C80CD2319B1C5A300FBCF18 /* Camera.cpp */,
 				2C80CD2419B1C5A300FBCF18 /* Camera.h */,
+				BF8C79B66FFF357918909AD8 /* MeshInstance.cpp */,
+				BF8C74BA169C53304860D51F /* MeshInstance.h */,
+				BF8C7A0D4A3A15389B57767E /* Mesh.cpp */,
+				BF8C7528F031005F90664AE9 /* Mesh.h */,
+				2CB85A2619B26CB800CB19E4 /* Utils.cpp */,
+				2CB85A2719B26CB800CB19E4 /* Utils.h */,
 			);
 			name = scene;
 			sourceTree = "<group>";
@@ -280,10 +295,13 @@
 				2C8EE6A619B0C7A7003E8BFB /* Scene.cpp in Sources */,
 				2C3AA1C119AD6414002E40B2 /* lodepng.cpp in Sources */,
 				2C80CD2519B1C5A300FBCF18 /* Camera.cpp in Sources */,
+				2CB85A2819B26CB800CB19E4 /* Utils.cpp in Sources */,
 				2C3AA1AF19AD63FE002E40B2 /* main.cpp in Sources */,
 				2C80CD1819B1BB6900FBCF18 /* json11.cpp in Sources */,
 				2C3AA1C019AD6414002E40B2 /* EngineUtil.cpp in Sources */,
 				BF8C727251E1147646A3F289 /* WorldSettings.cpp in Sources */,
+				BF8C7432A319B61F1F6950A6 /* MeshInstance.cpp in Sources */,
+				BF8C7F4A948BDF7AE66877AB /* Mesh.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
