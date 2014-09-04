@@ -33,13 +33,10 @@ uniform sampler2D uDiffuseTex;
 // Users perspective
 uniform vec4 userViewDirection = normalize(vec4(0.0, 0.0, 1.0, 0.0));
 
-uniform vec4 phong;
-
 // hardcoded gloss color
 uniform vec4 uGLossColor = vec4(0.0, 0.8, 0.0, 10.0);
 
-
-// Main Shader cpde
+// Main Shader code
 
 void main() {
     // Get a normalize version of the surface normal

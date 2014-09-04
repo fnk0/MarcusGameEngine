@@ -6,6 +6,7 @@
 //-------------------------------------------------------------------------//
 
 #include "EngineUtil.h"
+#include "Scene.h"
 
 //-------------------------------------------------------------------------//
 // Callback for Keyboard Input
@@ -16,7 +17,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
-    
+
 	if (action == GLFW_PRESS &&
 		((key >= 'A' && key <= 'Z') || (key >= '0' && key <= '9'))) {
 		printf("\n%c\n", (char)key);
@@ -24,8 +25,8 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 }
 
 //-------------------------------------------------------------------------//
-// Global State.  Eventually, this should include the global
-// state of the system, including multiple scenes, objects, shaders,
+// Global State.  Eventually, this should include the global 
+// state of the system, including multiple scenes, objects, shaders, 
 // cameras, and all other resources needed by the system.
 //-------------------------------------------------------------------------//
 
@@ -36,13 +37,16 @@ int gHeight = 600; // window height
 int gSPP = 16; // samples per pixel
 glm::vec4 backgroundColor;
 
-ISoundEngine* soundEngine = NULL;
-ISound* music = NULL;
+//ISoundEngine* soundEngine = NULL;
+//ISound* music = NULL;
 
 TriMesh gMesh;
 TriMeshInstance gMeshInstance;
 Camera gCamera;
 RGBAImage textureImage;
+
+map<string, TriMesh*> meshes;
+vector<TriMeshInstance*> meshInstances;
 
 //-------------------------------------------------------------------------//
 // Parse Scene File
@@ -65,10 +69,10 @@ void loadWorldSettings(FILE *F)
 			string fileName, fullFileName;
 			getToken(F, fileName, ONE_TOKENS);
 			getFullFileName(fileName, fullFileName);
-			ISound* music = soundEngine->play2D(fullFileName.c_str(), true);
+			//ISound* music = soundEngine->play2D(fullFileName.c_str(), true);
 		}
 	}
-    
+
 	// Initialize the window with OpenGL context
 	gWindow = createOpenGLWindow(gWidth, gHeight, gWindowTitle.c_str(), gSPP);
 	glfwSetKeyCallback(gWindow, keyCallback);
@@ -96,7 +100,7 @@ void loadMeshInstance(FILE *F)
 	GLuint vertexShader = NULL_HANDLE;
 	GLuint fragmentShader = NULL_HANDLE;
 	GLuint shaderProgram = NULL_HANDLE;
-    
+
 	while (getToken(F, token, ONE_TOKENS)) {
 		if (token == "}") {
 			break;
@@ -125,7 +129,7 @@ void loadMeshInstance(FILE *F)
 			gMeshInstance.setMesh(&gMesh);
 		}
 	}
-    
+
 	shaderProgram = createShaderProgram(vertexShader, fragmentShader);
 	gMeshInstance.setShader(shaderProgram);
 }
@@ -133,7 +137,7 @@ void loadMeshInstance(FILE *F)
 void loadCamera(FILE *F)
 {
 	string token;
-    
+
 	while (getToken(F, token, ONE_TOKENS)) {
 		if (token == "}") break;
 		else if (token == "eye") getFloats(F, &(gCamera.eye[0]), 3);
@@ -143,15 +147,31 @@ void loadCamera(FILE *F)
 		else if (token == "zfar") getFloats(F, &(gCamera.zfar), 1);
 		else if (token == "fovy") getFloats(F, &(gCamera.fovy), 1);
 	}
-    
+
 	gCamera.refreshTransform((float)gWidth, (float)gHeight);
+}
+
+void getFloatsFromJsonArray(json11::Json::array obj_array, float* dest) {
+    
+}
+
+void loadJsonScene(string *jsonString) {
+    
+    string err;
+    Json json = Json::parse(*jsonString, err);
+    
+    Json::object worldSettings = json["worldSettings"].object_items();
+    Json::object camera = json["camera"].object_items();
+    Json::object meshes = json["meshes"].object_items();
+    Json::object meshInstances = json["meshInstances"].object_items();
+    
 }
 
 void loadScene(const char *sceneFile)
 {
 	FILE *F = openFileForReading(sceneFile);
 	string token;
-    
+
 	while (getToken(F, token, ONE_TOKENS)) {
 		//cout << token << endl;
 		if (token == "worldSettings") {
@@ -169,17 +189,51 @@ void loadScene(const char *sceneFile)
 	}
 }
 
+void updateJson(Scene *scene) {
+    for(int i = 0; i < scene->getMeshInstances().size(); i++) {
+        // scale mesh instance
+        static float dScale = 0.0005f;
+        float scale = scene->getMeshInstances()[i]->T.scale[0];
+        scale += dScale;
+        if (scale > 1.25f) dScale = -0.0005f;
+        if (scale < 0.25f) dScale = 0.0005f;
+        scene->getMeshInstances()[i]->setScale(glm::vec3(scale));
+
+        // rotate mesh
+        glm::quat r = glm::quat(glm::vec3(0.0f, 0.0051f, 0.00f));
+        scene->getMeshInstances()[i]->T.rotation *= r;
+
+        scene->getMeshInstances()[i]->diffuseColor += glm::vec4(0.0013f, 0.000921f, 0.00119f, 0.0f);
+        if (scene->getMeshInstances()[i]->diffuseColor[0] > 1.0f) scene->getMeshInstances()[i]->diffuseColor[0] = 0.25f;
+        if (scene->getMeshInstances()[i]->diffuseColor[1] > 1.0f) scene->getMeshInstances()[i]->diffuseColor[1] = 0.25f;
+        if (scene->getMeshInstances()[i]->diffuseColor[2] > 1.0f) scene->getMeshInstances()[i]->diffuseColor[2] = 0.25f;
+    }
+}
+
+void renderJson(Scene *scene) {
+    // clear color and depth buffer
+    glClearColor(scene->getWorldSettings()->getBackgroundColors().r, scene->getWorldSettings()->getBackgroundColors().g, scene->getWorldSettings()->getBackgroundColors().b, 1.0f);
+    //glClearColor(0.5, 0.2, 0.6, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    // draw scene
+    //cout << "Number of instances: " << scene->meshInstances.size() << "\n";
+    for(int i = 0; i < scene->getMeshInstances().size(); i++) {
+        scene->getMeshInstances()[i]->draw(*scene->getCamera());
+    }
+}
+
 //-------------------------------------------------------------------------//
 // Update
 //-------------------------------------------------------------------------//
 
 void update(void)
-{
+{	
 	/*
-     // move mesh instance
-     gMeshInstance.translation[0] += 0.003f;
-     if (gMeshInstance.translation[0] >= 1.0f) gMeshInstance.translation[0] = -1.0f;
-     */
+	// move mesh instance
+	gMeshInstance.translation[0] += 0.003f;
+	if (gMeshInstance.translation[0] >= 1.0f) gMeshInstance.translation[0] = -1.0f;
+    */
 	
 	// scale mesh instance
 	static float dScale = 0.0005f;
@@ -188,7 +242,7 @@ void update(void)
 	if (scale > 1.25f) dScale = -0.0005f;
 	if (scale < 0.25f) dScale = 0.0005f;
 	gMeshInstance.setScale(glm::vec3(scale));
-    
+
 	// rotate mesh
 	glm::quat r = glm::quat(glm::vec3(0.0f, 0.0051f, 0.00f));
 	gMeshInstance.T.rotation *= r;
@@ -213,53 +267,55 @@ void render(void)
 	
 	gMeshInstance.draw(gCamera);
 }
-// change
+
 //-------------------------------------------------------------------------//
 // Main method
 //-------------------------------------------------------------------------//
 
 int main(int numArgs, char **args)
 {
-
-    Scene myScene("monkeyScene.json");
-    
-    exit(0); // exit for testing reading JSON
-
 	// check usage
 	if (numArgs < 2) {
 		cout << "Usage: Transforms sceneFile.scene" << endl;
 		exit(0);
 	}
-    
+
 	// Start sound engine
-	soundEngine = createIrrKlangDevice();
-	if (!soundEngine) return 0;
-	soundEngine->setListenerPosition(vec3df(0, 0, 0), vec3df(0, 0, 1));
-	soundEngine->setSoundVolume(0.25f); // master volume control
-    
+	//soundEngine = createIrrKlangDevice();
+	//if (!soundEngine) return 0;
+	//soundEngine->setListenerPosition(vec3df(0, 0, 0), vec3df(0, 0, 1));
+	//soundEngine->setSoundVolume(0.25f); // master volume control
+
 	// Play 3D sound
-	string soundFileName;
-	ISound* music = soundEngine->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
-	if (music) music->setMinDistance(5.0f); // distance of full volume
+	//string soundFileName;
+	//ISound* music = soundEngine->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
+	//if (music) music->setMinDistance(5.0f); // distance of full volume
+
+    //loadScene(args[1]);
     
-	loadScene(args[1]);
-    
+    Scene* scene = new Scene();
+    string fileName = "monkeyScene.json";
+    scene->loadScene(fileName);
+
 	// start time (used to time framerate)
 	double startTime = TIME();
     
 	// render loop
 	while (true) {
 		// update and render
-		update();
-		render();
+		//update();
+		//render();
+
+        updateJson(scene);
+        renderJson(scene);
         
 		// handle input
 		glfwPollEvents();
-		if (glfwGetKey(gWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) break;
-		if (glfwWindowShouldClose(gWindow) != 0) break;
-        
+		if (glfwGetKey(scene->gWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) break;
+		if (glfwWindowShouldClose(scene->gWindow) != 0) break;
+
 		double xx, yy;
-		glfwGetCursorPos(gWindow, &xx, &yy);
+		glfwGetCursorPos(scene->gWindow, &xx, &yy);
 		printf("%1.3f %1.3f ", xx, yy);
         
 		// print framerate
@@ -269,12 +325,12 @@ int main(int numArgs, char **args)
         
 		// swap buffers
 		//SLEEP(1); // sleep 1 millisecond to avoid busy waiting
-		glfwSwapBuffers(gWindow);
+		glfwSwapBuffers(scene->gWindow);
 	}
-    
+
 	// Shut down sound engine
-	if (music) music->drop(); // release music stream.
-	soundEngine->drop(); // delete engine
+	//if (music) music->drop(); // release music stream.
+	//soundEngine->drop(); // delete engine
     
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();

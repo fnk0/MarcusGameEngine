@@ -1,99 +1,99 @@
 //
-// Created by Marcus Gabilheri on 8/30/14.
+// Created by Marcus Gabilheri on 9/4/14.
 // Copyright (c) 2014 Marcus Gabilheri. All rights reserved.
 //
 
 
-#ifndef __Mesh_H_
-#define __Mesh_H_
+#ifndef __GameEngineNew__Mesh_H_
+#define __GameEngineNew__Mesh_H_
 
-#include <iostream>
-#include "json11.hpp"
-#import "MeshInstance.h"
-#include <glm/glm.hpp>
-#include <vector>
-#include <GL/glew.h>
-#include "Utils.h"
+#include "EngineUtil.h"
 
-using namespace std;
-using namespace glm;
-using namespace json11;
+// Consider adding a Level of detail to the Mesh
+// So if the camera is far away low polygon meshes can be loaded.
 
 class Mesh {
 
-private:
-    string meshName;
-    string fileName;
-    vector<MeshInstance> meshInstances;
-    vector<string> attributes;
-    vector<float> vertexData;
-    vector<int> indices;
-    
-    Utils utils;
-
 public:
-    
-    Mesh() {}
-    
+    std::string meshName;
+    std::string meshFile;
+    std::vector<std::string> attributes;
+    std::vector<float> vertexData;
+    std::vector<int> indices;
     int numIndices;
+
     GLuint vao; // vertex array handle
     GLuint ibo; // index buffer handle
 
-    basic_string<char, char_traits<char>, allocator<char>> const &getMeshName() const {
+public:
+
+    bool readFromPly(const std::string &fileName, bool flipZ = false);
+    bool sendToOpenGL(void);
+    void draw(void);
+
+    std::string getMeshName() const {
         return meshName;
     }
 
-    void setMeshName(basic_string<char, char_traits<char>, allocator<char>> const &meshName) {
+    void setMeshName(std::string meshName) {
         Mesh::meshName = meshName;
     }
 
-    basic_string<char, char_traits<char>, allocator<char>> const &getFileName() const {
-        return fileName;
+    string getMeshFile() const {
+        return meshFile;
     }
 
-    void setFileName(basic_string<char, char_traits<char>, allocator<char>> const &fileName) {
-        Mesh::fileName = fileName;
+    void setMeshFile(string meshFile) {
+        Mesh::meshFile = meshFile;
     }
 
-    vector<MeshInstance> const &getMeshInstances() const {
-        return meshInstances;
-    }
-
-    void setMeshInstances(vector<MeshInstance> const &meshInstances) {
-        Mesh::meshInstances = meshInstances;
-    }
-    
-    vector<string> const &getAttributes() const {
+    std::vector<std::string> const &getAttributes() const {
         return attributes;
     }
-    
-    void setAttributes(vector<string> const &attrs) {
-        Mesh::attributes = attrs;
+
+    void setAttributes(std::vector<std::string> const &attributes) {
+        Mesh::attributes = attributes;
     }
-    
-    vector<float> const &getVertexData() const {
+
+    std::vector<float> const &getVertexData() const {
         return vertexData;
     }
-    
-    void setVertexData(vector<float> const &vData) {
-        Mesh::vertexData = vData;
+
+    void setVertexData(std::vector<float> const &vertexData) {
+        Mesh::vertexData = vertexData;
     }
-    
-    vector<int> getIndices(void) {
+
+    std::vector<int> const &getIndices() const {
         return indices;
     }
-    
-    void setIndices(vector<int> const &indices) {
+
+    void setIndices(std::vector<int> const &indices) {
         Mesh::indices = indices;
     }
 
-    Utils getUtils() {
-        return utils;
+    int getNumIndices() const {
+        return numIndices;
     }
-    
-    bool readFromPly(const string &fileName, bool flipz = false);
-    bool sendToOpenGL(void);
-    void draw(void);
+
+    void setNumIndices(int numIndices) {
+        Mesh::numIndices = numIndices;
+    }
+
+    GLuint getVao() const {
+        return vao;
+    }
+
+    void setVao(GLuint vao) {
+        Mesh::vao = vao;
+    }
+
+    GLuint getIbo() const {
+        return ibo;
+    }
+
+    void setIbo(GLuint ibo) {
+        Mesh::ibo = ibo;
+    }
 };
 
 

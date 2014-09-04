@@ -1,46 +1,33 @@
 //
-// Created by Marcus Gabilheri on 8/29/14.
+// Created by Marcus Gabilheri on 9/4/14.
 // Copyright (c) 2014 Marcus Gabilheri. All rights reserved.
 //
 
 
-#ifndef __WorldSettings_H_
-#define __WorldSettings_H_
+#ifndef __GameEngineNew__WorldSettings_H_
+#define __GameEngineNew__WorldSettings_H_
 
 #include <iostream>
 #include <glm/glm.hpp>
-#include <glm/ext.hpp>
-#include "json11.hpp"
-
-using namespace std;
-using namespace json11;
 
 class WorldSettings {
 
 private:
-    Json json;
-    string windowTitle, backgroundMusic;
-    int width, height, spp;
-    glm::vec4 backgroundColors;
-    
+    std::string windowTitle;
+    int width;
+    int height;
+    int spp;
+    glm::vec3 backgroundColors;
+    std::string backgroundMusic;
+
 public:
-    
-    WorldSettings();
-    
-    basic_string<char, char_traits<char>, allocator<char>> const &getWindowTitle() const {
+
+    std::string getWindowTitle() const {
         return windowTitle;
     }
 
-    void setWindowTitle(basic_string<char, char_traits<char>, allocator<char>> const &windowTitle) {
+    void setWindowTitle(std::string windowTitle) {
         WorldSettings::windowTitle = windowTitle;
-    }
-
-    basic_string<char, char_traits<char>, allocator<char>> const &getBackgroundMusic() const {
-        return backgroundMusic;
-    }
-
-    void setBackgroundMusic(basic_string<char, char_traits<char>, allocator<char>> const &backgroundMusic) {
-        WorldSettings::backgroundMusic = backgroundMusic;
     }
 
     int getWidth() const {
@@ -66,22 +53,22 @@ public:
     void setSpp(int spp) {
         WorldSettings::spp = spp;
     }
-    
-    void setBackgroundColors(float *color);
-    
-    glm::vec4 getBackgroundColors() {
+
+    glm::vec3 getBackgroundColors() const {
         return backgroundColors;
     }
-    
-    Json getJson() const {
-        return json;
+
+    void setBackgroundColors(glm::vec3 backgroundColors) {
+        WorldSettings::backgroundColors = backgroundColors;
     }
-    
-    void setJson(Json json) {
-        WorldSettings::json = json;
+
+    std::string getBackgroundMusic() const {
+        return backgroundMusic;
     }
-    
-    void init();
+
+    void setBackgroundMusic(std::string backgroundMusic) {
+        WorldSettings::backgroundMusic = backgroundMusic;
+    }
 };
 
 

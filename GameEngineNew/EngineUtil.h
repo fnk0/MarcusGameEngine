@@ -7,6 +7,9 @@
 // 8/23/2014
 //-------------------------------------------------------------------------//
 
+#ifndef __GameEngineNew__EngineUtil__
+#define __GameEngineNew__EngineUtil__
+
 // Prevent visual studio warnings
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -20,8 +23,6 @@
 #include <thread>
 #include <chrono>
 #include <vector>
-
-#include <rapidjson/document.h>
 using namespace std;
 
 // lodePNG stuff (image reading)
@@ -30,16 +31,16 @@ using namespace std;
 // OpenGL related includes
 #define GLM_FORCE_RADIANS
 #include <GL/glew.h>
-//#include <OpenGL/gl3.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+#include "json11.hpp"
+
+using namespace json11;
 
 // Sound (irrKlang)
-#include <irrKlang.h>
-using namespace irrklang;
-
-#include "scene.h"
+//#include <irrKlang.h>
+//using namespace irrklang;
 
 //-------------------------------------------------------------------------//
 // MISCELLANEOUS
@@ -48,6 +49,7 @@ using namespace irrklang;
 void ERROR(const string &msg, bool doExit = true);
 double TIME(void);
 void SLEEP(int millis);
+
 
 //-------------------------------------------------------------------------//
 // OPENGL STUFF
@@ -95,8 +97,8 @@ void replaceIncludes(string &src, string &dest, const string &directive,
 // SOUND
 //-------------------------------------------------------------------------//
 
-void initSoundEngine(void);
-ISound *loadSound();
+//void initSoundEngine(void);
+//ISound *loadSound();
 
 //-------------------------------------------------------------------------//
 // IMAGE
@@ -159,21 +161,23 @@ public:
 // Camera
 //-------------------------------------------------------------------------//
 
-class Camera {
-    public:
-        // look from, look at, view up
-        glm::vec3 eye, center, vup;
+class Camera
+{
+public:
+	// look from, look at, view up
+	glm::vec3 eye, center, vup;
 
-        float fovy; // vertical field of view
-        float znear, zfar; // near and far clip planes
+	float fovy; // vertical field of view
+	float znear, zfar; // near and far clip planes
 
-        glm::mat4x4 worldViewProject;
+	glm::mat4x4 worldViewProject;
 
-        void refreshTransform(float screenWidth, float screenHeight) {
-            glm::mat4x4 worldView = glm::lookAt(eye, center, vup);
-            glm::mat4x4 project = glm::perspective((float)fovy,
+	void refreshTransform(float screenWidth, float screenHeight)
+	{
+		glm::mat4x4 worldView = glm::lookAt(eye, center, vup);
+		glm::mat4x4 project = glm::perspective((float)fovy,
 			(float)(screenWidth / screenHeight), (float)znear, (float)zfar);
-            worldViewProject = project * worldView;
+		worldViewProject = project * worldView;
 	}
 };
 
@@ -181,47 +185,52 @@ class Camera {
 // TRIANGLE MESH
 //-------------------------------------------------------------------------//
 
-class TriMesh {
-    public:
-        vector<string> attributes;
-        vector<float> vertexData;
-        vector<int> indices;
-        int numIndices;
+class TriMesh
+{
+public:
+	vector<string> attributes;
+	vector<float> vertexData;
+	vector<int> indices;
+	int numIndices;
     
-        GLuint vao; // vertex array handle
-        GLuint ibo; // index buffer handle
+	GLuint vao; // vertex array handle
+	GLuint ibo; // index buffer handle
 	
-        bool readFromPly(const string &fileName, bool flipZ = false);
-        bool sendToOpenGL(void);
-        void draw(void);
+	bool readFromPly(const string &fileName, bool flipZ = false);
+	bool sendToOpenGL(void);
+	void draw(void);
 };
 
 // should extend EngineObject
-class TriMeshInstance {
-    public:
-        TriMesh *triMesh;
-        GLuint shaderProgram;
+class TriMeshInstance 
+{
+public:
+	TriMesh *triMesh;
+	GLuint shaderProgram;
     
-        // replace with material
-        glm::vec4 diffuseColor;
-        RGBAImage diffuseTexture;
+	// replace with material
+	glm::vec4 diffuseColor;  
+	RGBAImage diffuseTexture;
 
     
-        Transform T;
+	Transform T;
 	
-    public:
-        TriMeshInstance(void);
+public:
+	TriMeshInstance(void);
     
-        void setMesh(TriMesh *mesh) { triMesh = mesh; }
-        void setShader(GLuint shader) { shaderProgram = shader; }
-        void setDiffuseColor(const glm::vec4 &c) { diffuseColor = c; }
-        void setScale(const glm::vec3 &s) { T.scale = s; }
-        void setRotation(const glm::quat &r) { T.rotation = r; }
-        void setTranslation(const glm::vec3 &t) { T.translation = t; }
+	void setMesh(TriMesh *mesh) { triMesh = mesh; }
+	void setShader(GLuint shader) { shaderProgram = shader; }
+	void setDiffuseColor(const glm::vec4 &c) { diffuseColor = c; }
+	void setScale(const glm::vec3 &s) { T.scale = s; }
+	void setRotation(const glm::quat &r) { T.rotation = r; }
+	void setTranslation(const glm::vec3 &t) { T.translation = t; }
     
-        void refreshTransform(void);
+	void refreshTransform(void);
     
-        void draw(Camera &camera);
+	void draw(Camera &camera);
 };
 
 //-------------------------------------------------------------------------//
+
+
+#endif //__EngineUtil_H_

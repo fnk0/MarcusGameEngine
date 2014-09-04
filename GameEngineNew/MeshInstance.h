@@ -1,51 +1,72 @@
 //
-// Created by Marcus Gabilheri on 8/30/14.
+// Created by Marcus Gabilheri on 9/4/14.
 // Copyright (c) 2014 Marcus Gabilheri. All rights reserved.
 //
 
+#ifndef __GameEngineNew__MeshInstance__
+#define __GameEngineNew__MeshInstance__
 
-#ifndef __MeshInstance_H_
-#define __MeshInstance_H_
-
-#include <iostream>
-#include "json11.hpp"
-#import "MeshInstance.h"
-#include <glm/glm.hpp>
-#include <vector>
-#include <GL/glew.h>
-#include "Utils.h"
-#include "Camera.h"
-
-using namespace std;
-using namespace glm;
-using namespace json11;
+#include "Mesh.h"
+#include "SceneCamera.h"
 
 class MeshInstance {
 
 public:
+    Mesh *mesh;
     GLuint shaderProgram;
-    
-    // replace with material
+
+    // Replace with material
     glm::vec4 diffuseColor;
     RGBAImage diffuseTexture;
-    
+
     Transform T;
-	
+
 public:
-    
-    MeshInstance() {};
-    
+    MeshInstance(void);
+
+    void setMesh(Mesh *mesh) {MeshInstance::mesh = mesh; }
     void setShader(GLuint shader) { shaderProgram = shader; }
     void setDiffuseColor(const glm::vec4 &c) { diffuseColor = c; }
     void setScale(const glm::vec3 &s) { T.scale = s; }
     void setRotation(const glm::quat &r) { T.rotation = r; }
     void setTranslation(const glm::vec3 &t) { T.translation = t; }
-    
-    void refreshTransform(void);
-    
-    void draw(SceneCamera &camera);
-    
 
+    void refreshTransform(void);
+
+    void draw(SceneCamera &camera);
+
+
+    Mesh *getMesh() const {
+        return mesh;
+    }
+
+    GLuint getShaderProgram() const {
+        return shaderProgram;
+    }
+
+    void setShaderProgram(GLuint shaderProgram) {
+        MeshInstance::shaderProgram = shaderProgram;
+    }
+
+    glm::detail::tvec4<float, glm::highp> const &getDiffuseColor() const {
+        return diffuseColor;
+    }
+
+    RGBAImage const &getDiffuseTexture() const {
+        return diffuseTexture;
+    }
+
+    void setDiffuseTexture(RGBAImage const &diffuseTexture) {
+        MeshInstance::diffuseTexture = diffuseTexture;
+    }
+
+    Transform const &getT() const {
+        return T;
+    }
+
+    void setT(Transform const &T) {
+        MeshInstance::T = T;
+    }
 };
 
 

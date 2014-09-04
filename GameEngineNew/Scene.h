@@ -1,57 +1,67 @@
 //
-//  Scene.h
-//  GameEngineNew
-//
-//  Created by Marcus Gabilheri on 8/29/14.
-//  Copyright (c) 2014 Marcus Gabilheri. All rights reserved.
+// Created by Marcus Gabilheri on 9/4/14.
+// Copyright (c) 2014 Marcus Gabilheri. All rights reserved.
 //
 
-#ifndef __GameEngineNew__Scene__
-#define __GameEngineNew__Scene__
 
-#include <iostream>
-
-#endif /* defined(__GameEngineNew__Scene__) */
-
-#include <vector>
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
-#include <fstream>
-#include <streambuf>
-#include "json11.hpp"
 #include "WorldSettings.h"
-#include "Camera.h"
 
-using namespace std;
-using namespace json11;
+#ifndef __Scene_H_
+#define __Scene_H_
+#include "WorldSettings.h"
+#include "MeshInstance.h"
+
+class SceneCamera;
+class WorldSettings;
+class Mesh;
+class MeshInstance;
 
 class Scene {
 
 private:
-    WorldSettings worldSettings;
-    SceneCamera camera;
-    
+    WorldSettings* worldSettings;
+    SceneCamera* camera;
+    map<std::string, Mesh*> meshes;
+    vector<MeshInstance*> meshInstances;
+
 public:
-    Scene(string fileName);
-    
-    void setWorldSettings(WorldSettings worldSettings) {
-        this->worldSettings = worldSettings;
-    }
-    
-    WorldSettings getWorldSettings() {
+    GLFWwindow* gWindow = NULL;
+    void loadScene(std::string &fileName);
+    void loadFloatsArray(float* floatArray, json11::Json::array jsonArray);
+    void static keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+    WorldSettings *getWorldSettings() const {
         return worldSettings;
     }
-    
-    void setCamera(SceneCamera camera) {
-        this->camera = camera;
+
+    void setWorldSettings(WorldSettings *worldSettings) {
+        Scene::worldSettings = worldSettings;
     }
-    
-    SceneCamera getCamera() {
+
+    SceneCamera *getCamera() const {
         return camera;
     }
-    
-    void testJSON();
+
+    void setCamera(SceneCamera *camera) {
+        Scene::camera = camera;
+    }
+
+    map<string, Mesh *> const &getMeshes() const {
+        return meshes;
+    }
+
+    void setMeshes(map<string, Mesh *> const &meshes) {
+        Scene::meshes = meshes;
+    }
+
+    vector<MeshInstance *>  const &getMeshInstances() const {
+        return meshInstances;
+    }
+
+    void setMeshInstances(vector<MeshInstance *> const &meshInstances) {
+        Scene::meshInstances = meshInstances;
+    }
 };
 
 
-
+#endif// __Scene_H_

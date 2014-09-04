@@ -41,8 +41,8 @@ GLFWwindow* createOpenGLWindow(int width, int height, const char *title, int sam
 	glfwWindowHint(GLFW_SAMPLES, samplesPerPixel);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, MAJOR_VERSION);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, MINOR_VERSION);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     
 	// Open a window and create its OpenGL context
 	GLFWwindow *window = glfwCreateWindow(width, height, title, NULL, NULL);
@@ -619,38 +619,27 @@ void TriMeshInstance::draw(Camera &camera)
 	// class.
 	
 	GLint loc = glGetUniformLocation(shaderProgram, "uDiffuseColor");
-	if (loc != -1) {
-        glUniform4fv(loc, 1, &diffuseColor[0]);
-    }
+	if (loc != -1) glUniform4fv(loc, 1, &diffuseColor[0]);
 
 	loc = glGetUniformLocation(shaderProgram, "uDiffuseTex");
-	if (loc != -1) {
-        glBindSampler(loc, diffuseTexture.samplerId);
-    } else {
-        ERROR("Could not bind texture", false);
-        //printVec(color);
-    }
+	if (loc != -1) glBindSampler(loc, diffuseTexture.samplerId);
+	else ERROR("Could not bind texture", false);
+	//printVec(color);
     
-	T.refreshTransform(); // ensures that the transform matrice has been updated properly.
+	T.refreshTransform();
 	//printMat(transform);
 
 	loc = glGetUniformLocation(shaderProgram, "uObjectWorldM");
-	if (loc != -1) {
-        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.transform));
-    }
+	if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.transform));
 	//else ERROR("Could not load uniform uObjectWorldM", false);
 
 	loc = glGetUniformLocation(shaderProgram, "uObjectWorldInverseM");
-	if (loc != -1) {
-        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.invTransform));
-    }
+	if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.invTransform));
 	//else ERROR("Could not load uniform uObjectWorldInverseM", false);
 
 	glm::mat4x4 objectWorldViewPerspect = camera.worldViewProject * T.transform;
 	loc = glGetUniformLocation(shaderProgram, "uObjectPerpsectM");
-	if (loc != -1) {
-        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(objectWorldViewPerspect));
-    }
+	if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(objectWorldViewPerspect));
 	//else ERROR("Could not load uniform uObjectPerpsectM", false);
     
 	triMesh->draw();
