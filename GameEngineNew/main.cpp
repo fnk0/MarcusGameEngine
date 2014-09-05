@@ -50,28 +50,27 @@ RGBAImage textureImage;
 //-------------------------------------------------------------------------//
 
 string ONE_TOKENS = "{}[]()<>+-*/,;";
-    
+
 void keyboardCameraController(Scene *scene) {
 
     float t = 0.025f;
     float r = 0.01f;
 
-    glm::vec3 strifeLeft(-t, 0, 0);
-    glm::vec3 strifeRight(t, 0, 0);
-    glm::vec3 strifeUp(0, t, 0);
-    glm::vec3 strifeDown(0, -t, 0);
-    glm::vec3 moveForward(0, 0, t);
-    glm::vec3 moveBack(0, 0, -t);
-    glm::vec3 rotate(0, 0, 1);
+    glm::vec3 strifeLeft(t, 0, 0);
+    glm::vec3 strifeRight(-t, 0, 0);
+    glm::vec3 moveForward(0, -t, 0);
+    glm::vec3 moveBack(0, t, 0);
+    glm::vec3 strifeUp(0, 0, t);
+    glm::vec3 strifeDown(0, 0, -t);
+    glm::vec3 rotate(1, 0,0);
 
     if(glfwGetKey(scene->gWindow, 'A')) scene->getCamera()->translateLocal(strifeLeft);
     if(glfwGetKey(scene->gWindow, 'D')) scene->getCamera()->translateLocal(strifeRight);
     if(glfwGetKey(scene->gWindow, 'W')) scene->getCamera()->translateLocal(strifeUp);
     if(glfwGetKey(scene->gWindow, 'S')) scene->getCamera()->translateLocal(strifeDown);
-    if(glfwGetKey(scene->gWindow, 'Q')) scene->getCamera()->rotateGlobal(rotate, -r);
-    if(glfwGetKey(scene->gWindow, 'E')) scene->getCamera()->rotateGlobal(rotate, r);
-    if(glfwGetKey(scene->gWindow, GLFW_KEY_UP)) scene->getCamera()->translateLocal(moveForward);
-    if(glfwGetKey(scene->gWindow, GLFW_KEY_DOWN)) scene->getCamera()->translateLocal(moveBack);
+    if(glfwGetKey(scene->gWindow, 'Q')) scene->getCamera()->rotateLocal(rotate, -r);
+    if(glfwGetKey(scene->gWindow, 'E')) scene->getCamera()->rotateLocal(rotate, r);
+    if(glfwgetKey(Scene->gWindow, GLFW_KEY_UP)) scene->getCamera()->translateLocal(strifeDown);
 
     scene->getCamera()->refreshTransform(scene->getWorldSettings()->getWidth(), scene->getWorldSettings()->getHeight());
 }
@@ -331,7 +330,7 @@ int main(int numArgs, char **args)
 		//update();
 		//render();
 
-        updateJson(scene);
+        //updateJson(scene);
         renderJson(scene);
         keyboardCameraController(scene);
         
