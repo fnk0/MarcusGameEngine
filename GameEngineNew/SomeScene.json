@@ -1,0 +1,99 @@
+{
+    "worldSettings":
+    {
+        "windowTitle": "Some Scene",
+        "width": 800,
+        "height": 600,
+        "spp": 4,
+        "backgroundColor": [0.4, 0.4, 0.4],
+        "backgroundMusic": "bell.wav"
+    },
+
+    "camera":
+    {
+        "name": "camera1",
+        "eye": [ 0, -1, 4],
+        "center": [ 0, 0.1, 0],
+        "vup": [ 0, 1, 0 ],
+        "fovy": 0.4,
+        "znear": 0.1,
+        "zfar": 1000
+    },
+
+    "meshes": [
+        {
+            "name": "rockMesh",
+            "file": "rock1.ply"
+        },
+        {
+            "name": "lokiMesh",
+            "file": "legoloki.ply"
+               
+        },
+         {
+            "name": "aragornMesh",
+            "file": "Aragorn.ply"
+               
+        },
+        {
+            "name": "indianaJonesMesh",
+            "file": "indy.ply"
+        },{
+            "name": "gandalfMesh",
+            "file": "Gandalf.ply"
+        }
+    ],
+
+    "meshInstances": [
+        {
+            "name": "rockMesh1",
+            "mesh": "rockMesh",
+            "scale": [0.1, 0.1, 0.1],
+            "rotation": [0.5, 0.5, 0.5],
+            "translation": [0.5, 0.5, 0.5],
+            "vertexShader": "basicVertexShader.vs",
+            "fragmentShader": "phongShader.fs",
+            "diffuseTexture": "rock-texture.png"
+        },
+        {
+            "name": "lokiMesh1",
+            "mesh": "lokiMesh",
+            "scale": [0.1, 0.1, 0.1],
+            "rotation": [0, -1, -1.5],
+            "translation": [0.5, 0.5, 0.5],
+            "vertexShader": "basicVertexShader.vs",
+            "fragmentShader": "diffuseTexture.fs",
+            "diffuseTexture": "lokitexture.png"
+        },
+        {
+            "name": "aragornMesh1",
+            "mesh": "aragornMesh",
+            "scale": [0.1, 0.1, 0.1],
+            "rotation": [-1, 0, 0],
+            "translation": [0.1, 0.5, 0.5],
+            "vertexShader": "basicVertexShader.vs",
+            "fragmentShader": "phongShader.fs",
+            "diffuseTexture": "lokitexture.png"
+        },
+        {
+            "name": "indyMesh",
+            "mesh": "indianaJonesMesh",
+            "scale": [0.1, 0.1, 0.1],
+            "rotation": [-1, 0, 0],
+            "translation": [1, 0.5, 0.5],
+            "vertexShader": "basicVertexShader.vs",
+            "fragmentShader": "phongShader.fs",
+            "diffuseTexture": "hex.png"
+        },
+        {
+            "name": "gandalfMesh1",
+            "mesh": "gandalfMesh",
+            "scale": [0.1, 0.1, 0.1],
+            "rotation": [-1, 0, 0],
+            "translation": [2, 0.2, 0.5],
+            "vertexShader": "basicVertexShader.vs",
+            "fragmentShader": "phongShader.fs",
+            "diffuseTexture": "hex.png"
+        }
+    ]
+}

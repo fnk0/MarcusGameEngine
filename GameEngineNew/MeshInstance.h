@@ -19,6 +19,8 @@ public:
     glm::vec4 diffuseColor;
     RGBAImage diffuseTexture;
 
+    glm::vec3 rotation, translation, scale;
+
     Transform T;
 
 public:

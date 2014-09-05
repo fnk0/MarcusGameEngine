@@ -60,7 +60,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "monkeyScene.scene"
+            argument = "someScene.json"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

@@ -54,11 +54,11 @@ void main()
 	float RdotL = max(0.0, dot(R, uLightDirection.xyz));
 	//
 	// Gloss (phong lobe)
-	fColor += pow(RdotL, uGlossColor.a) * uGlossColor * uLightColor * specColor;
+	//fColor += pow(RdotL, uGlossColor.a) * uGlossColor * uLightColor * specColor;
 	//
 	// sharp reflection (specular)
 	float tval = uSpecularColor.a;
-	fColor += smoothstep(tval, tval + 0.02, RdotL) * uSpecularColor * uLightColor * specColor;
+	//fColor += smoothstep(tval, tval + 0.02, RdotL) * uSpecularColor * uLightColor * specColor;
 	
 	// RIM LIGHT
 	float rimPower = pow(1-NdotV, uRimLightColor.a);

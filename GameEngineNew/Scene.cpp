@@ -32,6 +32,8 @@
 #define MESH_INSTANCES "meshInstances"
 #define MESH "mesh"
 #define SCALE "scale"
+#define ROTATION "rotation"
+#define TRANSLATION "translation"
 #define VERTEX_SHADER "vertexShader"
 #define FRAGMENT_SHADER "fragmentShader"
 #define DIFFUSE_TEXTURE "diffuseTexture"
@@ -122,21 +124,28 @@ void Scene::loadScene(std::string &fileName) {
     for(int i = 0; i < meshInstancesJson.size(); i++) {
         MeshInstance *instance = new MeshInstance();
 
-        cout << "Mesh Instance From the map!" << "\n";
-        cout << "Mesh Name: " << meshes[meshInstancesJson[i][MESH].string_value()]->getMeshName() << "\n";
-        cout << "Mesh File: " << meshes[meshInstancesJson[i][MESH].string_value()]->getMeshFile() << "\n";
+        glm::vec3 scale;
+        loadFloatsArray(&scale[0], meshInstancesJson[i][SCALE].array_items());
+
+        glm::vec3 translation;
+        loadFloatsArray(&translation[0], meshInstancesJson[i][TRANSLATION].array_items());
+        
+        glm::vec3 rotationVector;
+        loadFloatsArray(&rotationVector[0], meshInstancesJson[i][ROTATION].array_items());
+        
+        glm::quat rotation(rotationVector);
 
         instance->setMesh(meshes[meshInstancesJson[i][MESH].string_value()]);
         vertexShader = loadShader(meshInstancesJson[i][VERTEX_SHADER].string_value(), GL_VERTEX_SHADER);
         fragmentShader = loadShader(meshInstancesJson[i][FRAGMENT_SHADER].string_value(), GL_FRAGMENT_SHADER);
         instance->diffuseTexture.loadPNG(meshInstancesJson[i][DIFFUSE_TEXTURE].string_value());
+        instance->setScale(scale);
+        instance->setTranslation(translation);
+        instance->setRotation(rotation);
         instance->diffuseTexture.sendToOpenGL();
         shaderProgram = createShaderProgram(vertexShader, fragmentShader);
         instance->setShader(shaderProgram);
 
-        cout << "Mesh Instance Getters!" << "\n";
-        cout << "Mesh Name: " << instance->getMesh()->getMeshName() << "\n";
-        cout << "Mesh File: " << instance->getMesh()->getMeshFile() << "\n";
         meshInstances.push_back(instance);
 
     };

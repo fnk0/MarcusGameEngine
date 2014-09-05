@@ -11,10 +11,7 @@ MeshInstance::MeshInstance(void)
 {
     mesh = NULL;
     shaderProgram = NULL_HANDLE;
-
     diffuseColor = glm::vec4(1, 1, 1, 1);
-    T.scale = glm::vec3(1, 1, 1);
-    T.translation = glm::vec3(0, 0, 0);
 }
 
 //-------------------------------------------------------------------------//
@@ -31,9 +28,12 @@ void MeshInstance::draw(SceneCamera &camera)
     if (loc != -1) glUniform4fv(loc, 1, &diffuseColor[0]);
 
     loc = glGetUniformLocation(shaderProgram, "uDiffuseTex");
+    glBindTexture(GL_TEXTURE_2D, diffuseTexture.textureId);
     if (loc != -1) glBindSampler(loc, diffuseTexture.samplerId);
     else ERROR("Could not bind texture", false);
     //printVec(color);
+
+    //cout << "Scale: " << T.scale.x << " " << T.scale.y << " " << T.scale.z << "\n";
 
     T.refreshTransform();
     //printMat(transform);
@@ -44,7 +44,7 @@ void MeshInstance::draw(SceneCamera &camera)
 
     loc = glGetUniformLocation(shaderProgram, "uObjectWorldInverseM");
     if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.invTransform));
-    //else ERROR("Could not load uniform uObjectWorldInverseM", false);
+    //else ERROR("Could not load uniform mnesuObjectWorldInverseM", false);
 
     glm::mat4x4 objectWorldViewPerspect = camera.getWorldViewProject() * T.transform;
     loc = glGetUniformLocation(shaderProgram, "uObjectPerpsectM");

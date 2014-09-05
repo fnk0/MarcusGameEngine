@@ -1,0 +1,42 @@
+{
+    "worldSettings":
+    {
+        "windowTitle": "Marines Scene",
+        "width": 800,
+        "height": 600,
+        "spp": 4,
+        "backgroundColor": [0.4, 0.4, 0.4],
+        "backgroundMusic": "bell.wav"
+    },
+
+    "camera":
+    {
+        "name": "camera1",
+        "eye": [ 1, -6, 5],
+        "center": [ 0, 0, 0],
+        "vup": [ -2, 2, 3 ],
+        "fovy": 0.4,
+        "znear": 0.1,
+        "zfar": 1000
+    },
+
+    "meshes": [
+        {
+            "name": "marinesMesh",
+            "file": "marines.ply"
+        }
+    ],
+
+    "meshInstances": [
+        {
+            "name": "marinesMesh1",
+            "mesh": "marinesMesh",
+            "scale": [0.1, 0.1, 0.1],
+            "rotation": [0, 0, 0],
+            "translation": [0.5, 0.5, 0.5],
+            "vertexShader": "basicVertexShader.vs",
+            "fragmentShader": "phongShader.fs",
+            "diffuseTexture": "rock-texture.png"
+        }
+    ]
+}

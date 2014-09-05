@@ -2,8 +2,8 @@
     "worldSettings":
     {
         "windowTitle": "Test Scene",
-        "width": 400,
-        "height": 300,
+        "width": 1024,
+        "height": 768,
         "spp": 4,
         "backgroundColor": [0.8, 0.4, 0.8],
         "backgroundMusic": "bell.wav"
@@ -35,7 +35,9 @@
         {
             "name": "rockMesh1",
             "mesh": "rockMesh",
-            "scale": [0.5, 0.5, 0.5],
+            "scale": [0.1, 0.1, 0.1],
+            "rotation": [0.1, 0.3, 0.8],
+            "translation": [0.5, 0.5, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "phongShader.fs",
             "diffuseTexture": "rock-texture.png"
@@ -43,9 +45,11 @@
         {
             "name": "monkeyMesh1",
             "mesh": "monkeyMesh",
-            "scale": [0.5, 0.5, 0.5],
+            "scale": [0.4, 0.3, 0.1],
+            "rotation": [0.1, 0.2, 0.8],
+            "translation": [0.1, 0.4, 0.2],
             "vertexShader": "basicVertexShader.vs",
-            "fragmentShader": "textureShader.fs",
+            "fragmentShader": "diffuseTexture.fs",
             "diffuseTexture": "hex.png"
         }
     ]

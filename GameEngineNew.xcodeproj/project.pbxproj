@@ -40,6 +40,17 @@
 		2C3AA1AB19AD63FE002E40B2 /* GameEngineNew */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GameEngineNew; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3AA1B019AD63FE002E40B2 /* GameEngineNew.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = GameEngineNew.1; sourceTree = "<group>"; };
 		2C3AA1C219AD642A002E40B2 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		2C42FB3619BA0A34001938DA /* Aragorn.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Aragorn.ply; sourceTree = "<group>"; };
+		2C42FB3719BA1748001938DA /* indy.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = indy.ply; sourceTree = "<group>"; };
+		2C42FB3819BA17CA001938DA /* marines.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marines.ply; sourceTree = "<group>"; };
+		2C42FB3919BA17FC001938DA /* Marines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Marines.json; sourceTree = "<group>"; };
+		2C42FB3A19BA3431001938DA /* Gandalf.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gandalf.ply; sourceTree = "<group>"; };
+		2C553A8319B97A8400431C8C /* facek_lego_angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facek_lego_angry.png; sourceTree = "<group>"; };
+		2C553A8419B97A8400431C8C /* lokitexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lokitexture.png; sourceTree = "<group>"; };
+		2C553A8519B97A8400431C8C /* BrickRound0105_5_S_BUMP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickRound0105_5_S_BUMP.png; sourceTree = "<group>"; };
+		2C553A8619B97A8400431C8C /* BrickRound0105_5_SPEC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickRound0105_5_SPEC.png; sourceTree = "<group>"; };
+		2C553A8719B97A8400431C8C /* BrickRound0105_5_S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BrickRound0105_5_S.jpg; sourceTree = "<group>"; };
+		2C553A8819B97A8F00431C8C /* aerial_landscape.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aerial_landscape.ply; sourceTree = "<group>"; };
 		2C6DB50919AD68D100144047 /* diffuseTexture.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = diffuseTexture.fs; sourceTree = "<group>"; };
 		2C6DB50A19AD68D100144047 /* basicVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = basicVertexShader.vs; sourceTree = "<group>"; };
 		2C6DB50B19AD68D100144047 /* monkeyScene.scene */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = monkeyScene.scene; sourceTree = "<group>"; };
@@ -57,6 +68,7 @@
 		2C78F53719AF931900AC7D22 /* libglfw.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.0.dylib; path = ../../../../../../usr/local/lib/libglfw.3.0.dylib; sourceTree = "<group>"; };
 		2C78F53819AF931900AC7D22 /* libGLEW.1.10.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.10.0.dylib; path = ../../../../../../usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib; sourceTree = "<group>"; };
 		2C78F53919AF931900AC7D22 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = ../../../../../../usr/local/lib/libirrklang.dylib; sourceTree = "<group>"; };
+		2C8218A519B9811700E88ACD /* legoloki.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = legoloki.ply; sourceTree = "<group>"; };
 		2C86E94A19AFC9BC00876CDA /* phongShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phongShader.fs; sourceTree = "<group>"; };
 		2C86E94C19B0239100876CDA /* anotherVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = anotherVertexShader.vs; sourceTree = "<group>"; };
 		2C8EE6A319B056C9003E8BFB /* monkeyScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = monkeyScene.json; sourceTree = "<group>"; };
@@ -64,6 +76,7 @@
 		2CB85A2319B23DAD00CB19E4 /* rock1.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock1.ply; sourceTree = "<group>"; };
 		2CB85A2519B240F000CB19E4 /* rock-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock-texture.png"; sourceTree = "<group>"; };
 		BF8C70FC6F1EE0F31294E606 /* WorldSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldSettings.h; sourceTree = "<group>"; };
+		BF8C73950C72144A8EBFED17 /* SomeScene.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = SomeScene.json; sourceTree = "<group>"; };
 		BF8C768B6EA9DD0ACA350DD7 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
 		BF8C7739E6283636D31BB1AF /* MeshInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshInstance.h; sourceTree = "<group>"; };
 		BF8C78FD43511EBB151C4F06 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
@@ -180,6 +193,12 @@
 		2C80CD1F19B1C24900FBCF18 /* ply */ = {
 			isa = PBXGroup;
 			children = (
+				2C42FB3A19BA3431001938DA /* Gandalf.ply */,
+				2C42FB3819BA17CA001938DA /* marines.ply */,
+				2C42FB3719BA1748001938DA /* indy.ply */,
+				2C42FB3619BA0A34001938DA /* Aragorn.ply */,
+				2C8218A519B9811700E88ACD /* legoloki.ply */,
+				2C553A8819B97A8F00431C8C /* aerial_landscape.ply */,
 				2CB85A2219B23DAD00CB19E4 /* rock2.ply */,
 				2CB85A2319B23DAD00CB19E4 /* rock1.ply */,
 				2C6DB50F19AD68D100144047 /* monkeyTex.ply */,
@@ -198,6 +217,11 @@
 		2C80CD2119B1C25400FBCF18 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2C553A8319B97A8400431C8C /* facek_lego_angry.png */,
+				2C553A8419B97A8400431C8C /* lokitexture.png */,
+				2C553A8519B97A8400431C8C /* BrickRound0105_5_S_BUMP.png */,
+				2C553A8619B97A8400431C8C /* BrickRound0105_5_SPEC.png */,
+				2C553A8719B97A8400431C8C /* BrickRound0105_5_S.jpg */,
 				2CB85A2519B240F000CB19E4 /* rock-texture.png */,
 				2C6DB50E19AD68D100144047 /* hex.png */,
 			);
@@ -208,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				2C8EE6A319B056C9003E8BFB /* monkeyScene.json */,
+				BF8C73950C72144A8EBFED17 /* SomeScene.json */,
+				2C42FB3919BA17FC001938DA /* Marines.json */,
 			);
 			name = scenes;
 			sourceTree = "<group>";

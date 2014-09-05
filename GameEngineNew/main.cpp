@@ -37,22 +37,44 @@ int gHeight = 600; // window height
 int gSPP = 16; // samples per pixel
 glm::vec4 backgroundColor;
 
-//ISoundEngine* soundEngine = NULL;
-//ISound* music = NULL;
+ISoundEngine* soundEngine = NULL;
+ISound* music = NULL;
 
 TriMesh gMesh;
 TriMeshInstance gMeshInstance;
 Camera gCamera;
 RGBAImage textureImage;
 
-map<string, TriMesh*> meshes;
-vector<TriMeshInstance*> meshInstances;
-
 //-------------------------------------------------------------------------//
 // Parse Scene File
 //-------------------------------------------------------------------------//
 
 string ONE_TOKENS = "{}[]()<>+-*/,;";
+    
+void keyboardCameraController(Scene *scene) {
+
+    float t = 0.025f;
+    float r = 0.01f;
+
+    glm::vec3 strifeLeft(-t, 0, 0);
+    glm::vec3 strifeRight(t, 0, 0);
+    glm::vec3 strifeUp(0, t, 0);
+    glm::vec3 strifeDown(0, -t, 0);
+    glm::vec3 moveForward(0, 0, t);
+    glm::vec3 moveBack(0, 0, -t);
+    glm::vec3 rotate(0, 0, 1);
+
+    if(glfwGetKey(scene->gWindow, 'A')) scene->getCamera()->translateLocal(strifeLeft);
+    if(glfwGetKey(scene->gWindow, 'D')) scene->getCamera()->translateLocal(strifeRight);
+    if(glfwGetKey(scene->gWindow, 'W')) scene->getCamera()->translateLocal(strifeUp);
+    if(glfwGetKey(scene->gWindow, 'S')) scene->getCamera()->translateLocal(strifeDown);
+    if(glfwGetKey(scene->gWindow, 'Q')) scene->getCamera()->rotateGlobal(rotate, -r);
+    if(glfwGetKey(scene->gWindow, 'E')) scene->getCamera()->rotateGlobal(rotate, r);
+    if(glfwGetKey(scene->gWindow, GLFW_KEY_UP)) scene->getCamera()->translateLocal(moveForward);
+    if(glfwGetKey(scene->gWindow, GLFW_KEY_DOWN)) scene->getCamera()->translateLocal(moveBack);
+
+    scene->getCamera()->refreshTransform(scene->getWorldSettings()->getWidth(), scene->getWorldSettings()->getHeight());
+}
 
 void loadWorldSettings(FILE *F)
 {
@@ -190,9 +212,10 @@ void loadScene(const char *sceneFile)
 }
 
 void updateJson(Scene *scene) {
+    static float dScale = 0.0005f;
     for(int i = 0; i < scene->getMeshInstances().size(); i++) {
         // scale mesh instance
-        static float dScale = 0.0005f;
+
         float scale = scene->getMeshInstances()[i]->T.scale[0];
         scale += dScale;
         if (scale > 1.25f) dScale = -0.0005f;
@@ -281,10 +304,10 @@ int main(int numArgs, char **args)
 	}
 
 	// Start sound engine
-	//soundEngine = createIrrKlangDevice();
-	//if (!soundEngine) return 0;
-	//soundEngine->setListenerPosition(vec3df(0, 0, 0), vec3df(0, 0, 1));
-	//soundEngine->setSoundVolume(0.25f); // master volume control
+	soundEngine = createIrrKlangDevice();
+	if (!soundEngine) return 0;
+	soundEngine->setListenerPosition(vec3df(0, 0, 0), vec3df(0, 0, 1));
+	soundEngine->setSoundVolume(0.25f); // master volume control
 
 	// Play 3D sound
 	//string soundFileName;
@@ -294,8 +317,10 @@ int main(int numArgs, char **args)
     //loadScene(args[1]);
     
     Scene* scene = new Scene();
-    string fileName = "monkeyScene.json";
+    string fileName = args[1];
     scene->loadScene(fileName);
+
+    soundEngine->play2D(scene->getWorldSettings()->getBackgroundMusic().c_str(), true);
 
 	// start time (used to time framerate)
 	double startTime = TIME();
@@ -308,6 +333,7 @@ int main(int numArgs, char **args)
 
         updateJson(scene);
         renderJson(scene);
+        keyboardCameraController(scene);
         
 		// handle input
 		glfwPollEvents();
