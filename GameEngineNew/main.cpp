@@ -1,4 +1,3 @@
-
 //-------------------------------------------------------------------------//
 // Transforms - Tests using transforms for objects
 // David Cline
@@ -17,7 +16,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
-
+    
 	if (action == GLFW_PRESS &&
 		((key >= 'A' && key <= 'Z') || (key >= '0' && key <= '9'))) {
 		printf("\n%c\n", (char)key);
@@ -25,8 +24,8 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 }
 
 //-------------------------------------------------------------------------//
-// Global State.  Eventually, this should include the global 
-// state of the system, including multiple scenes, objects, shaders, 
+// Global State.  Eventually, this should include the global
+// state of the system, including multiple scenes, objects, shaders,
 // cameras, and all other resources needed by the system.
 //-------------------------------------------------------------------------//
 
@@ -52,26 +51,27 @@ RGBAImage textureImage;
 string ONE_TOKENS = "{}[]()<>+-*/,;";
 
 void keyboardCameraController(Scene *scene) {
-
+    
     float t = 0.025f;
     float r = 0.01f;
-
-    glm::vec3 strifeLeft(t, 0, 0);
-    glm::vec3 strifeRight(-t, 0, 0);
-    glm::vec3 moveForward(0, -t, 0);
-    glm::vec3 moveBack(0, t, 0);
-    glm::vec3 strifeUp(0, 0, t);
-    glm::vec3 strifeDown(0, 0, -t);
-    glm::vec3 rotate(1, 0,0);
-
+    
+    glm::vec3 strifeLeft(-t, 0, 0);
+    glm::vec3 strifeRight(t, 0, 0);
+    glm::vec3 strifeUp(0, t, 0);
+    glm::vec3 strifeDown(0, -t, 0);
+    glm::vec3 moveForward(0, 0, t);
+    glm::vec3 moveBack(0, 0, -t);
+    glm::vec3 rotate(0, 0, 1);
+    
     if(glfwGetKey(scene->gWindow, 'A')) scene->getCamera()->translateLocal(strifeLeft);
     if(glfwGetKey(scene->gWindow, 'D')) scene->getCamera()->translateLocal(strifeRight);
     if(glfwGetKey(scene->gWindow, 'W')) scene->getCamera()->translateLocal(strifeUp);
     if(glfwGetKey(scene->gWindow, 'S')) scene->getCamera()->translateLocal(strifeDown);
-    if(glfwGetKey(scene->gWindow, 'Q')) scene->getCamera()->rotateLocal(rotate, -r);
-    if(glfwGetKey(scene->gWindow, 'E')) scene->getCamera()->rotateLocal(rotate, r);
-    if(glfwgetKey(Scene->gWindow, GLFW_KEY_UP)) scene->getCamera()->translateLocal(strifeDown);
-
+    if(glfwGetKey(scene->gWindow, 'Q')) scene->getCamera()->rotateGlobal(rotate, -r);
+    if(glfwGetKey(scene->gWindow, 'E')) scene->getCamera()->rotateGlobal(rotate, r);
+    if(glfwGetKey(scene->gWindow, GLFW_KEY_UP)) scene->getCamera()->translateLocal(moveForward);
+    if(glfwGetKey(scene->gWindow, GLFW_KEY_DOWN)) scene->getCamera()->translateLocal(moveBack);
+    
     scene->getCamera()->refreshTransform(scene->getWorldSettings()->getWidth(), scene->getWorldSettings()->getHeight());
 }
 
@@ -93,7 +93,7 @@ void loadWorldSettings(FILE *F)
 			//ISound* music = soundEngine->play2D(fullFileName.c_str(), true);
 		}
 	}
-
+    
 	// Initialize the window with OpenGL context
 	gWindow = createOpenGLWindow(gWidth, gHeight, gWindowTitle.c_str(), gSPP);
 	glfwSetKeyCallback(gWindow, keyCallback);
@@ -121,7 +121,7 @@ void loadMeshInstance(FILE *F)
 	GLuint vertexShader = NULL_HANDLE;
 	GLuint fragmentShader = NULL_HANDLE;
 	GLuint shaderProgram = NULL_HANDLE;
-
+    
 	while (getToken(F, token, ONE_TOKENS)) {
 		if (token == "}") {
 			break;
@@ -150,7 +150,7 @@ void loadMeshInstance(FILE *F)
 			gMeshInstance.setMesh(&gMesh);
 		}
 	}
-
+    
 	shaderProgram = createShaderProgram(vertexShader, fragmentShader);
 	gMeshInstance.setShader(shaderProgram);
 }
@@ -158,8 +158,9 @@ void loadMeshInstance(FILE *F)
 void loadCamera(FILE *F)
 {
 	string token;
-
+    
 	while (getToken(F, token, ONE_TOKENS)) {
+        cout << "Hello world from inside load camera!" << "\n";
 		if (token == "}") break;
 		else if (token == "eye") getFloats(F, &(gCamera.eye[0]), 3);
 		else if (token == "center") getFloats(F, &(gCamera.center[0]), 3);
@@ -168,13 +169,10 @@ void loadCamera(FILE *F)
 		else if (token == "zfar") getFloats(F, &(gCamera.zfar), 1);
 		else if (token == "fovy") getFloats(F, &(gCamera.fovy), 1);
 	}
-
+    cout << "Hello world from inside load camera!" << "\n";
 	gCamera.refreshTransform((float)gWidth, (float)gHeight);
 }
 
-void getFloatsFromJsonArray(json11::Json::array obj_array, float* dest) {
-    
-}
 
 void loadJsonScene(string *jsonString) {
     
@@ -188,43 +186,21 @@ void loadJsonScene(string *jsonString) {
     
 }
 
-void loadScene(const char *sceneFile)
-{
-	FILE *F = openFileForReading(sceneFile);
-	string token;
-
-	while (getToken(F, token, ONE_TOKENS)) {
-		//cout << token << endl;
-		if (token == "worldSettings") {
-			loadWorldSettings(F);
-		}
-		else if (token == "mesh") {
-			loadMesh(F);
-		}
-		else if (token == "meshInstance") {
-			loadMeshInstance(F);
-		}
-		else if (token == "camera") {
-			loadCamera(F);
-		}
-	}
-}
-
 void updateJson(Scene *scene) {
     static float dScale = 0.0005f;
     for(int i = 0; i < scene->getMeshInstances().size(); i++) {
         // scale mesh instance
-
+        
         float scale = scene->getMeshInstances()[i]->T.scale[0];
         scale += dScale;
         if (scale > 1.25f) dScale = -0.0005f;
         if (scale < 0.25f) dScale = 0.0005f;
         scene->getMeshInstances()[i]->setScale(glm::vec3(scale));
-
+        
         // rotate mesh
         glm::quat r = glm::quat(glm::vec3(0.0f, 0.0051f, 0.00f));
         scene->getMeshInstances()[i]->T.rotation *= r;
-
+        
         scene->getMeshInstances()[i]->diffuseColor += glm::vec4(0.0013f, 0.000921f, 0.00119f, 0.0f);
         if (scene->getMeshInstances()[i]->diffuseColor[0] > 1.0f) scene->getMeshInstances()[i]->diffuseColor[0] = 0.25f;
         if (scene->getMeshInstances()[i]->diffuseColor[1] > 1.0f) scene->getMeshInstances()[i]->diffuseColor[1] = 0.25f;
@@ -237,57 +213,12 @@ void renderJson(Scene *scene) {
     glClearColor(scene->getWorldSettings()->getBackgroundColors().r, scene->getWorldSettings()->getBackgroundColors().g, scene->getWorldSettings()->getBackgroundColors().b, 1.0f);
     //glClearColor(0.5, 0.2, 0.6, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+    
     // draw scene
     //cout << "Number of instances: " << scene->meshInstances.size() << "\n";
     for(int i = 0; i < scene->getMeshInstances().size(); i++) {
         scene->getMeshInstances()[i]->draw(*scene->getCamera());
     }
-}
-
-//-------------------------------------------------------------------------//
-// Update
-//-------------------------------------------------------------------------//
-
-void update(void)
-{	
-	/*
-	// move mesh instance
-	gMeshInstance.translation[0] += 0.003f;
-	if (gMeshInstance.translation[0] >= 1.0f) gMeshInstance.translation[0] = -1.0f;
-    */
-	
-	// scale mesh instance
-	static float dScale = 0.0005f;
-	float scale = gMeshInstance.T.scale[0];
-	scale += dScale;
-	if (scale > 1.25f) dScale = -0.0005f;
-	if (scale < 0.25f) dScale = 0.0005f;
-	gMeshInstance.setScale(glm::vec3(scale));
-
-	// rotate mesh
-	glm::quat r = glm::quat(glm::vec3(0.0f, 0.0051f, 0.00f));
-	gMeshInstance.T.rotation *= r;
-	
-	gMeshInstance.diffuseColor += glm::vec4(0.0013f, 0.000921f, 0.00119f, 0.0f);
-	if (gMeshInstance.diffuseColor[0] > 1.0f) gMeshInstance.diffuseColor[0] = 0.25f;
-	if (gMeshInstance.diffuseColor[1] > 1.0f) gMeshInstance.diffuseColor[1] = 0.25f;
-	if (gMeshInstance.diffuseColor[2] > 1.0f) gMeshInstance.diffuseColor[2] = 0.25f;
-}
-
-//-------------------------------------------------------------------------//
-// Draw a frame
-//-------------------------------------------------------------------------//
-
-void render(void)
-{
-	// clear color and depth buffer
-	glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-	// draw scene
-	
-	gMeshInstance.draw(gCamera);
 }
 
 //-------------------------------------------------------------------------//
@@ -301,26 +232,26 @@ int main(int numArgs, char **args)
 		cout << "Usage: Transforms sceneFile.scene" << endl;
 		exit(0);
 	}
-
+    
 	// Start sound engine
 	soundEngine = createIrrKlangDevice();
 	if (!soundEngine) return 0;
 	soundEngine->setListenerPosition(vec3df(0, 0, 0), vec3df(0, 0, 1));
 	soundEngine->setSoundVolume(0.25f); // master volume control
-
+    
 	// Play 3D sound
 	//string soundFileName;
 	//ISound* music = soundEngine->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
 	//if (music) music->setMinDistance(5.0f); // distance of full volume
-
+    
     //loadScene(args[1]);
     
     Scene* scene = new Scene();
     string fileName = args[1];
     scene->loadScene(fileName);
-
+    
     soundEngine->play2D(scene->getWorldSettings()->getBackgroundMusic().c_str(), true);
-
+    
 	// start time (used to time framerate)
 	double startTime = TIME();
     
@@ -329,7 +260,7 @@ int main(int numArgs, char **args)
 		// update and render
 		//update();
 		//render();
-
+        
         //updateJson(scene);
         renderJson(scene);
         keyboardCameraController(scene);
@@ -338,24 +269,24 @@ int main(int numArgs, char **args)
 		glfwPollEvents();
 		if (glfwGetKey(scene->gWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) break;
 		if (glfwWindowShouldClose(scene->gWindow) != 0) break;
-
+        
 		double xx, yy;
 		glfwGetCursorPos(scene->gWindow, &xx, &yy);
-		printf("%1.3f %1.3f ", xx, yy);
+		//printf("%1.3f %1.3f ", xx, yy);
         
 		// print framerate
 		double endTime = TIME();
-		printf("\rFPS: %1.0f  ", 1.0/(endTime-startTime));
+		//printf("\rFPS: %1.0f  ", 1.0/(endTime-startTime));
 		startTime = endTime;
         
 		// swap buffers
 		//SLEEP(1); // sleep 1 millisecond to avoid busy waiting
 		glfwSwapBuffers(scene->gWindow);
 	}
-
+    
 	// Shut down sound engine
-	//if (music) music->drop(); // release music stream.
-	//soundEngine->drop(); // delete engine
+	if (music) music->drop(); // release music stream.
+	soundEngine->drop(); // delete engine
     
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
@@ -363,5 +294,3 @@ int main(int numArgs, char **args)
 }
 
 //-------------------------------------------------------------------------//
-
-

@@ -1,4 +1,3 @@
-
 //-------------------------------------------------------------------------//
 // EngineUtil.h
 // Some utility stuff - file reading and such
@@ -90,8 +89,8 @@ int getInts(FILE *f, int *a, int num);
 
 bool loadFileAsString(const string &fileName, string &buffer);
 
-void replaceIncludes(string &src, string &dest, const string &directive, 
-	string &alreadyIncluded, bool onlyOnce);
+void replaceIncludes(string &src, string &dest, const string &directive,
+                     string &alreadyIncluded, bool onlyOnce);
 
 //-------------------------------------------------------------------------//
 // SOUND
@@ -112,14 +111,14 @@ public:
 	unsigned int width, height;
 	GLuint textureId;
 	GLuint samplerId;
-
+    
 	RGBAImage(void) { width = 0; height = 0; textureId = NULL_HANDLE; samplerId = NULL_HANDLE; }
 	~RGBAImage();
 	bool loadPNG(const string &fileName, bool doFlipY = true);
 	bool writeToPNG(const string &fileName);
 	void flipY(void);
 	void sendToOpenGL(GLuint magFilter, GLuint minFilter, bool createMipMap);
-
+    
 	unsigned int &operator()(int x, int y) {
 		return pixel(x, y);
 	}
@@ -143,10 +142,10 @@ public:
 	glm::vec3 scale;
 	glm::quat rotation;
 	glm::vec3 translation;
-
+    
 	glm::mat4x4 transform;
 	glm::mat4x4 invTransform;
-
+    
 	void refreshTransform(void)
 	{
 		glm::mat4x4 Mtrans = glm::translate(translation);
@@ -156,4 +155,81 @@ public:
 		invTransform = glm::inverse(transform);
 	}
 };
+
+//-------------------------------------------------------------------------//
+// Camera
+//-------------------------------------------------------------------------//
+
+class Camera
+{
+public:
+	// look from, look at, view up
+	glm::vec3 eye, center, vup;
+    
+	float fovy; // vertical field of view
+	float znear, zfar; // near and far clip planes
+    
+	glm::mat4x4 worldViewProject;
+    
+	void refreshTransform(float screenWidth, float screenHeight)
+	{
+		glm::mat4x4 worldView = glm::lookAt(eye, center, vup);
+		glm::mat4x4 project = glm::perspective((float)fovy,
+                                               (float)(screenWidth / screenHeight), (float)znear, (float)zfar);
+		worldViewProject = project * worldView;
+	}
+};
+
+//-------------------------------------------------------------------------//
+// TRIANGLE MESH
+//-------------------------------------------------------------------------//
+
+class TriMesh
+{
+public:
+	vector<string> attributes;
+	vector<float> vertexData;
+	vector<int> indices;
+	int numIndices;
+    
+	GLuint vao; // vertex array handle
+	GLuint ibo; // index buffer handle
+	
+	bool readFromPly(const string &fileName, bool flipZ = false);
+	bool sendToOpenGL(void);
+	void draw(void);
+};
+
+// should extend EngineObject
+class TriMeshInstance
+{
+public:
+	TriMesh *triMesh;
+	GLuint shaderProgram;
+    
+	// replace with material
+	glm::vec4 diffuseColor;
+	RGBAImage diffuseTexture;
+    
+    
+	Transform T;
+	
+public:
+	TriMeshInstance(void);
+    
+	void setMesh(TriMesh *mesh) { triMesh = mesh; }
+	void setShader(GLuint shader) { shaderProgram = shader; }
+	void setDiffuseColor(const glm::vec4 &c) { diffuseColor = c; }
+	void setScale(const glm::vec3 &s) { T.scale = s; }
+	void setRotation(const glm::quat &r) { T.rotation = r; }
+	void setTranslation(const glm::vec3 &t) { T.translation = t; }
+    
+	void refreshTransform(void);
+    
+	void draw(Camera &camera);
+};
+
+//-------------------------------------------------------------------------//
+
+
 #endif //__EngineUtil_H_

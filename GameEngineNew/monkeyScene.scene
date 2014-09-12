@@ -25,6 +25,12 @@ mesh
 	file "rock1.ply"
 }
 
+textures {
+
+    file "hex.png"
+
+}
+
 meshInstance
 {
 	name "rockMesh0"

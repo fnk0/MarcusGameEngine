@@ -43,7 +43,17 @@
             "file": "Gandalf.ply"
         }
     ],
-
+    
+    "lights" [
+              "name": "light1",
+              "type": "point",
+              "uLightDirection": [1, 1, 1, 0],
+              "uLightColor": [ 1, 1, 1, 0],
+              "uAmbientLight": [1, 1, 1, 1],
+              "
+              
+        
+    ],
     "meshInstances": [
         {
             "name": "rockMesh1",
@@ -93,7 +103,16 @@
             "translation": [2, 0.2, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "phongShader.fs",
-            "diffuseTexture": "hex.png"
+            "diffuseTexturesLocation": [ "uDiffuseTex", "uSpecularTexture"],
+            "diffuseTextures": ["texture1"]
+                      
+        }
+    ],
+    "textures": [
+        {
+            "name": "texture1",
+            "file": "hex.png"
         }
     ]
+    
 }

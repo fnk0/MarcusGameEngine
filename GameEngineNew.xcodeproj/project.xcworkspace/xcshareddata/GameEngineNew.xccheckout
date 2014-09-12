@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5049D7B2-082A-43A6-9983-B168F4FA9373</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GameEngineNew</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7ACCAAC6-B6F4-4407-BD3C-53A804D3854B</key>
+		<string>https://github.com/fnk0/MarcusGameEngine.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GameEngineNew.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7ACCAAC6-B6F4-4407-BD3C-53A804D3854B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/fnk0/MarcusGameEngine.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7ACCAAC6-B6F4-4407-BD3C-53A804D3854B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7ACCAAC6-B6F4-4407-BD3C-53A804D3854B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MarcusGameEngine</string>
+		</dict>
+	</array>
+</dict>
+</plist>

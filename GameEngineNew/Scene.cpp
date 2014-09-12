@@ -139,6 +139,7 @@ void Scene::loadScene(std::string &fileName) {
         vertexShader = loadShader(meshInstancesJson[i][VERTEX_SHADER].string_value(), GL_VERTEX_SHADER);
         fragmentShader = loadShader(meshInstancesJson[i][FRAGMENT_SHADER].string_value(), GL_FRAGMENT_SHADER);
         instance->diffuseTexture.loadPNG(meshInstancesJson[i][DIFFUSE_TEXTURE].string_value());
+        //instance->setDiffuseTexture(myMap["texture"])
         instance->setScale(scale);
         instance->setTranslation(translation);
         instance->setRotation(rotation);
