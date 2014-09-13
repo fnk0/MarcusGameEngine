@@ -22,6 +22,7 @@ private:
     WorldSettings* worldSettings;
     SceneCamera* camera;
     map<std::string, Mesh*> meshes;
+    map<std::string, RGBAImage*> textures;
     vector<MeshInstance*> meshInstances;
 
 public:
@@ -60,6 +61,24 @@ public:
 
     void setMeshInstances(vector<MeshInstance *> const &meshInstances) {
         Scene::meshInstances = meshInstances;
+    }
+
+
+    map<string, RGBAImage *> const &getTextures() const {
+        return textures;
+    }
+
+    void setTextures(map<string, RGBAImage *> const &textures) {
+        Scene::textures = textures;
+    }
+
+
+    GLFWwindow *getGWindow() const {
+        return gWindow;
+    }
+
+    void setGWindow(GLFWwindow *gWindow) {
+        Scene::gWindow = gWindow;
     }
 };
 

@@ -17,11 +17,13 @@ public:
 
     // Replace with material
     glm::vec4 diffuseColor;
-    RGBAImage diffuseTexture;
+    RGBAImage *diffuseTexture;
 
     glm::vec3 rotation, translation, scale;
 
     Transform T;
+
+    vector<std::string> uniforms;
 
 public:
     MeshInstance(void);
@@ -36,7 +38,6 @@ public:
     void refreshTransform(void);
 
     void draw(SceneCamera &camera);
-
 
     Mesh *getMesh() const {
         return mesh;
@@ -54,11 +55,12 @@ public:
         return diffuseColor;
     }
 
-    RGBAImage const &getDiffuseTexture() const {
+
+    RGBAImage *getDiffuseTexture() const {
         return diffuseTexture;
     }
 
-    void setDiffuseTexture(RGBAImage const &diffuseTexture) {
+    void setDiffuseTexture(RGBAImage *diffuseTexture) {
         MeshInstance::diffuseTexture = diffuseTexture;
     }
 
@@ -68,6 +70,15 @@ public:
 
     void setT(Transform const &T) {
         MeshInstance::T = T;
+    }
+
+
+    vector<string> const &getUniforms() const {
+        return uniforms;
+    }
+
+    void setUniforms(vector<string> const &uniforms) {
+        MeshInstance::uniforms = uniforms;
     }
 };
 

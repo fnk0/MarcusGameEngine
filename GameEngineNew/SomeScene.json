@@ -43,16 +43,28 @@
             "file": "Gandalf.ply"
         }
     ],
-    
-    "lights" [
-              "name": "light1",
-              "type": "point",
-              "uLightDirection": [1, 1, 1, 0],
-              "uLightColor": [ 1, 1, 1, 0],
-              "uAmbientLight": [1, 1, 1, 1],
-              "
-              
-        
+    "textures": [
+        {
+            "name": "texture1",
+            "file": "hex.png"
+        },
+        {
+            "name": "rockTexture",
+            "file": "rock-texture.png"
+        },
+        {
+            "name": "lokiTexture",
+            "file": "lokitexture.png"
+        }
+    ],
+    "lights": [
+        {
+            "name": "light1",
+            "type": "point",
+            "uLightDirection": [1, 1, 1, 0],
+            "uLightColor": [ 1, 1, 1, 0],
+            "uAmbientLight": [1, 1, 1, 1]
+        }
     ],
     "meshInstances": [
         {
@@ -63,7 +75,8 @@
             "translation": [0.5, 0.5, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "phongShader.fs",
-            "diffuseTexture": "rock-texture.png"
+            "uniformsLocation": [ "uDiffuseTex", "uSpecularTexture"],
+            "diffuseTexture": "rockTexture"
         },
         {
             "name": "lokiMesh1",
@@ -73,7 +86,8 @@
             "translation": [0.5, 0.5, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "diffuseTexture.fs",
-            "diffuseTexture": "lokitexture.png"
+            "uniformsLocation": [ "uDiffuseTex", "uSpecularTexture"],
+            "diffuseTexture": "lokiTexture"
         },
         {
             "name": "aragornMesh1",
@@ -83,7 +97,8 @@
             "translation": [0.1, 0.5, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "phongShader.fs",
-            "diffuseTexture": "lokitexture.png"
+            "uniformsLocation": [ "uDiffuseTex", "uSpecularTexture"],
+            "diffuseTexture": "rockTexture"
         },
         {
             "name": "indyMesh",
@@ -93,7 +108,8 @@
             "translation": [1, 0.5, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "phongShader.fs",
-            "diffuseTexture": "hex.png"
+            "uniformsLocation": [ "uDiffuseTex", "uSpecularTexture"],
+            "diffuseTexture": "texture1"
         },
         {
             "name": "gandalfMesh1",
@@ -103,16 +119,9 @@
             "translation": [2, 0.2, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "phongShader.fs",
-            "diffuseTexturesLocation": [ "uDiffuseTex", "uSpecularTexture"],
-            "diffuseTextures": ["texture1"]
+            "uniformsLocation": [ "uDiffuseTex", "uSpecularTexture"],
+            "diffuseTexture": "texture1"
                       
         }
-    ],
-    "textures": [
-        {
-            "name": "texture1",
-            "file": "hex.png"
-        }
     ]
-    
 }

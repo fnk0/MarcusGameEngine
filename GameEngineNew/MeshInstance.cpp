@@ -28,14 +28,15 @@ void MeshInstance::draw(SceneCamera &camera)
     if (loc != -1) glUniform4fv(loc, 1, &diffuseColor[0]);
 
     loc = glGetUniformLocation(shaderProgram, "uDiffuseTex"); // Change this to constant
-    glBindTexture(GL_TEXTURE_2D, diffuseTexture.textureId);
-    if (loc != -1) glBindSampler(loc, diffuseTexture.samplerId);
+    glBindTexture(GL_TEXTURE_2D, getDiffuseTexture()->textureId);
+    if (loc != -1) glBindSampler(loc, getDiffuseTexture()->samplerId);
     else ERROR("Could not bind texture", false);
     //printVec(color);
-    
+
+    /*
     loc = glGetUniformLocation(shaderProgram, "uSpecularTexture");
     if(loc != -1) 
-    
+    */
     //cout << "Scale: " << T.scale.x << " " << T.scale.y << " " << T.scale.z << "\n";
 
     T.refreshTransform();

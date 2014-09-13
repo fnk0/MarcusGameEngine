@@ -5,6 +5,11 @@
 
 #include "Scene.h"
 
+// COMMONS
+#define IN_FILE "file"
+#define NAME "name"
+
+
 // WORLD SETTINGS CONSTANTS
 #define WORLD_SETTINGS "worldSettings"
 #define WINDOW_TITLE "windowTitle"
@@ -25,8 +30,6 @@
 
 // Mesh Constants
 #define MESHES "meshes"
-#define NAME "name"
-#define MESH_FILE "file"
 
 // MeshInstance constants
 #define MESH_INSTANCES "meshInstances"
@@ -37,6 +40,12 @@
 #define VERTEX_SHADER "vertexShader"
 #define FRAGMENT_SHADER "fragmentShader"
 #define DIFFUSE_TEXTURE "diffuseTexture"
+#define UNIFORM_LOCATIONS "uniformsLocation"
+
+// Texture Constants
+#define TEXTURES "textures"
+
+
 
 void Scene::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -65,6 +74,7 @@ void Scene::loadScene(std::string &fileName) {
     Json::object cameraJson = json[CAMERA].object_items();
     Json::array meshesJson = json[MESHES].array_items();
     Json::array meshInstancesJson = json[MESH_INSTANCES].array_items();
+    Json::array texturesJson = json[TEXTURES].array_items();
 
     worldSettings->setWindowTitle(worldSettingsJson[WINDOW_TITLE].string_value());
     worldSettings->setWidth(worldSettingsJson[WIDTH].int_value());
@@ -104,7 +114,7 @@ void Scene::loadScene(std::string &fileName) {
     for(int i = 0; i < meshesJson.size(); i++) {
         Mesh* mesh = new Mesh();
         mesh->setMeshName(meshesJson[i][NAME].string_value());
-        mesh->setMeshFile(meshesJson[i][MESH_FILE].string_value());
+        mesh->setMeshFile(meshesJson[i][IN_FILE].string_value());
 
         mesh->readFromPly(mesh->getMeshFile(), false);
         mesh->sendToOpenGL();
@@ -115,6 +125,15 @@ void Scene::loadScene(std::string &fileName) {
         meshes.insert(make_pair(mesh->getMeshName(), mesh));
     }
 
+    for(int i = 0; i < texturesJson.size(); i++) {
+        RGBAImage* texture = new RGBAImage();
+        cout << "Texture Name: " << texturesJson[i][NAME].string_value() << "\n";
+        cout << "Texture File: " << texturesJson[i][IN_FILE].string_value() << "\n";
+        texture->loadPNG(texturesJson[i][IN_FILE].string_value());
+        texture->sendToOpenGL();
+        textures.insert(make_pair(texturesJson[i][NAME].string_value(), texture));
+    }
+
     GLuint vertexShader = NULL_HANDLE;
     GLuint fragmentShader = NULL_HANDLE;
     GLuint shaderProgram = NULL_HANDLE;
@@ -123,6 +142,14 @@ void Scene::loadScene(std::string &fileName) {
 
     for(int i = 0; i < meshInstancesJson.size(); i++) {
         MeshInstance *instance = new MeshInstance();
+
+        Json::array uniforms = meshInstancesJson[i][UNIFORM_LOCATIONS].array_items();
+
+        vector<std::string> uniformVector;
+
+        for(int i = 0; i < uniforms.size(); i++) {
+            uniformVector.push_back(uniforms[i].string_value());
+        }
 
         glm::vec3 scale;
         loadFloatsArray(&scale[0], meshInstancesJson[i][SCALE].array_items());
@@ -135,15 +162,13 @@ void Scene::loadScene(std::string &fileName) {
         
         glm::quat rotation(rotationVector);
 
+        instance->setDiffuseTexture(textures[meshInstancesJson[i][DIFFUSE_TEXTURE].string_value()]);
         instance->setMesh(meshes[meshInstancesJson[i][MESH].string_value()]);
         vertexShader = loadShader(meshInstancesJson[i][VERTEX_SHADER].string_value(), GL_VERTEX_SHADER);
         fragmentShader = loadShader(meshInstancesJson[i][FRAGMENT_SHADER].string_value(), GL_FRAGMENT_SHADER);
-        instance->diffuseTexture.loadPNG(meshInstancesJson[i][DIFFUSE_TEXTURE].string_value());
-        //instance->setDiffuseTexture(myMap["texture"])
         instance->setScale(scale);
         instance->setTranslation(translation);
         instance->setRotation(rotation);
-        instance->diffuseTexture.sendToOpenGL();
         shaderProgram = createShaderProgram(vertexShader, fragmentShader);
         instance->setShader(shaderProgram);
 
