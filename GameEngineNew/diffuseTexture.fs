@@ -29,7 +29,7 @@ uniform vec4 uLightDirection = normalize(vec4(1.0, 1.0, 1.0, 0.0));
 uniform vec4 uLightColor = vec4(1.5, 1.5, 1.5, 1.0);
 uniform vec4 uAmbientLight = vec4(0.2, 0.2, 0.2, 1.0); // Intensity!
 
-// A point light sourcr will need a color, direction and position
+// A point light source will need a color, direction and position
 // 3 or 4 vec4
 // Directional light is infinite far away and shines with the uLight color intensity
 // Point color says that there;s a light with a certain position in space with a certain intensity

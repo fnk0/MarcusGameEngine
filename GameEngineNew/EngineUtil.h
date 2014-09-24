@@ -109,6 +109,7 @@ public:
 	string name;
 	vector<unsigned char> pixels;
 	unsigned int width, height;
+    GLint id;
 	GLuint textureId;
 	GLuint samplerId;
     

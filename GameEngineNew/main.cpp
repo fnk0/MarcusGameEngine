@@ -249,7 +249,7 @@ int main(int numArgs, char **args)
     Scene* scene = new Scene();
     string fileName = args[1];
     scene->loadScene(fileName);
-    
+
     soundEngine->play2D(scene->getWorldSettings()->getBackgroundMusic().c_str(), true);
     
 	// start time (used to time framerate)
