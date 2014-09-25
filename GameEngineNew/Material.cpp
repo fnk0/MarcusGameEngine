@@ -16,7 +16,7 @@
 
 void Material::loadUniforms() {
 
-    if(diffuseColor == NULL) diffuseColor = glm::vec4(1, 1, 1, 1);
+    //if(diffuseColor == NULL) diffuseColor = glm::vec4(1, 1, 1, 1);
 
     GLint loc = -1;
     for(int i = 0; i < uniforms.size(); i++) {
@@ -35,7 +35,6 @@ void Material::loadUniforms() {
 }
 
 void Material::loadTextures() {
-    if(diffuseColor == NULL) diffuseColor = glm::vec4(1, 1, 1, 1);
 
     GLint loc = -1;
 

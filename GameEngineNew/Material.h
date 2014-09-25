@@ -14,8 +14,74 @@
 #include "iostream"
 #include "EngineUtil.h"
 
-class Material {
 
+class NameIdColor {
+
+private:
+    std::string name;
+    GLint  id;
+    glm::vec4 color;
+
+public:
+    std::basic_string<char, std::char_traits<char>, std::allocator<char>> const &getName() const {
+        return name;
+    }
+
+    void setName(std::basic_string<char, std::char_traits<char>, std::allocator<char>> const &name) {
+        NameIdColor::name = name;
+    }
+
+    GLuint getId() const {
+        return id;
+    }
+
+    void setId(GLuint id) {
+        NameIdColor::id = id;
+    }
+
+    glm::vec4 const &getColor() const {
+        return color;
+    }
+
+    void setColor(glm::vec4 const &color) {
+        NameIdColor::color = color;
+    }
+};
+
+class NameIdTexture {
+
+private:
+    std::string name;
+    GLint id;
+    RGBAImage* texture;
+
+public:
+    basic_string<char, char_traits<char>, allocator<char>> const &getName() const {
+        return name;
+    }
+
+    void setName(basic_string<char, char_traits<char>, allocator<char>> const &name) {
+        NameIdTexture::name = name;
+    }
+
+    GLint getId() const {
+        return id;
+    }
+
+    void setId(GLint id) {
+        NameIdTexture::id = id;
+    }
+
+    RGBAImage *getTexture() const {
+        return texture;
+    }
+
+    void setTexture(RGBAImage *texture) {
+        NameIdTexture::texture = texture;
+    }
+};
+
+class Material {
 
 private:
     std::vector<std::string> uniforms;
@@ -33,14 +99,6 @@ public:
 
     void setName(basic_string<char, char_traits<char>, allocator<char>> const &name) {
         Material::name = name;
-    }
-
-    vector<NameIdColor> const &getColors() const {
-        return colors;
-    }
-
-    void setColors(vector<NameIdColor> const &colors) {
-        Material::colors = colors;
     }
 
     vector<RGBAImage *> const &getTextures() const {
@@ -80,38 +138,7 @@ public:
     void loadTextures();
 };
 
-class NameIdColor {
 
-private:
-    std::string name;
-    GLuint  id;
-    glm::vec4 color;
-
-public:
-    std::basic_string<char, std::char_traits<char>, std::allocator<char>> const &getName() const {
-        return name;
-    }
-
-    void setName(std::basic_string<char, std::char_traits<char>, std::allocator<char>> const &name) {
-        NameIdColor::name = name;
-    }
-
-    GLuint getId() const {
-        return id;
-    }
-
-    void setId(GLuint id) {
-        NameIdColor::id = id;
-    }
-
-    glm::vec4 const &getColor() const {
-        return color;
-    }
-
-    void setColor(glm::vec4 const &color) {
-        NameIdColor::color = color;
-    }
-};
 
 // THIS CODE SHOULD GO SOMEWHERE TO ALLOW MULTIPLE TEXTURES
 /*
