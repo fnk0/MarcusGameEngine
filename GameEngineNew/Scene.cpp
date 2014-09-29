@@ -5,47 +5,6 @@
 
 #include "Scene.h"
 
-// COMMONS
-#define IN_FILE "file"
-#define NAME "name"
-
-
-// WORLD SETTINGS CONSTANTS
-#define WORLD_SETTINGS "worldSettings"
-#define WINDOW_TITLE "windowTitle"
-#define WIDTH "width"
-#define HEIGHT "height"
-#define SPP "spp"
-#define BACKGROUND_COLOR "backgroundColor"
-#define BACKGROUND_MUSIC "backgroundMusic"
-
-// Camera constants
-#define CAMERA "camera"
-#define EYE "eye"
-#define CENTER "center"
-#define VUP "vup"
-#define FOVY "fovy"
-#define ZNEAR "znear"
-#define ZFAR "zfar"
-
-// Mesh Constants
-#define MESHES "meshes"
-
-// MeshInstance constants
-#define MESH_INSTANCES "meshInstances"
-#define MESH "mesh"
-#define SCALE "scale"
-#define ROTATION "rotation"
-#define TRANSLATION "translation"
-#define VERTEX_SHADER "vertexShader"
-#define FRAGMENT_SHADER "fragmentShader"
-#define DIFFUSE_TEXTURE "diffuseTexture"
-#define UNIFORM_LOCATIONS "uniformsLocation"
-
-// Texture Constants
-#define TEXTURES "textures"
-
-
 
 void Scene::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -75,6 +34,7 @@ void Scene::loadScene(std::string &fileName) {
     Json::array meshesJson = json[MESHES].array_items();
     Json::array meshInstancesJson = json[MESH_INSTANCES].array_items();
     Json::array texturesJson = json[TEXTURES].array_items();
+    Json::array lightsJson = json[LIGHTS].array_items();
 
     worldSettings->setWindowTitle(worldSettingsJson[WINDOW_TITLE].string_value());
     worldSettings->setWidth(worldSettingsJson[WIDTH].int_value());
@@ -125,6 +85,20 @@ void Scene::loadScene(std::string &fileName) {
         meshes.insert(make_pair(mesh->getMeshName(), mesh));
     }
 
+    for(int i = 0; i < lightsJson.size(); i++) {
+        Light light;
+        glm::vec4 lightColor, lightType, lightPosition, lightDirection;
+        Scene::loadFloatsArray(&lightColor[0], lightsJson[i][LIGHT_COLOR].array_items());
+        Scene::loadFloatsArray(&lightDirection[0], lightsJson[i][LIGHT_DIRECTION].array_items());
+        Scene::loadFloatsArray(&lightPosition[0], lightsJson[i][LIGHT_POSITION].array_items());
+        Scene::loadFloatsArray(&lightType[0], lightsJson[i][TYPE].array_items());
+        light.uLightColor = lightColor;
+        light.uLightDirection = lightDirection;
+        light.uLightPosition = lightPosition;
+        light.uLightType = lightType;
+        lights.push_back(light);
+    }
+
     for(int i = 0; i < texturesJson.size(); i++) {
         RGBAImage* texture = new RGBAImage();
         cout << "Texture Name: " << texturesJson[i][NAME].string_value() << "\n";
@@ -142,9 +116,11 @@ void Scene::loadScene(std::string &fileName) {
 
     for(int i = 0; i < meshInstancesJson.size(); i++) {
         MeshInstance *instance = new MeshInstance();
+        Material material;
 
         Json::array uniforms = meshInstancesJson[i][UNIFORM_LOCATIONS].array_items();
-
+        Json::array colors = meshInstancesJson[i][COLORS].array_items();
+        Json::array meshTextures = meshInstancesJson[i][TEXTURES].array_items();
         vector<std::string> uniformVector;
 
         for(int i = 0; i < uniforms.size(); i++) {
@@ -162,8 +138,25 @@ void Scene::loadScene(std::string &fileName) {
         
         glm::quat rotation(rotationVector);
 
-        instance->setDiffuseTexture(textures[meshInstancesJson[i][DIFFUSE_TEXTURE].string_value()]);
-        instance->setMesh(meshes[meshInstancesJson[i][MESH].string_value()]);
+        for(int k = 0; k < colors.size(); k++) {
+            NameIdColor color;
+            color.setName(colors[k][TYPE].string_value());
+            glm::vec4 colorValues;
+            Scene::loadFloatsArray(&colorValues[0], colors[k][VALUE].array_items());
+            color.setColor(colorValues);
+            material.addColor(color);
+        }
+
+        for(int j = 0; j < meshTextures.size(); j++) {
+            NameIdTexture tex;
+            tex.setName(meshTextures[j][TYPE].string_value());
+            std::string s = meshTextures[j][NAME].string_value();
+            tex.setTexture(textures[s]);
+            material.addTexture(tex);
+        }
+        
+        std::string meshName = meshInstancesJson[i][MESH].string_value();
+        instance->setMesh(meshes[meshName]);
         vertexShader = loadShader(meshInstancesJson[i][VERTEX_SHADER].string_value(), GL_VERTEX_SHADER);
         fragmentShader = loadShader(meshInstancesJson[i][FRAGMENT_SHADER].string_value(), GL_FRAGMENT_SHADER);
         instance->setScale(scale);
@@ -171,7 +164,8 @@ void Scene::loadScene(std::string &fileName) {
         instance->setRotation(rotation);
         shaderProgram = createShaderProgram(vertexShader, fragmentShader);
         instance->setShader(shaderProgram);
-
+        instance->setMaterial(material);
+        instance->setScene(this);
         meshInstances.push_back(instance);
 
     };
@@ -190,3 +184,13 @@ void Scene::loadFloatsArray(float* floatArray, Json::array jsonArray) {
     }
 
 };
+
+void Scene::loadLights(GLint shaderProgram) {
+
+    GLint loc = glGetUniformLocation(shaderProgram, "lightTest");
+
+    if(loc != -1) {
+        glUniform4fv(loc, MAX_LIGHTS * sizeof(lights) / 4, (float*) &lights[0]);
+    }
+
+}

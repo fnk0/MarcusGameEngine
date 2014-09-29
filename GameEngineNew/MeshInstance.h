@@ -8,6 +8,10 @@
 
 #include "Mesh.h"
 #include "SceneCamera.h"
+#include "Material.h"
+#include "Scene.h"
+
+class Scene;
 
 class MeshInstance {
 
@@ -22,7 +26,8 @@ public:
     glm::vec3 rotation, translation, scale;
 
     Transform T;
-
+    Material material;
+    Scene *scene;
     vector<std::string> uniforms;
 
 public:
@@ -51,7 +56,7 @@ public:
         MeshInstance::shaderProgram = shaderProgram;
     }
 
-    glm::detail::tvec4<float, glm::highp> const &getDiffuseColor() const {
+    glm::vec4 const &getDiffuseColor() const {
         return diffuseColor;
     }
 
@@ -73,6 +78,14 @@ public:
     }
 
 
+    Scene *getScene() const {
+        return scene;
+    }
+
+    void setScene(Scene *scene) {
+        MeshInstance::scene = scene;
+    }
+
     vector<string> const &getUniforms() const {
         return uniforms;
     }
@@ -80,6 +93,16 @@ public:
     void setUniforms(vector<string> const &uniforms) {
         MeshInstance::uniforms = uniforms;
     }
+
+
+    Material const &getMaterial() const {
+        return material;
+    }
+
+    void setMaterial(Material const &material) {
+        MeshInstance::material = material;
+    }
+
 };
 
 

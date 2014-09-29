@@ -75,8 +75,22 @@
             "translation": [0.5, 0.5, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "phongShader.fs",
-            "uniformsLocation": [ "uDiffuseTex", "uSpecularTexture"],
-            "diffuseTexture": "rockTexture"
+            "colors": [
+                {
+                    "type": "uDiffuseColor",
+                    "value": [1, 1, 1, 1]
+                }
+            ],
+            "textures": [
+                {
+                    "type": "uDiffuseTex",
+                    "name": "rockTexture"
+                },
+                {
+                    "type": "uSpecularTexture",
+                    "name": "texture1"
+                }
+            ]
         },
         {
             "name": "lokiMesh1",
@@ -86,8 +100,22 @@
             "translation": [0.5, 0.5, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "diffuseTexture.fs",
-            "uniformsLocation": [ "uDiffuseTex", "uSpecularTexture"],
-            "diffuseTexture": "lokiTexture"
+            "colors": [
+                {
+                    "type": "uDiffuseColor",
+                    "value": [1, 1, 1, 1]
+                }
+            ],
+            "textures": [
+                {
+                    "type": "uDiffuseTex",
+                    "name": "lokiTexture"
+                },
+                {
+                    "type": "uSpecularTexture",
+                    "name": "texture1"
+                }
+            ]
         },
         {
             "name": "aragornMesh1",
@@ -97,8 +125,22 @@
             "translation": [0.1, 0.5, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "phongShader.fs",
-            "uniformsLocation": [ "uDiffuseTex", "uSpecularTexture"],
-            "diffuseTexture": "rockTexture"
+            "colors": [
+                {
+                    "type": "uDiffuseColor",
+                    "value": [1, 1, 1, 1]
+                }
+            ],
+            "textures": [
+                {
+                    "type": "uDiffuseTex",
+                    "name": "rockTexture"
+                },
+                {
+                    "type": "uSpecularTexture",
+                    "name": "texture1"
+                }
+            ]
         },
         {
             "name": "indyMesh",
@@ -108,8 +150,22 @@
             "translation": [1, 0.5, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "phongShader.fs",
-            "uniformsLocation": [ "uDiffuseTex", "uSpecularTexture"],
-            "diffuseTexture": "texture1"
+            "colors": [
+                {
+                    "type": "uDiffuseColor",
+                    "value": [1, 1, 1, 1]
+                }
+            ],
+            "textures": [
+                {
+                    "type": "uDiffuseTex",
+                    "name": "rockTexture"
+                },
+                {
+                    "type": "uSpecularTexture",
+                    "name": "texture1"
+                }
+            ]
         },
         {
             "name": "gandalfMesh1",
@@ -119,8 +175,22 @@
             "translation": [2, 0.2, 0.5],
             "vertexShader": "basicVertexShader.vs",
             "fragmentShader": "phongShader.fs",
-            "uniformsLocation": [ "uDiffuseTex", "uSpecularTexture"],
-            "diffuseTexture": "texture1"
+            "colors": [
+                {
+                    "type": "uDiffuseColor",
+                    "value": [1, 1, 1, 1]
+                }
+            ],
+            "textures": [
+                {
+                    "type": "uDiffuseTex",
+                    "name": "rockTexture"
+                },
+                {
+                    "type": "uSpecularTexture",
+                    "name": "texture1"
+                }
+            ]
                       
         }
     ]

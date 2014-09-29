@@ -29,26 +29,12 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 // cameras, and all other resources needed by the system.
 //-------------------------------------------------------------------------//
 
-GLFWwindow* gWindow = NULL;
-string gWindowTitle = "OpenGL App";
 int gWidth = 600; // window width
 int gHeight = 600; // window height
-int gSPP = 16; // samples per pixel
-glm::vec4 backgroundColor;
 
 ISoundEngine* soundEngine = NULL;
 ISound* music = NULL;
-
-TriMesh gMesh;
-TriMeshInstance gMeshInstance;
-Camera gCamera;
-RGBAImage textureImage;
-
-//-------------------------------------------------------------------------//
-// Parse Scene File
-//-------------------------------------------------------------------------//
-
-string ONE_TOKENS = "{}[]()<>+-*/,;";
+Camera dummyCamera;
 
 void keyboardCameraController(Scene *scene) {
     
@@ -75,115 +61,10 @@ void keyboardCameraController(Scene *scene) {
     scene->getCamera()->refreshTransform(scene->getWorldSettings()->getWidth(), scene->getWorldSettings()->getHeight());
 }
 
-void loadWorldSettings(FILE *F)
+void raimbowUnicorn(FILE *F)
 {
-	string token, t;
-	while (getToken(F, token, ONE_TOKENS)) {
-		//cout << "  " << token << endl;
-		if (token == "}") break;
-		if (token == "windowTitle") getToken(F, gWindowTitle, ONE_TOKENS);
-		else if (token == "width") getInts(F, &gWidth, 1);
-		else if (token == "height") getInts(F, &gHeight, 1);
-		else if (token == "spp") getInts(F, &gSPP, 1);
-		else if (token == "backgroundColor") getFloats(F, &backgroundColor[0], 3);
-		else if (token == "backgroundMusic") {
-			string fileName, fullFileName;
-			getToken(F, fileName, ONE_TOKENS);
-			getFullFileName(fileName, fullFileName);
-			//ISound* music = soundEngine->play2D(fullFileName.c_str(), true);
-		}
-	}
-    
-	// Initialize the window with OpenGL context
-	gWindow = createOpenGLWindow(gWidth, gHeight, gWindowTitle.c_str(), gSPP);
-	glfwSetKeyCallback(gWindow, keyCallback);
-}
 
-void loadMesh(FILE *F)
-{
-	string token;
-	while (getToken(F, token, ONE_TOKENS)) {
-		if (token == "}") {
-			break;
-		}
-		else if (token == "file") {
-			string fileName = "";
-			getToken(F, fileName, ONE_TOKENS);
-			gMesh.readFromPly(fileName, false);
-			gMesh.sendToOpenGL();
-		}
-	}
-}
-
-void loadMeshInstance(FILE *F)
-{
-	string token;
-	GLuint vertexShader = NULL_HANDLE;
-	GLuint fragmentShader = NULL_HANDLE;
-	GLuint shaderProgram = NULL_HANDLE;
-    
-	while (getToken(F, token, ONE_TOKENS)) {
-		if (token == "}") {
-			break;
-		}
-		else if (token == "vertexShader") {
-			string vsFileName;
-			getToken(F, vsFileName, ONE_TOKENS);
-			vertexShader = loadShader(vsFileName.c_str(), GL_VERTEX_SHADER);
-		}
-		else if (token == "fragmentShader") {
-			string fsFileName;
-			getToken(F, fsFileName, ONE_TOKENS);
-			fragmentShader = loadShader(fsFileName.c_str(), GL_FRAGMENT_SHADER);
-		}
-		else if (token == "diffuseTexture") {
-			string texFileName;
-			getToken(F, texFileName, ONE_TOKENS);
-			gMeshInstance.diffuseTexture.loadPNG(texFileName);
-			gMeshInstance.diffuseTexture.sendToOpenGL();
-		}
-		else if (token == "mesh") {
-			string meshName;
-			getToken(F, meshName, ONE_TOKENS);
-			// Should go out and find the mesh, but since right now there is
-			// only one global mesh, we use that.
-			gMeshInstance.setMesh(&gMesh);
-		}
-	}
-    
-	shaderProgram = createShaderProgram(vertexShader, fragmentShader);
-	gMeshInstance.setShader(shaderProgram);
-}
-
-void loadCamera(FILE *F)
-{
-	string token;
-    
-	while (getToken(F, token, ONE_TOKENS)) {
-        cout << "Hello world from inside load camera!" << "\n";
-		if (token == "}") break;
-		else if (token == "eye") getFloats(F, &(gCamera.eye[0]), 3);
-		else if (token == "center") getFloats(F, &(gCamera.center[0]), 3);
-		else if (token == "vup") getFloats(F, &(gCamera.vup[0]), 3);
-		else if (token == "znear") getFloats(F, &(gCamera.znear), 1);
-		else if (token == "zfar") getFloats(F, &(gCamera.zfar), 1);
-		else if (token == "fovy") getFloats(F, &(gCamera.fovy), 1);
-	}
-    cout << "Hello world from inside load camera!" << "\n";
-	gCamera.refreshTransform((float)gWidth, (float)gHeight);
-}
-
-
-void loadJsonScene(string *jsonString) {
-    
-    string err;
-    Json json = Json::parse(*jsonString, err);
-    
-    Json::object worldSettings = json["worldSettings"].object_items();
-    Json::object camera = json["camera"].object_items();
-    Json::object meshes = json["meshes"].object_items();
-    Json::object meshInstances = json["meshInstances"].object_items();
-    
+    dummyCamera.refreshTransform((float)gWidth, (float)gHeight);
 }
 
 void updateJson(Scene *scene) {
@@ -249,7 +130,7 @@ int main(int numArgs, char **args)
     Scene* scene = new Scene();
     string fileName = args[1];
     scene->loadScene(fileName);
-    
+
     soundEngine->play2D(scene->getWorldSettings()->getBackgroundMusic().c_str(), true);
     
 	// start time (used to time framerate)
