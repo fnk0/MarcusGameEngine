@@ -13,24 +13,20 @@
 #define OBJECT_PERSPECT_M "uObjectPerpsectM"
 
 
-
-void Material::loadUniforms() {
-
-    //if(diffuseColor == NULL) diffuseColor = glm::vec4(1, 1, 1, 1);
+void Material::loadColors() {
 
     GLint loc = -1;
-    for(int i = 0; i < uniforms.size(); i++) {
-        if(uniforms[i].compare(DIFFUSE_COLOR)) {
-            loc = glGetUniformLocation(shaderProgram, DIFFUSE_COLOR);
-            if (loc != -1) glUniform4fv(loc, 1, &diffuseColor[0]);
 
-        } else if(uniforms[i].compare(DIFFUSE_TEXTURE)) {
-            loc = glGetUniformLocation(shaderProgram, DIFFUSE_TEXTURE);
+    for(int i = 0; i < (int) colors.size(); i++) {
+        if(colors[i].getId() == -1) {
+            loc = glGetUniformLocation(shaderProgram, colors[i].getName().c_str());
+            colors[i].setId(loc);
+        }
+        if(colors[i].getId() >= 0) {
+            glUniform4fv(loc, 1, &colors[i].getColor()[0]);
 
 
         }
-
-
     }
 }
 
@@ -39,17 +35,15 @@ void Material::loadTextures() {
     GLint loc = -1;
 
     for (int i = 0; i< (int) textures.size(); i++) {
-        if (textures[i]->textureId == -1) {
-            loc = glGetUniformLocation(shaderProgram, textures[i]->name.c_str());
-            textures[i]->id = loc;
+        if (textures[i].getId() == -1) {
+            loc = glGetUniformLocation(shaderProgram, textures[i].getName().c_str());
+            textures[i].setId(loc);
         }
-        if (textures[i]->id >= 0) {
+        if (textures[i].getId() >= 0) {
             glActiveTexture(GL_TEXTURE0 + i);
-            glUniform1i(textures[i]->id, i);
-            glBindTexture(GL_TEXTURE_2D, textures[i]->textureId);
-            glBindSampler(textures[i]->id, textures[i]->samplerId);
+            glUniform1i(textures[i].getId(), i);
+            glBindTexture(GL_TEXTURE_2D, textures[i].getTexture()->textureId);
+            glBindSampler(textures[i].getId(), textures[i].getTexture()->samplerId);
         }
     }
-
-
 }

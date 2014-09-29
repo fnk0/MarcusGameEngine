@@ -3,13 +3,60 @@
 // Copyright (c) 2014 Marcus Gabilheri. All rights reserved.
 //
 
-
-#include "WorldSettings.h"
-
 #ifndef __Scene_H_
 #define __Scene_H_
+
 #include "WorldSettings.h"
 #include "MeshInstance.h"
+
+#define MAX_LIGHTS 2
+
+// COMMONS
+#define IN_FILE "file"
+#define NAME "name"
+#define TYPE "type"
+#define VALUE "value"
+
+// WORLD SETTINGS CONSTANTS
+#define WORLD_SETTINGS "worldSettings"
+#define WINDOW_TITLE "windowTitle"
+#define WIDTH "width"
+#define HEIGHT "height"
+#define SPP "spp"
+#define BACKGROUND_COLOR "backgroundColor"
+#define BACKGROUND_MUSIC "backgroundMusic"
+
+// Camera constants
+#define CAMERA "camera"
+#define EYE "eye"
+#define CENTER "center"
+#define VUP "vup"
+#define FOVY "fovy"
+#define ZNEAR "znear"
+#define ZFAR "zfar"
+
+// Mesh Constants
+#define MESHES "meshes"
+
+// MeshInstance constants
+#define MESH_INSTANCES "meshInstances"
+#define MESH "mesh"
+#define SCALE "scale"
+#define ROTATION "rotation"
+#define TRANSLATION "translation"
+#define VERTEX_SHADER "vertexShader"
+#define FRAGMENT_SHADER "fragmentShader"
+#define DIFFUSE_TEXTURE "diffuseTexture"
+#define UNIFORM_LOCATIONS "uniformsLocation"
+#define COLORS "colors"
+
+#define LIGHTS "lights"
+#define LIGHT_DIRECTION "uLightDirection"
+#define LIGHT_COLOR "uLightColor"
+#define LIGHT_POSITION "uLightPosition"
+
+// Texture Constants
+#define TEXTURES "textures"
 
 class SceneCamera;
 class WorldSettings;
@@ -26,9 +73,11 @@ private:
     vector<MeshInstance*> meshInstances;
 
 public:
+    vector<Light> lights;
     GLFWwindow* gWindow = NULL;
     void loadScene(std::string &fileName);
-    void loadFloatsArray(float* floatArray, json11::Json::array jsonArray);
+    static void loadFloatsArray(float* floatArray, json11::Json::array jsonArray);
+    void loadLights(GLint shaderProgram);
     void static keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
     WorldSettings *getWorldSettings() const {

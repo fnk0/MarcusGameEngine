@@ -23,48 +23,8 @@
 
 class Light {
     
-private:
-    glm::vec3 lightColor, direction, position, attenuation;
-    float intensity;
-    int type;
-
-    
 public:
-
-    float* serialize(void);
-
-    glm::vec3 const &getLightColor() const {
-        return lightColor;
-    }
-
-    void setLightColor(glm::vec3 const &lightColor) {
-        Light::lightColor = lightColor;
-    }
-
-
-    float getIntensity() const {
-        return intensity;
-    }
-
-    void setIntensity(float intensity) {
-        Light::intensity = intensity;
-    }
-
-    glm::vec3 const &getDirection() const {
-        return direction;
-    }
-
-    void setDirection(glm::vec3 const &direction) {
-        Light::direction = direction;
-    }
-
-    glm::vec3 const &getPosition() const {
-        return position;
-    }
-
-    void setPosition(glm::vec3 const &position) {
-        Light::position = position;
-    }
+    glm::vec4 uLightType, uLightDirection, uLightColor, uLightPosition;
 };
 
 

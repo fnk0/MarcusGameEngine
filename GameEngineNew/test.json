@@ -1,0 +1,83 @@
+{
+    "worldSettings":
+    {
+        "windowTitle": "Some Scene",
+        "width": 800,
+        "height": 600,
+        "spp": 4,
+        "backgroundColor": [0.4, 0.4, 0.4],
+        "backgroundMusic": "bell.wav"
+    },
+
+    "camera":
+    {
+        "name": "camera1",
+        "eye": [ 0, -1, 4],
+        "center": [ 0, 0.1, 0],
+        "vup": [ 0, 1, 0 ],
+        "fovy": 0.4,
+        "znear": 0.1,
+        "zfar": 1000
+    },
+
+    "meshes": [
+
+        {
+            "name": "monkeyMesh",
+            "file": "monkeyTex.ply"
+        }
+    ],
+    "textures": [
+        {
+            "name": "texture1",
+            "file": "hex.png"
+        },
+        {
+            "name": "rockTexture",
+            "file": "rock-texture.png"
+        }
+    ],
+    "lights": [
+        {
+            "name": "light1",
+            "type": [0, 0, 0, 0],
+            "uLightDirection": [0, 1, 0, 0],
+            "uLightColor": [2, 0, 0, 1],
+            "uLightPosition": [-5, 5, 5, 1]
+        },
+        {
+            "name": "light2",
+            "type": [0, 0, 0, 0],
+            "uLightDirection": [1, 0, 0, 0],
+            "uLightColor": [0, 2, 0, 1],
+            "uLightPosition": [-5, 5, 5, 1]
+        }
+    ],
+    "meshInstances": [
+        {
+            "name": "monkeyMesh1",
+            "mesh": "monkeyMesh",
+            "scale": [0.4, 0.3, 0.1],
+            "rotation": [0.1, 0.2, 0.8],
+            "translation": [0.1, 0.4, 0.2],
+            "vertexShader": "basicVertexShader.vs",
+            "fragmentShader": "diffuseTexture.fs",
+            "colors": [
+                {
+                    "type": "uDiffuseColor",
+                    "value": [1, 1, 1, 1]
+                }
+            ],
+            "textures": [
+                {
+                    "type": "uSpecularTexture",
+                    "name": "texture1"
+                },
+                {
+                    "type": "uDiffuseTex",
+                    "name": "rockTexture"
+                }
+            ]
+        }
+    ]
+}

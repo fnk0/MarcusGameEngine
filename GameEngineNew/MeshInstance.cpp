@@ -20,24 +20,13 @@ void MeshInstance::draw(SceneCamera &camera)
 {
     glUseProgram(shaderProgram);
 
-    // Inefficient.  Looks up uniforms by string every time.
-    // Setting the uniforms should probably part of a Material
-    // class.
+    GLint loc = -1;
 
-    GLint loc = glGetUniformLocation(shaderProgram, "uDiffuseColor");
-    if (loc != -1) glUniform4fv(loc, 1, &diffuseColor[0]);
+    material.setShaderProgram(shaderProgram);
 
-    loc = glGetUniformLocation(shaderProgram, "uDiffuseTex"); // Change this to constant
-    glBindTexture(GL_TEXTURE_2D, getDiffuseTexture()->textureId);
-    if (loc != -1) glBindSampler(loc, getDiffuseTexture()->samplerId);
-    else ERROR("Could not bind texture", false);
-    //printVec(color);
-
-    /*
-    loc = glGetUniformLocation(shaderProgram, "uSpecularTexture");
-    if(loc != -1) 
-    */
-    //cout << "Scale: " << T.scale.x << " " << T.scale.y << " " << T.scale.z << "\n";
+    material.loadColors();
+    material.loadTextures();
+    scene->loadLights(shaderProgram);
 
     T.refreshTransform();
     //printMat(transform);
@@ -54,8 +43,8 @@ void MeshInstance::draw(SceneCamera &camera)
     loc = glGetUniformLocation(shaderProgram, "uObjectPerpsectM");
     if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(objectWorldViewPerspect));
     //else ERROR("Could not load uniform uObjectPerpsectM", false);
-
-    mesh->draw();
+    if(mesh != NULL)
+        mesh->draw();
 }
 //-------------------------------------------------------------------------//
 

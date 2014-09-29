@@ -79,6 +79,7 @@
 		2CB85A2219B23DAD00CB19E4 /* rock2.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock2.ply; sourceTree = "<group>"; };
 		2CB85A2319B23DAD00CB19E4 /* rock1.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock1.ply; sourceTree = "<group>"; };
 		2CB85A2519B240F000CB19E4 /* rock-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock-texture.png"; sourceTree = "<group>"; };
+		BF8C70F637B8CBB1A983C1DE /* test.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = test.json; sourceTree = "<group>"; };
 		BF8C70FC6F1EE0F31294E606 /* WorldSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldSettings.h; sourceTree = "<group>"; };
 		BF8C73950C72144A8EBFED17 /* SomeScene.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = SomeScene.json; sourceTree = "<group>"; };
 		BF8C73FA8ED612CB38501395 /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
@@ -244,6 +245,7 @@
 				2C8EE6A319B056C9003E8BFB /* monkeyScene.json */,
 				BF8C73950C72144A8EBFED17 /* SomeScene.json */,
 				2C42FB3919BA17FC001938DA /* Marines.json */,
+				BF8C70F637B8CBB1A983C1DE /* test.json */,
 			);
 			name = scenes;
 			sourceTree = "<group>";

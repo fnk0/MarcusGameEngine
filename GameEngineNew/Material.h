@@ -13,6 +13,7 @@
 #include <vector>
 #include "iostream"
 #include "EngineUtil.h"
+#include "Light.h"
 
 
 class NameIdColor {
@@ -31,11 +32,11 @@ public:
         NameIdColor::name = name;
     }
 
-    GLuint getId() const {
+    GLint getId() const {
         return id;
     }
 
-    void setId(GLuint id) {
+    void setId(GLint id) {
         NameIdColor::id = id;
     }
 
@@ -84,11 +85,10 @@ public:
 class Material {
 
 private:
-    std::vector<std::string> uniforms;
+
     std::string name;
     std::vector<NameIdColor> colors;
-    std::vector<RGBAImage*> textures;
-    glm::vec4 diffuseColor;
+    std::vector<NameIdTexture> textures;
     GLuint shaderProgram;
 
 public:
@@ -101,11 +101,21 @@ public:
         Material::name = name;
     }
 
-    vector<RGBAImage *> const &getTextures() const {
+
+    vector<NameIdColor> const &getColors() const {
+        return colors;
+    }
+
+    void setColors(vector<NameIdColor> const &colors) {
+        Material::colors = colors;
+    }
+
+
+    vector<NameIdTexture> const &getTextures() const {
         return textures;
     }
 
-    void setTextures(vector<RGBAImage *> const &textures) {
+    void setTextures(vector<NameIdTexture> const &textures) {
         Material::textures = textures;
     }
 
@@ -117,24 +127,16 @@ public:
         Material::shaderProgram = shaderProgram;
     }
 
-
-    vector<string> const &getUniforms() const {
-        return uniforms;
+    void addColor(NameIdColor &color) {
+        colors.push_back(color);
     }
 
-    void setUniforms(vector<string> const &uniforms) {
-        Material::uniforms = uniforms;
+    void addTexture(NameIdTexture &texture) {
+        textures.push_back(texture);
     }
 
-    glm::vec4 const &getDiffuseColor() const {
-        return diffuseColor;
-    }
-
-    void setDiffuseColor(glm::vec4 const &diffuseColor) {
-        Material::diffuseColor = diffuseColor;
-    }
-
-    void loadUniforms();
+    void loadLights();
+    void loadColors();
     void loadTextures();
 };
 
