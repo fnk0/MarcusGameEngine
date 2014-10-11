@@ -81,11 +81,6 @@ void updateJson(Scene *scene) {
         // rotate mesh
         glm::quat r = glm::quat(glm::vec3(0.0f, 0.0051f, 0.00f));
         scene->getMeshInstances()[i]->T.rotation *= r;
-        
-        scene->getMeshInstances()[i]->diffuseColor += glm::vec4(0.0013f, 0.000921f, 0.00119f, 0.0f);
-        if (scene->getMeshInstances()[i]->diffuseColor[0] > 1.0f) scene->getMeshInstances()[i]->diffuseColor[0] = 0.25f;
-        if (scene->getMeshInstances()[i]->diffuseColor[1] > 1.0f) scene->getMeshInstances()[i]->diffuseColor[1] = 0.25f;
-        if (scene->getMeshInstances()[i]->diffuseColor[2] > 1.0f) scene->getMeshInstances()[i]->diffuseColor[2] = 0.25f;
     }
 }
 
@@ -95,12 +90,15 @@ void renderJson(Scene *scene) {
     //glClearColor(0.5, 0.2, 0.6, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    scene->updateLights();
+    
     // draw scene
     //cout << "Number of instances: " << scene->meshInstances.size() << "\n";
     for(int i = 0; i < scene->getMeshInstances().size(); i++) {
         scene->getMeshInstances()[i]->draw(*scene->getCamera());
     }
 }
+
 
 //-------------------------------------------------------------------------//
 // Main method
@@ -138,12 +136,9 @@ int main(int numArgs, char **args)
     
 	// render loop
 	while (true) {
-		// update and render
-		//update();
-		//render();
-        
         //updateJson(scene);
         renderJson(scene);
+        
         keyboardCameraController(scene);
         
 		// handle input
