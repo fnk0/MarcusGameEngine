@@ -13,6 +13,7 @@
 #include <vector>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+#import <OpenGL/OpenGL.h>
 
 // A point light source will need a color, direction and position
 // 3 or 4 vec4
@@ -22,11 +23,39 @@
 // Divides by the square root distance of a lightSource + 1
 
 class Light {
-    
 public:
-    glm::vec4 uLightType, uLightDirection, uLightColor, uLightPosition;
+    // type is in attenuation.w
+    glm::vec4 position, direction, color, attenuation, coneAngles;
+
+    Light(const Light &L) {
+        position = L.position;
+        direction = L.direction;
+        color = L.color;
+        attenuation = L.attenuation;
+        coneAngles = L.coneAngles;
+    }
+
+    Light() {
+        position = glm::vec4(0, 0, 0, 1);
+        direction = glm::vec4(0, 1, 0, 0);
+        color = glm::vec4(1, 0, 0, 1);
+        attenuation = glm::vec4(0, 0, 0, 0);
+        coneAngles = glm::vec4(0.5, 0.55, 0, 0);
+    }
 };
 
+#define NO_LIGHT 0
+#define AMBIENT_LIGHT 1
+#define DIRECTIONAL_LIGHT 2
+#define POINT_LIGHT 3
+#define SPOT_LIGHT 4
+#define HEAD_LIGHT 5
+#define RIM_LIGHT 6
 
+#define MAX_LIGHTS 10
+#define LIGHT_BUFFER_ID 1
+extern GLuint gLightBufferObject;
+extern int gNumLights;
+extern Light gLights[MAX_LIGHTS];
 
 #endif /* defined(__GameEngineNew__Light__) */

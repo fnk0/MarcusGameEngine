@@ -6,6 +6,21 @@
 #include "Scene.h"
 
 
+GLuint gLightBufferObject = NULL_HANDLE;
+int gNumLights = 0;
+Light gLights[MAX_LIGHTS];
+
+void initLightBuffer() {
+    
+    if (gLightBufferObject != NULL_HANDLE) return;
+    glGenBuffers(LIGHT_BUFFER_ID, &gLightBufferObject); // create a new buffer id
+    
+    glBindBuffer(GL_UNIFORM_BUFFER, gLightBufferObject); // bind the new buffer
+    glBufferData(GL_UNIFORM_BUFFER, sizeof(Light) * MAX_LIGHTS, gLights, GL_STREAM_DRAW);
+    glBindBuffer(GL_UNIFORM_BUFFER, 0); // unbind buffer
+}
+
+
 void Scene::keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
@@ -84,21 +99,45 @@ void Scene::loadScene(std::string &fileName) {
 
         meshes.insert(make_pair(mesh->getMeshName(), mesh));
     }
-
+    
     for(int i = 0; i < lightsJson.size(); i++) {
         Light light;
-        glm::vec4 lightColor, lightType, lightPosition, lightDirection;
-        Scene::loadFloatsArray(&lightColor[0], lightsJson[i][LIGHT_COLOR].array_items());
-        Scene::loadFloatsArray(&lightDirection[0], lightsJson[i][LIGHT_DIRECTION].array_items());
-        Scene::loadFloatsArray(&lightPosition[0], lightsJson[i][LIGHT_POSITION].array_items());
-        Scene::loadFloatsArray(&lightType[0], lightsJson[i][TYPE].array_items());
-        light.uLightColor = lightColor;
-        light.uLightDirection = lightDirection;
-        light.uLightPosition = lightPosition;
-        light.uLightType = lightType;
+        Scene::loadFloatsArray(&light.color[0], lightsJson[i][LIGHT_COLOR].array_items());
+        Scene::loadFloatsArray(&light.direction[0], lightsJson[i][LIGHT_DIRECTION].array_items());
+        Scene::loadFloatsArray(&light.position[0], lightsJson[i][LIGHT_POSITION].array_items());
+        Scene::loadFloatsArray(&light.attenuation[0], lightsJson[i][ATTENUATION].array_items());
+        Scene::loadFloatsArray(&light.coneAngles[0], lightsJson[i][CONE_ANGLE].array_items());
+        light.direction = glm::normalize(light.direction);
+        
+        light.coneAngles[0] = cos(light.coneAngles[0]);
+        light.coneAngles[1] = cos(light.coneAngles[1]);
+        
+    
+        if(lightsJson[i][TYPE] == TYPE_DIRECTIONAL_LIGHT) {
+            // Found a Directional Light
+            cout << "Found a Directional Light" << endl;
+            light.attenuation.w = DIRECTIONAL_LIGHT;
+        } else if(lightsJson[i][TYPE] == TYPE_POINT_LIGHT) {
+            // Found a Point Light
+            cout << "Found a Point Light" << endl;
+            light.attenuation.w = POINT_LIGHT;
+        } else if(lightsJson[i][TYPE] == TYPE_SPOT_LIGHT) {
+            // Found a Spot Light
+            cout << "Found a Spot Light" << endl;
+            light.attenuation.w = SPOT_LIGHT;
+        }
+        gLights[i] = light;
+        gNumLights++;
         lights.push_back(light);
+        
+        if(i >= MAX_LIGHTS) {
+            ERROR("Too mahy lights!", false);
+            break;
+        }
     }
-
+    
+    initLightBuffer();
+    
     for(int i = 0; i < texturesJson.size(); i++) {
         RGBAImage* texture = new RGBAImage();
         cout << "Texture Name: " << texturesJson[i][NAME].string_value() << "\n";
@@ -139,19 +178,19 @@ void Scene::loadScene(std::string &fileName) {
         glm::quat rotation(rotationVector);
 
         for(int k = 0; k < colors.size(); k++) {
-            NameIdColor color;
-            color.setName(colors[k][TYPE].string_value());
+            NameIdVal<glm::vec4> color;
+            color.name = colors[k][TYPE].string_value();
             glm::vec4 colorValues;
             Scene::loadFloatsArray(&colorValues[0], colors[k][VALUE].array_items());
-            color.setColor(colorValues);
+            color.val = colorValues;
             material.addColor(color);
         }
 
         for(int j = 0; j < meshTextures.size(); j++) {
-            NameIdTexture tex;
-            tex.setName(meshTextures[j][TYPE].string_value());
+            NameIdVal<RGBAImage*> tex;
+            tex.name = meshTextures[j][TYPE].string_value();
             std::string s = meshTextures[j][NAME].string_value();
-            tex.setTexture(textures[s]);
+            tex.val = textures[s];
             material.addTexture(tex);
         }
         
@@ -163,14 +202,13 @@ void Scene::loadScene(std::string &fileName) {
         instance->setTranslation(translation);
         instance->setRotation(rotation);
         shaderProgram = createShaderProgram(vertexShader, fragmentShader);
-        instance->setShader(shaderProgram);
+        material.setShaderProgram(shaderProgram);
         instance->setMaterial(material);
         instance->setScene(this);
         meshInstances.push_back(instance);
 
     };
-
-
+    
     for(int i = 0; i < backGroundColorVector.length(); i++) {
         std::cout << "Color: " << backGroundColorVector[i] << "\n";
     }
@@ -194,3 +232,4 @@ void Scene::loadLights(GLint shaderProgram) {
     }
 
 }
+

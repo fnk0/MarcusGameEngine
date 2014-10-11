@@ -121,33 +121,40 @@ GLuint loadShader(const string &fileName, GLuint shaderType)
 
 //-------------------------------------------------------------------------//
 
-GLuint createShaderProgram(GLuint vertexShader, GLuint fragmentShader)
-{
-	// Create and link the shader program
-	GLuint shaderProgram = glCreateProgram(); // create handle
-	if (!shaderProgram) {
-		ERROR("could not create the shader program", false);
-		return NULL_HANDLE;
-	}
-	glAttachShader(shaderProgram, vertexShader);    // attach vertex shader
-	glAttachShader(shaderProgram, fragmentShader);  // attach fragment shader
-	glLinkProgram(shaderProgram);
+GLuint createShaderProgram(GLuint vertexShader, GLuint fragmentShader) {
+    // Create and link the shader program
+    GLuint shaderProgram = glCreateProgram(); // create handle
+    if (!shaderProgram) {
+        ERROR("could not create the shader program", false);
+        return NULL_HANDLE;
+    }
+    glAttachShader(shaderProgram, vertexShader);    // attach vertex shader
+    glAttachShader(shaderProgram, fragmentShader);  // attach fragment shader
+    glLinkProgram(shaderProgram);
     
-	// check to see if the linking was successful
-	int linked;
-	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &linked); // get link status
-	if (!linked) {
-		ERROR("could not link the shader program", false);
-		GLint msgLength = 0;
-		glGetShaderiv(shaderProgram, GL_INFO_LOG_LENGTH, &msgLength);
-		std::vector<char> msg(msgLength);
-		glGetShaderInfoLog(shaderProgram, msgLength, &msgLength, &msg[0]);
-		printf("%s\n", &msg[0]);
-		glDeleteProgram(shaderProgram);
-		return NULL_HANDLE;
-	}
+    // check to see if the linking was successful
+    int linked;
+    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &linked); // get link status
+    if (!linked) {
+        ERROR("could not link the shader program", false);
+        GLint msgLength = 0;
+        glGetShaderiv(shaderProgram, GL_INFO_LOG_LENGTH, &msgLength);
+        std::vector<char> msg(msgLength);
+        glGetShaderInfoLog(shaderProgram, msgLength, &msgLength, &msg[0]);
+        printf("%s\n", &msg[0]);
+        glDeleteProgram(shaderProgram);
+        return NULL_HANDLE;
+    }
     
-	return shaderProgram;
+    // HOOK UP UNIFORM BUFFER AND UNIFORM BLOCK TO SAME BINDING POINT
+    GLint lightBlockIndex = glGetUniformBlockIndex(shaderProgram, "Lights");
+    glUniformBlockBinding(shaderProgram, lightBlockIndex, LIGHT_BUFFER_ID);
+    glBindBufferBase(GL_UNIFORM_BUFFER, LIGHT_BUFFER_ID, gLightBufferObject);
+    
+    //printf("LIGHT STUFF %d %d %d\n", shaderProgram, lightBlockIndex, lightBufferObject);
+    
+    return shaderProgram;
+    
 }
 
 //-------------------------------------------------------------------------//

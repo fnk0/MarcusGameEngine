@@ -34,7 +34,7 @@ using namespace std;
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include "json11.hpp"
-
+#include "Light.h"
 using namespace json11;
 
 // Sound (irrKlang)

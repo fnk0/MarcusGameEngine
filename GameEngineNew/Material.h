@@ -14,81 +14,39 @@
 #include "iostream"
 #include "EngineUtil.h"
 #include "Light.h"
+#include "SceneCamera.h"
 
+//-------------------------------------------------------------------------//
+// TEMPLATES
+//-------------------------------------------------------------------------//
 
-class NameIdColor {
-
-private:
-    std::string name;
-    GLint  id;
-    glm::vec4 color;
-
+template<class T> class NameVal
+{
 public:
-    std::basic_string<char, std::char_traits<char>, std::allocator<char>> const &getName() const {
-        return name;
-    }
-
-    void setName(std::basic_string<char, std::char_traits<char>, std::allocator<char>> const &name) {
-        NameIdColor::name = name;
-    }
-
-    GLint getId() const {
-        return id;
-    }
-
-    void setId(GLint id) {
-        NameIdColor::id = id;
-    }
-
-    glm::vec4 const &getColor() const {
-        return color;
-    }
-
-    void setColor(glm::vec4 const &color) {
-        NameIdColor::color = color;
-    }
+    string name;
+    T val;
+    NameVal() { name = ""; }
+    NameVal(string &n, T &v) { name = n; val = v; }
 };
 
-class NameIdTexture {
-
-private:
-    std::string name;
-    GLint id;
-    RGBAImage* texture;
-
+template<class T> class NameIdVal
+{
 public:
-    basic_string<char, char_traits<char>, allocator<char>> const &getName() const {
-        return name;
-    }
-
-    void setName(basic_string<char, char_traits<char>, allocator<char>> const &name) {
-        NameIdTexture::name = name;
-    }
-
-    GLint getId() const {
-        return id;
-    }
-
-    void setId(GLint id) {
-        NameIdTexture::id = id;
-    }
-
-    RGBAImage *getTexture() const {
-        return texture;
-    }
-
-    void setTexture(RGBAImage *texture) {
-        NameIdTexture::texture = texture;
-    }
+    string name;
+    int id;
+    T val;
+    NameIdVal() { name = ""; id = -1; }
+    NameIdVal(string &n, int i, T &v) { name = n; id = i; val = v; }
 };
+
 
 class Material {
 
 private:
 
     std::string name;
-    std::vector<NameIdColor> colors;
-    std::vector<NameIdTexture> textures;
+    vector< NameIdVal<glm::vec4> > colors;
+    vector< NameIdVal<RGBAImage*> > textures;;
     GLuint shaderProgram;
 
 public:
@@ -102,20 +60,19 @@ public:
     }
 
 
-    vector<NameIdColor> const &getColors() const {
+    vector<NameIdVal<glm::vec4>> const &getColors() const {
         return colors;
     }
 
-    void setColors(vector<NameIdColor> const &colors) {
+    void setColors(vector<NameIdVal<glm::vec4>> const &colors) {
         Material::colors = colors;
     }
 
-
-    vector<NameIdTexture> const &getTextures() const {
+    vector<NameIdVal<RGBAImage *>> const &getTextures() const {
         return textures;
     }
 
-    void setTextures(vector<NameIdTexture> const &textures) {
+    void setTextures(vector<NameIdVal<RGBAImage *>> const &textures) {
         Material::textures = textures;
     }
 
@@ -127,13 +84,17 @@ public:
         Material::shaderProgram = shaderProgram;
     }
 
-    void addColor(NameIdColor &color) {
+    void addColor(NameIdVal<glm::vec4> &color) {
         colors.push_back(color);
     }
 
-    void addTexture(NameIdTexture &texture) {
+    void addTexture(NameIdVal<RGBAImage*> &texture) {
         textures.push_back(texture);
     }
+
+    // Sends all the data to OpenGL in 2 methods and more stuff too
+    // Look at d2l for more info
+    void bindMaterial(Transform &T, SceneCamera &camera);
 
     void loadLights();
     void loadColors();

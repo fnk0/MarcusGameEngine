@@ -8,8 +8,7 @@
 
 #include "WorldSettings.h"
 #include "MeshInstance.h"
-
-#define MAX_LIGHTS 2
+#include "Light.h"
 
 // COMMONS
 #define IN_FILE "file"
@@ -54,9 +53,19 @@
 #define LIGHT_DIRECTION "uLightDirection"
 #define LIGHT_COLOR "uLightColor"
 #define LIGHT_POSITION "uLightPosition"
+#define ATTENUATION "uAttenuation"
+#define CONE_ANGLE "uConeAngles"
+
+#define TYPE_AMBIENT_LIGHT "ambient"
+#define TYPE_DIRECTIONAL_LIGHT "directional"
+#define TYPE_POINT_LIGHT "point"
+#define TYPE_SPOT_LIGHT "spot"
+#define TYPE_HEAD_LIGHT "head"
+#define TYPE_RIM_LIGHT "rim"
 
 // Texture Constants
 #define TEXTURES "textures"
+#define OTHER_TEX "uOtherTex"
 
 class SceneCamera;
 class WorldSettings;
@@ -128,6 +137,14 @@ public:
 
     void setGWindow(GLFWwindow *gWindow) {
         Scene::gWindow = gWindow;
+    }
+
+    void updateLights(void) {
+        // Update global lights
+        glBindBuffer(GL_UNIFORM_BUFFER, gLightBufferObject);
+        //glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(Light) * MAX_LIGHTS, gLights);
+        glBufferData(GL_UNIFORM_BUFFER, sizeof(Light) * MAX_LIGHTS, gLights, GL_STREAM_DRAW);
+        glBindBuffer(GL_UNIFORM_BUFFER, 0); // unbind buffer
     }
 };
 
