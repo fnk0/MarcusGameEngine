@@ -61,9 +61,7 @@ void keyboardCameraController(Scene *scene) {
     scene->getCamera()->refreshTransform(scene->getWorldSettings()->getWidth(), scene->getWorldSettings()->getHeight());
 }
 
-void raimbowUnicorn(FILE *F)
-{
-
+void raimbowUnicorn(FILE *F) {
     dummyCamera.refreshTransform((float)gWidth, (float)gHeight);
 }
 

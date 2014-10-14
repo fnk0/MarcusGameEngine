@@ -76,6 +76,8 @@
 		2C86E94A19AFC9BC00876CDA /* phongShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phongShader.fs; sourceTree = "<group>"; };
 		2C86E94C19B0239100876CDA /* anotherVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = anotherVertexShader.vs; sourceTree = "<group>"; };
 		2C8EE6A319B056C9003E8BFB /* monkeyScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = monkeyScene.json; sourceTree = "<group>"; };
+		2C9728F219EDB6F700BAB8B9 /* sprint1a.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sprint1a.json; sourceTree = "<group>"; };
+		2C9728F319EDB6F700BAB8B9 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
 		2CAFCBE819DB8B7100C86615 /* multiLight.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = multiLight.fs; sourceTree = "<group>"; };
 		2CB85A2219B23DAD00CB19E4 /* rock2.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock2.ply; sourceTree = "<group>"; };
 		2CB85A2319B23DAD00CB19E4 /* rock1.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock1.ply; sourceTree = "<group>"; };
@@ -250,6 +252,8 @@
 				BF8C73950C72144A8EBFED17 /* SomeScene.json */,
 				2C42FB3919BA17FC001938DA /* Marines.json */,
 				BF8C70F637B8CBB1A983C1DE /* test.json */,
+				2C9728F219EDB6F700BAB8B9 /* sprint1a.json */,
+				2C9728F319EDB6F700BAB8B9 /* TemplateIcon2x.png */,
 			);
 			name = scenes;
 			sourceTree = "<group>";
