@@ -63,6 +63,9 @@
 #define TYPE_HEAD_LIGHT "head"
 #define TYPE_RIM_LIGHT "rim"
 
+
+#define CAMERAS "cameras"
+
 // Texture Constants
 #define TEXTURES "textures"
 #define OTHER_TEX "uOtherTex"
@@ -80,6 +83,7 @@ private:
     map<std::string, Mesh*> meshes;
     map<std::string, RGBAImage*> textures;
     vector<MeshInstance*> meshInstances;
+    vector<SceneCamera*> cameras;
 
 public:
     vector<Light> lights;
@@ -121,6 +125,21 @@ public:
         Scene::meshInstances = meshInstances;
     }
 
+    vector<SceneCamera *> const &getCameras() const {
+        return cameras;
+    }
+
+    void setCameras(vector<SceneCamera *> const &cameras) {
+        Scene::cameras = cameras;
+    }
+
+    vector<Light> const &getLights() const {
+        return lights;
+    }
+
+    void setLights(vector<Light> const &lights) {
+        Scene::lights = lights;
+    }
 
     map<string, RGBAImage *> const &getTextures() const {
         return textures;
@@ -138,6 +157,8 @@ public:
     void setGWindow(GLFWwindow *gWindow) {
         Scene::gWindow = gWindow;
     }
+    
+    void switchCamera(int camNum);
 
     void updateLights(void) {
         // Update global lights

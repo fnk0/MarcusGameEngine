@@ -8,17 +8,27 @@
         "backgroundColor": [0.5, 0.5, 0.4],
         "backgroundMusic": "bell.wav"
     },
-
-    "camera":
-    {
-        "name": "camera1",
-        "eye": [ 0, 6, 10],
-        "center": [ 0, 0, 1],
-        "vup": [ 0, 1, 0 ],
-        "fovy": 0.5,
-        "znear": 0.1,
-        "zfar": 1000
-    },
+    
+    "cameras": [
+        {
+            "name": "camera1",
+            "eye": [ 0, 6, 10],
+            "center": [ 0, 0, 1],
+            "vup": [ 0, 1, 0 ],
+            "fovy": 0.5,
+            "znear": 0.1,
+            "zfar": 1000
+        },
+        {
+            "name": "camera2",
+            "eye": [ 0, 1, 5],
+            "center": [ 1, 0, 1],
+            "vup": [ 2, 1, 0 ],
+            "fovy": 0.7,
+            "znear": 0.2,
+            "zfar": 2000
+        }
+    ],
 
     "meshes": [
         {

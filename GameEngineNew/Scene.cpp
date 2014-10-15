@@ -36,7 +36,6 @@ void Scene::keyCallback(GLFWwindow* window, int key, int scancode, int action, i
 void Scene::loadScene(std::string &fileName) {
 
     worldSettings = new WorldSettings();
-    camera = new SceneCamera();
 
     ifstream file(fileName);
     string jsonStr((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
@@ -45,11 +44,11 @@ void Scene::loadScene(std::string &fileName) {
     Json json = Json::parse(jsonStr, err);
 
     Json::object worldSettingsJson = json[WORLD_SETTINGS].object_items();
-    Json::object cameraJson = json[CAMERA].object_items();
     Json::array meshesJson = json[MESHES].array_items();
     Json::array meshInstancesJson = json[MESH_INSTANCES].array_items();
     Json::array texturesJson = json[TEXTURES].array_items();
     Json::array lightsJson = json[LIGHTS].array_items();
+    Json::array camerasJson = json[CAMERAS].array_items();
 
     worldSettings->setWindowTitle(worldSettingsJson[WINDOW_TITLE].string_value());
     worldSettings->setWidth(worldSettingsJson[WIDTH].int_value());
@@ -64,25 +63,6 @@ void Scene::loadScene(std::string &fileName) {
 
     gWindow = createOpenGLWindow(worldSettings->getWidth(), worldSettings->getHeight(), worldSettings->getWindowTitle().c_str(), worldSettings->getSpp());
     glfwSetKeyCallback(gWindow, Scene::keyCallback);
-
-    Json::array eyeJson = cameraJson[EYE].array_items();
-    glm::vec3 eyeVector;
-    loadFloatsArray(&eyeVector[0], eyeJson);
-    camera->setEye(eyeVector);
-
-    Json::array centerJson = cameraJson[CENTER].array_items();
-    glm::vec3 centerVector;
-    loadFloatsArray(&centerVector[0], centerJson);
-    camera->setCenter(centerVector);
-
-    Json::array vupJson = cameraJson[VUP].array_items();
-    glm::vec3 vupVector;
-    loadFloatsArray(&vupVector[0], vupJson);
-    camera->setVup(vupVector);
-
-    camera->setFovy(cameraJson[FOVY].number_value());
-    camera->setZfar(cameraJson[ZFAR].number_value());
-    camera->setZnear(cameraJson[ZNEAR].number_value());
 
     cout << "Number of meshes: " << meshesJson.size() << "\n";
 
@@ -99,7 +79,35 @@ void Scene::loadScene(std::string &fileName) {
 
         meshes.insert(make_pair(mesh->getMeshName(), mesh));
     }
-    
+
+    for(int i = 0; i < camerasJson.size(); i++) {
+        SceneCamera* cam = new SceneCamera();
+        Json::array eyeJson = camerasJson[i][EYE].array_items();
+        glm::vec3 eyeVector;
+        loadFloatsArray(&eyeVector[0], eyeJson);
+        cam->setEye(eyeVector);
+
+        Json::array centerJson = camerasJson[i][CENTER].array_items();
+        glm::vec3 centerVector;
+        loadFloatsArray(&centerVector[0], centerJson);
+        cam->setCenter(centerVector);
+
+        Json::array vupJson = camerasJson[i][VUP].array_items();
+        glm::vec3 vupVector;
+        loadFloatsArray(&vupVector[0], vupJson);
+        cam->setVup(vupVector);
+
+        cam->setFovy(camerasJson[i][FOVY].number_value());
+        cam->setZfar(camerasJson[i][ZFAR].number_value());
+        cam->setZnear(camerasJson[i][ZNEAR].number_value());
+
+        cameras.push_back(cam);
+
+        if(i == 0) {
+            camera = cameras[0];
+        }
+    }
+
     for(int i = 0; i < lightsJson.size(); i++) {
         Light light;
         Scene::loadFloatsArray(&light.color[0], lightsJson[i][LIGHT_COLOR].array_items());
@@ -231,5 +239,9 @@ void Scene::loadLights(GLint shaderProgram) {
         glUniform4fv(loc, MAX_LIGHTS * sizeof(lights) / 4, (float*) &lights[0]);
     }
 
+}
+
+void Scene::switchCamera(int camNum) {
+    camera = cameras[camNum - 1];
 }
 

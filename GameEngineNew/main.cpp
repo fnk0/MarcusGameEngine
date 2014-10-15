@@ -47,16 +47,21 @@ void keyboardCameraController(Scene *scene) {
     glm::vec3 strifeDown(0, -t, 0);
     glm::vec3 moveForward(0, 0, t);
     glm::vec3 moveBack(0, 0, -t);
-    glm::vec3 rotate(0, 0, 1);
-    
+    glm::vec3 rotate(0, 1, 0);
+    if(glfwGetKey(scene->gWindow, '1')) scene->switchCamera(1);
+    if(glfwGetKey(scene->gWindow, '2')) scene->switchCamera(2);
     if(glfwGetKey(scene->gWindow, 'A')) scene->getCamera()->translateLocal(strifeLeft);
     if(glfwGetKey(scene->gWindow, 'D')) scene->getCamera()->translateLocal(strifeRight);
     if(glfwGetKey(scene->gWindow, 'W')) scene->getCamera()->translateLocal(strifeUp);
     if(glfwGetKey(scene->gWindow, 'S')) scene->getCamera()->translateLocal(strifeDown);
-    if(glfwGetKey(scene->gWindow, 'Q')) scene->getCamera()->rotateGlobal(rotate, -r);
-    if(glfwGetKey(scene->gWindow, 'E')) scene->getCamera()->rotateGlobal(rotate, r);
+    if(glfwGetKey(scene->gWindow, 'Q')) scene->getCamera()->rotateGlobal(rotate, r);
+    if(glfwGetKey(scene->gWindow, 'E')) scene->getCamera()->rotateGlobal(rotate, -r);
     if(glfwGetKey(scene->gWindow, GLFW_KEY_UP)) scene->getCamera()->translateLocal(moveForward);
     if(glfwGetKey(scene->gWindow, GLFW_KEY_DOWN)) scene->getCamera()->translateLocal(moveBack);
+    if(glfwGetKey(scene->gWindow, GLFW_KEY_LEFT)) scene->getCamera()->rotateGlobal(rotate, r);
+    if(glfwGetKey(scene->gWindow, GLFW_KEY_RIGHT)) scene->getCamera()->rotateGlobal(rotate, -r);
+
+    
     
     scene->getCamera()->refreshTransform(scene->getWorldSettings()->getWidth(), scene->getWorldSettings()->getHeight());
 }
@@ -80,6 +85,12 @@ void updateJson(Scene *scene) {
         glm::quat r = glm::quat(glm::vec3(0.0f, 0.0051f, 0.00f));
         scene->getMeshInstances()[i]->T.rotation *= r;
     }
+}
+
+void updateSound(Scene *scene) {
+    glm::vec3 eye = scene->getCamera()->getEye();
+    glm::vec3 center = scene->getCamera()->getCenter();
+    soundEngine->setListenerPosition(vec3df(eye[0], eye[1], eye[2]), vec3df(center[0], center[1], center[2]));
 }
 
 void renderJson(Scene *scene) {
@@ -109,7 +120,11 @@ int main(int numArgs, char **args)
 		cout << "Usage: Transforms sceneFile.scene" << endl;
 		exit(0);
 	}
-    
+
+    Scene* scene = new Scene();
+    string fileName = args[1];
+    scene->loadScene(fileName);
+
 	// Start sound engine
 	soundEngine = createIrrKlangDevice();
 	if (!soundEngine) return 0;
@@ -117,17 +132,15 @@ int main(int numArgs, char **args)
 	soundEngine->setSoundVolume(0.25f); // master volume control
     
 	// Play 3D sound
-	//string soundFileName;
-	//ISound* music = soundEngine->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
-	//if (music) music->setMinDistance(5.0f); // distance of full volume
+	string soundFileName = scene->getWorldSettings()->getBackgroundMusic();
+	ISound* music = soundEngine->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
+	if (music) music->setMinDistance(5.0f); // distance of full volume
     
     //loadScene(args[1]);
     
-    Scene* scene = new Scene();
-    string fileName = args[1];
-    scene->loadScene(fileName);
 
-    soundEngine->play2D(scene->getWorldSettings()->getBackgroundMusic().c_str(), true);
+
+    //soundEngine->play2D(scene->getWorldSettings()->getBackgroundMusic().c_str(), true);
     
 	// start time (used to time framerate)
 	double startTime = TIME();
@@ -136,7 +149,7 @@ int main(int numArgs, char **args)
 	while (true) {
         //updateJson(scene);
         renderJson(scene);
-        
+        updateSound(scene);
         keyboardCameraController(scene);
         
 		// handle input
