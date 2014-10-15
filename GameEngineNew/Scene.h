@@ -8,8 +8,7 @@
 
 #include "WorldSettings.h"
 #include "MeshInstance.h"
-
-#define MAX_LIGHTS 2
+#include "Light.h"
 
 // COMMONS
 #define IN_FILE "file"
@@ -54,9 +53,22 @@
 #define LIGHT_DIRECTION "uLightDirection"
 #define LIGHT_COLOR "uLightColor"
 #define LIGHT_POSITION "uLightPosition"
+#define ATTENUATION "uAttenuation"
+#define CONE_ANGLE "uConeAngles"
+
+#define TYPE_AMBIENT_LIGHT "ambient"
+#define TYPE_DIRECTIONAL_LIGHT "directional"
+#define TYPE_POINT_LIGHT "point"
+#define TYPE_SPOT_LIGHT "spot"
+#define TYPE_HEAD_LIGHT "head"
+#define TYPE_RIM_LIGHT "rim"
+
+
+#define CAMERAS "cameras"
 
 // Texture Constants
 #define TEXTURES "textures"
+#define OTHER_TEX "uOtherTex"
 
 class SceneCamera;
 class WorldSettings;
@@ -71,6 +83,7 @@ private:
     map<std::string, Mesh*> meshes;
     map<std::string, RGBAImage*> textures;
     vector<MeshInstance*> meshInstances;
+    vector<SceneCamera*> cameras;
 
 public:
     vector<Light> lights;
@@ -112,6 +125,21 @@ public:
         Scene::meshInstances = meshInstances;
     }
 
+    vector<SceneCamera *> const &getCameras() const {
+        return cameras;
+    }
+
+    void setCameras(vector<SceneCamera *> const &cameras) {
+        Scene::cameras = cameras;
+    }
+
+    vector<Light> const &getLights() const {
+        return lights;
+    }
+
+    void setLights(vector<Light> const &lights) {
+        Scene::lights = lights;
+    }
 
     map<string, RGBAImage *> const &getTextures() const {
         return textures;
@@ -128,6 +156,16 @@ public:
 
     void setGWindow(GLFWwindow *gWindow) {
         Scene::gWindow = gWindow;
+    }
+    
+    void switchCamera(int camNum);
+
+    void updateLights(void) {
+        // Update global lights
+        glBindBuffer(GL_UNIFORM_BUFFER, gLightBufferObject);
+        //glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(Light) * MAX_LIGHTS, gLights);
+        glBufferData(GL_UNIFORM_BUFFER, sizeof(Light) * MAX_LIGHTS, gLights, GL_STREAM_DRAW);
+        glBindBuffer(GL_UNIFORM_BUFFER, 0); // unbind buffer
     }
 };
 

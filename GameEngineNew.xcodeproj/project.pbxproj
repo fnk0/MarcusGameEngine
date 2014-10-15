@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C3AA1B119AD63FE002E40B2 /* GameEngineNew.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C3AA1B019AD63FE002E40B2 /* GameEngineNew.1 */; };
 		2C3AA1C319AD642A002E40B2 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C3AA1C219AD642A002E40B2 /* OpenGL.framework */; };
+		2C72129D19EDFB2900BF51C1 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C72129B19EDFB2900BF51C1 /* Node.cpp */; };
 		2C76C55B19B821C6005B64FB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C76C55619B821C6005B64FB /* main.cpp */; };
 		2C76C55C19B821C6005B64FB /* EngineUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C76C55819B821C6005B64FB /* EngineUtil.cpp */; };
 		2C76C55D19B821C6005B64FB /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C76C55A19B821C6005B64FB /* lodepng.cpp */; };
@@ -60,6 +61,8 @@
 		2C6DB50D19AD68D100144047 /* textureShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = textureShader.fs; sourceTree = "<group>"; };
 		2C6DB50E19AD68D100144047 /* hex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hex.png; sourceTree = "<group>"; };
 		2C6DB50F19AD68D100144047 /* monkeyTex.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = monkeyTex.ply; sourceTree = "<group>"; };
+		2C72129B19EDFB2900BF51C1 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		2C72129C19EDFB2900BF51C1 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		2C76C55619B821C6005B64FB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2C76C55719B821C6005B64FB /* EngineUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineUtil.h; sourceTree = "<group>"; };
 		2C76C55819B821C6005B64FB /* EngineUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EngineUtil.cpp; sourceTree = "<group>"; };
@@ -76,9 +79,13 @@
 		2C86E94A19AFC9BC00876CDA /* phongShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phongShader.fs; sourceTree = "<group>"; };
 		2C86E94C19B0239100876CDA /* anotherVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = anotherVertexShader.vs; sourceTree = "<group>"; };
 		2C8EE6A319B056C9003E8BFB /* monkeyScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = monkeyScene.json; sourceTree = "<group>"; };
+		2C9728F219EDB6F700BAB8B9 /* sprint1a.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sprint1a.json; sourceTree = "<group>"; };
+		2C9728F319EDB6F700BAB8B9 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
+		2CAFCBE819DB8B7100C86615 /* multiLight.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = multiLight.fs; sourceTree = "<group>"; };
 		2CB85A2219B23DAD00CB19E4 /* rock2.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock2.ply; sourceTree = "<group>"; };
 		2CB85A2319B23DAD00CB19E4 /* rock1.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock1.ply; sourceTree = "<group>"; };
 		2CB85A2519B240F000CB19E4 /* rock-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock-texture.png"; sourceTree = "<group>"; };
+		2CE6AB6A19DDD69300912786 /* cubeCenter.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cubeCenter.ply; sourceTree = "<group>"; };
 		BF8C70F637B8CBB1A983C1DE /* test.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = test.json; sourceTree = "<group>"; };
 		BF8C70FC6F1EE0F31294E606 /* WorldSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldSettings.h; sourceTree = "<group>"; };
 		BF8C73950C72144A8EBFED17 /* SomeScene.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = SomeScene.json; sourceTree = "<group>"; };
@@ -159,6 +166,8 @@
 				BF8C73FA8ED612CB38501395 /* Material.h */,
 				2C79140919C9185400A7CC4B /* Light.cpp */,
 				2C79140A19C9185400A7CC4B /* Light.h */,
+				2C72129B19EDFB2900BF51C1 /* Node.cpp */,
+				2C72129C19EDFB2900BF51C1 /* Node.h */,
 			);
 			path = GameEngineNew;
 			sourceTree = "<group>";
@@ -188,6 +197,7 @@
 				2C6DB50919AD68D100144047 /* diffuseTexture.fs */,
 				2C86E94A19AFC9BC00876CDA /* phongShader.fs */,
 				2C6DB50D19AD68D100144047 /* textureShader.fs */,
+				2CAFCBE819DB8B7100C86615 /* multiLight.fs */,
 			);
 			name = fragmentShaders;
 			sourceTree = "<group>";
@@ -204,6 +214,7 @@
 		2C80CD1F19B1C24900FBCF18 /* ply */ = {
 			isa = PBXGroup;
 			children = (
+				2CE6AB6A19DDD69300912786 /* cubeCenter.ply */,
 				2C42FB3A19BA3431001938DA /* Gandalf.ply */,
 				2C42FB3819BA17CA001938DA /* marines.ply */,
 				2C42FB3719BA1748001938DA /* indy.ply */,
@@ -246,6 +257,8 @@
 				BF8C73950C72144A8EBFED17 /* SomeScene.json */,
 				2C42FB3919BA17FC001938DA /* Marines.json */,
 				BF8C70F637B8CBB1A983C1DE /* test.json */,
+				2C9728F219EDB6F700BAB8B9 /* sprint1a.json */,
+				2C9728F319EDB6F700BAB8B9 /* TemplateIcon2x.png */,
 			);
 			name = scenes;
 			sourceTree = "<group>";
@@ -304,6 +317,7 @@
 				2C79140B19C9185400A7CC4B /* Light.cpp in Sources */,
 				2C76C55D19B821C6005B64FB /* lodepng.cpp in Sources */,
 				2C76C55B19B821C6005B64FB /* main.cpp in Sources */,
+				2C72129D19EDFB2900BF51C1 /* Node.cpp in Sources */,
 				2C76C55C19B821C6005B64FB /* EngineUtil.cpp in Sources */,
 				2C76C56019B821DA005B64FB /* json11.cpp in Sources */,
 				BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */,

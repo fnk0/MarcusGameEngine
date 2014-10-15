@@ -12,20 +12,17 @@
 #define OBJECT_WORLD_INVERSE_M "uObjectWorldInverseM"
 #define OBJECT_PERSPECT_M "uObjectPerpsectM"
 
-
 void Material::loadColors() {
 
     GLint loc = -1;
 
     for(int i = 0; i < (int) colors.size(); i++) {
-        if(colors[i].getId() == -1) {
-            loc = glGetUniformLocation(shaderProgram, colors[i].getName().c_str());
-            colors[i].setId(loc);
+        if(colors[i].id == -1) {
+            loc = glGetUniformLocation(shaderProgram, colors[i].name.c_str());
+            colors[i].id = loc;
         }
-        if(colors[i].getId() >= 0) {
-            glUniform4fv(loc, 1, &colors[i].getColor()[0]);
-
-
+        if(colors[i].id >= 0) {
+            glUniform4fv(loc, 1, &colors[i].val[0]);
         }
     }
 }
@@ -35,15 +32,57 @@ void Material::loadTextures() {
     GLint loc = -1;
 
     for (int i = 0; i< (int) textures.size(); i++) {
-        if (textures[i].getId() == -1) {
-            loc = glGetUniformLocation(shaderProgram, textures[i].getName().c_str());
-            textures[i].setId(loc);
+        if (textures[i].id == -1) {
+            loc = glGetUniformLocation(shaderProgram, textures[i].name.c_str());
+            textures[i].id = loc;
         }
-        if (textures[i].getId() >= 0) {
+        if (textures[i].id >= 0) {
             glActiveTexture(GL_TEXTURE0 + i);
-            glUniform1i(textures[i].getId(), i);
-            glBindTexture(GL_TEXTURE_2D, textures[i].getTexture()->textureId);
-            glBindSampler(textures[i].getId(), textures[i].getTexture()->samplerId);
+            glUniform1i(textures[i].id, i);
+            glBindTexture(GL_TEXTURE_2D, textures[i].val->textureId);
+            glBindSampler(textures[i].id, textures[i].val->samplerId);
+        }
+    }
+}
+
+void Material::bindMaterial(Transform &T, SceneCamera &camera)
+{
+    glUseProgram(shaderProgram);
+
+    // MATRICES FROM TRANSFORM
+    GLint loc = glGetUniformLocation(shaderProgram, OBJECT_WORLD_M);
+    if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.transform));
+    //
+    loc = glGetUniformLocation(shaderProgram, OBJECT_WORLD_INVERSE_M);
+    if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(T.invTransform));
+    //
+    glm::mat4x4 objectWorldViewPerspect = camera.getWorldViewProject() * T.transform;
+    loc = glGetUniformLocation(shaderProgram, OBJECT_PERSPECT_M);
+    if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(objectWorldViewPerspect));
+
+    // MATERIAL COLOR
+    for (int i = 0; i < (int) colors.size(); i++) {
+        if (colors[i].id == -1) {
+            loc = glGetUniformLocation(shaderProgram, colors[i].name.c_str());
+            colors[i].id = loc;
+        }
+        if (colors[i].id >= 0) {
+            glUniform4fv(colors[i].id, 1, &colors[i].val[0]);
+        }
+    }
+
+    // MATERIAL TEXTURES
+    for (int i = 0; i < (int) textures.size(); i++) {
+        if (textures[i].id == -1) {
+            loc = glGetUniformLocation(shaderProgram, textures[i].name.c_str());
+            textures[i].id = loc;
+        }
+        if (textures[i].id >= 0) {
+            //printf("\n%d %d\n", textures[i].id, textures[i].val->samplerId);
+            glActiveTexture(GL_TEXTURE0 + i);
+            glUniform1i(textures[i].id, i);
+            glBindTexture(GL_TEXTURE_2D, textures[i].val->textureId);
+            glBindSampler(textures[i].id, textures[i].val->samplerId);
         }
     }
 }
