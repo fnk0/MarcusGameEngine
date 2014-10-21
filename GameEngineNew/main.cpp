@@ -126,13 +126,6 @@ int main(int numArgs, char **args)
     string fileName = args[1];
     scene->loadScene(fileName);
 
-    scene->setSoundEngine(createIrrKlangDevice());
-	// Start sound engine
-	//soundEngine = createIrrKlangDevice();
-	if (!scene->getSoundEngine()) return 0;
-	scene->getSoundEngine()->setListenerPosition(vec3df(0, 0, 0), vec3df(0, 0, 1));
-    scene->getSoundEngine()->setSoundVolume(0.25f); // master volume control
-    
 	// Play 3D sound
 	string soundFileName = scene->getWorldSettings()->getBackgroundMusic();
 	ISound* music = scene->getSoundEngine()->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping

@@ -17,20 +17,11 @@ void Node::refreshTransforms() {
         nodes[i]->refreshTransforms();
         childrenTransform.transform *= nodes[i]->T.transform;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> FETCH_HEAD
     if(parent != NULL) {
        T.transform *= parent->T.transform * childrenTransform.transform;
     } else {
         T.transform *= childrenTransform.transform;
     }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> FETCH_HEAD
 }
 
 void Node::draw(glm::mat4x4 &mat, glm::mat4x4 &matInverse, SceneCamera &camera)
