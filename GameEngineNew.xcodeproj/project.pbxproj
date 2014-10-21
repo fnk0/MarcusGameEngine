@@ -51,8 +51,7 @@
 		2C553A8319B97A8400431C8C /* facek_lego_angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facek_lego_angry.png; sourceTree = "<group>"; };
 		2C553A8419B97A8400431C8C /* lokitexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lokitexture.png; sourceTree = "<group>"; };
 		2C553A8519B97A8400431C8C /* BrickRound0105_5_S_BUMP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickRound0105_5_S_BUMP.png; sourceTree = "<group>"; };
-		2C553A8619B97A8400431C8C /* BrickRound0105_5_SPEC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickRound0105_5_SPEC.png; sourceTree = "<group>"; };
-		2C553A8719B97A8400431C8C /* BrickRound0105_5_S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BrickRound0105_5_S.jpg; sourceTree = "<group>"; };
+		2C553A8619B97A8400431C8C /* brick_rocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brick_rocks.png; sourceTree = "<group>"; };
 		2C553A8819B97A8F00431C8C /* aerial_landscape.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aerial_landscape.ply; sourceTree = "<group>"; };
 		2C6DB50919AD68D100144047 /* diffuseTexture.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = diffuseTexture.fs; sourceTree = "<group>"; };
 		2C6DB50A19AD68D100144047 /* basicVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = basicVertexShader.vs; sourceTree = "<group>"; };
@@ -242,8 +241,7 @@
 				2C553A8319B97A8400431C8C /* facek_lego_angry.png */,
 				2C553A8419B97A8400431C8C /* lokitexture.png */,
 				2C553A8519B97A8400431C8C /* BrickRound0105_5_S_BUMP.png */,
-				2C553A8619B97A8400431C8C /* BrickRound0105_5_SPEC.png */,
-				2C553A8719B97A8400431C8C /* BrickRound0105_5_S.jpg */,
+				2C553A8619B97A8400431C8C /* brick_rocks.png */,
 				2CB85A2519B240F000CB19E4 /* rock-texture.png */,
 				2C6DB50E19AD68D100144047 /* hex.png */,
 			);
