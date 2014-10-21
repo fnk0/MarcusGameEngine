@@ -16,12 +16,9 @@ void Node::refreshTransforms() {
     for(int i = 0; i < nodes.size(); i++) {
         childrenTransform.transform *= nodes[i]->T.transform;
     }
-    
     if(parent != NULL) {
         T.transform *= parent->T.transform * childrenTransform.transform;
     } else {
         T.transform *= childrenTransform.transform;
     }
-    
-    
 }

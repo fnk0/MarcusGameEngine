@@ -49,6 +49,7 @@ void Scene::loadScene(std::string &fileName) {
     Json::array texturesJson = json[TEXTURES].array_items();
     Json::array lightsJson = json[LIGHTS].array_items();
     Json::array camerasJson = json[CAMERAS].array_items();
+    Json::array nodesJson = json[NODES].array_items();
 
     worldSettings->setWindowTitle(worldSettingsJson[WINDOW_TITLE].string_value());
     worldSettings->setWidth(worldSettingsJson[WIDTH].int_value());
@@ -214,8 +215,9 @@ void Scene::loadScene(std::string &fileName) {
         instance->setMaterial(material);
         instance->setScene(this);
         meshInstances.push_back(instance);
-
     };
+
+
     
     for(int i = 0; i < backGroundColorVector.length(); i++) {
         std::cout << "Color: " << backGroundColorVector[i] << "\n";

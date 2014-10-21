@@ -63,12 +63,19 @@
 #define TYPE_HEAD_LIGHT "head"
 #define TYPE_RIM_LIGHT "rim"
 
-
 #define CAMERAS "cameras"
 
 // Texture Constants
 #define TEXTURES "textures"
 #define OTHER_TEX "uOtherTex"
+
+
+// Node constants
+#define NODES "nodes"
+#define PARENT "parent"
+#define MESH_INSTANCE "meshInstance"
+#define CHILDREN "children"
+#define NODE "node"
 
 class SceneCamera;
 class WorldSettings;

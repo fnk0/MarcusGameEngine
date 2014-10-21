@@ -138,9 +138,6 @@ int main(int numArgs, char **args)
 	if (music) music->setMinDistance(5.0f); // distance of full volume
     
     //loadScene(args[1]);
-    
-
-
     //soundEngine->play2D(scene->getWorldSettings()->getBackgroundMusic().c_str(), true);
     
 	// start time (used to time framerate)
