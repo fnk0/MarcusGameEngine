@@ -91,6 +91,7 @@ private:
     map<std::string, RGBAImage*> textures;
     vector<MeshInstance*> meshInstances;
     vector<SceneCamera*> cameras;
+    ISoundEngine* soundEngine;
 
 public:
     vector<Light> lights;
@@ -164,7 +165,16 @@ public:
     void setGWindow(GLFWwindow *gWindow) {
         Scene::gWindow = gWindow;
     }
-    
+
+
+    ISoundEngine *getSoundEngine() const {
+        return soundEngine;
+    }
+
+    void setSoundEngine(ISoundEngine *soundEngine) {
+        Scene::soundEngine = soundEngine;
+    }
+
     void switchCamera(int camNum);
 
     void updateLights(void) {

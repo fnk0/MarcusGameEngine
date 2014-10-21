@@ -32,7 +32,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 int gWidth = 600; // window width
 int gHeight = 600; // window height
 
-ISoundEngine* soundEngine = NULL;
+//ISoundEngine* soundEngine = NULL;
 ISound* music = NULL;
 Camera dummyCamera;
 
@@ -91,7 +91,7 @@ void updateJson(Scene *scene) {
 void updateSound(Scene *scene) {
     glm::vec3 eye = scene->getCamera()->getEye();
     glm::vec3 center = scene->getCamera()->getCenter();
-    soundEngine->setListenerPosition(vec3df(eye[0], eye[1], eye[2]), vec3df(center[0], center[1], center[2]));
+    scene->getSoundEngine()->setListenerPosition(vec3df(eye[0], eye[1], eye[2]), vec3df(center[0], center[1], center[2]));
 }
 
 void renderJson(Scene *scene) {
@@ -126,15 +126,16 @@ int main(int numArgs, char **args)
     string fileName = args[1];
     scene->loadScene(fileName);
 
+    scene->setSoundEngine(createIrrKlangDevice());
 	// Start sound engine
-	soundEngine = createIrrKlangDevice();
-	if (!soundEngine) return 0;
-	soundEngine->setListenerPosition(vec3df(0, 0, 0), vec3df(0, 0, 1));
-	soundEngine->setSoundVolume(0.25f); // master volume control
+	//soundEngine = createIrrKlangDevice();
+	if (!scene->getSoundEngine()) return 0;
+	scene->getSoundEngine()->setListenerPosition(vec3df(0, 0, 0), vec3df(0, 0, 1));
+    scene->getSoundEngine()->setSoundVolume(0.25f); // master volume control
     
 	// Play 3D sound
 	string soundFileName = scene->getWorldSettings()->getBackgroundMusic();
-	ISound* music = soundEngine->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
+	ISound* music = scene->getSoundEngine()->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
 	if (music) music->setMinDistance(5.0f); // distance of full volume
     
     //loadScene(args[1]);
@@ -171,7 +172,7 @@ int main(int numArgs, char **args)
     
 	// Shut down sound engine
 	if (music) music->drop(); // release music stream.
-	soundEngine->drop(); // delete engine
+    scene->getSoundEngine()->drop(); // delete engine
     
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
