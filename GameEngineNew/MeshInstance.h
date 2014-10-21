@@ -66,7 +66,6 @@ public:
     void setMaterial(Material const &material) {
         MeshInstance::material = material;
     }
-
 };
 
 
