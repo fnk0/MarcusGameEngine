@@ -39,7 +39,7 @@
     "textures": [
         {
             "name": "texture1",
-            "file": "hex.png"
+            "file": "rock-texture.png"
         }
     ],
     "lights": [

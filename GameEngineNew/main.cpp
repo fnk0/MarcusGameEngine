@@ -66,7 +66,8 @@ void keyboardCameraController(Scene *scene) {
     scene->getCamera()->refreshTransform(scene->getWorldSettings()->getWidth(), scene->getWorldSettings()->getHeight());
 }
 
-void raimbowUnicorn(FILE *F) {
+void ryanRedneck(FILE *F) {
+    cout << "Unicorn!!" << endl;
     dummyCamera.refreshTransform((float)gWidth, (float)gHeight);
 }
 
