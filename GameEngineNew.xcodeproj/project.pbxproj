@@ -91,7 +91,7 @@
 		BF8C73FA8ED612CB38501395 /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
 		BF8C768B6EA9DD0ACA350DD7 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
 		BF8C7739E6283636D31BB1AF /* MeshInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshInstance.h; sourceTree = "<group>"; };
-		BF8C774E2A6C77C9ED8D510B /* test copy.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = "test copy.json"; sourceTree = "<group>"; };
+		BF8C774E2A6C77C9ED8D510B /* test_copy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test_copy.json; sourceTree = "<group>"; };
 		BF8C7867841F890720BC50DF /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
 		BF8C78FD43511EBB151C4F06 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		BF8C7B31E094E19BFB011CB7 /* WorldSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldSettings.cpp; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 				BF8C70F637B8CBB1A983C1DE /* test.json */,
 				2C9728F219EDB6F700BAB8B9 /* sprint1a.json */,
 				2C9728F319EDB6F700BAB8B9 /* TemplateIcon2x.png */,
-				BF8C774E2A6C77C9ED8D510B /* test copy.json */,
+				BF8C774E2A6C77C9ED8D510B /* test_copy.json */,
 			);
 			name = scenes;
 			sourceTree = "<group>";

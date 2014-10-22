@@ -136,11 +136,11 @@ public:
         Scene::meshInstances = meshInstances;
     }
 
-    map<string, Node *> const &getNodes() const {
+    map<std::string,Node *> getNodes() {
         return nodes;
     }
 
-    void setNodes(map<string, Node *> const &nodes) {
+    void setNodes(map<std::string, Node *> &nodes) {
         Scene::nodes = nodes;
     }
 

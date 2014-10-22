@@ -224,17 +224,29 @@ void Scene::loadScene(std::string &fileName) {
         loadFloatsArray(&rotationVector[0], nodesJson[i][ROTATION].array_items());
         glm::quat rotation(rotationVector);
 
-        node->getT().scale = scale;
-        node->getT().translation = translation;
-        node->getT().rotation = rotation;
-        node->setMeshInstance(this->meshInstances[nodesJson[i][MESH_INSTANCE].string_value()]);
+        node->T.scale = scale;
+        node->T.translation = translation;
+        node->T.rotation = rotation;
+        MeshInstance* inst = this->meshInstances[nodesJson[i][MESH_INSTANCE].string_value()];
+        inst->setT(node->getT());
+        node->setMeshInstance(inst);
 
+        Transform t = node->getT();
+        glm::vec4 _temp = glm::vec4(0,0,0,1) * t.transform;
         string soundFileName = nodesJson[i][BACKGROUND_MUSIC].string_value();
-        ISound* music = this->getSoundEngine()->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
+        ISound* music = this->getSoundEngine()->play3D(soundFileName.c_str(), vec3df(_temp.x, _temp.y, _temp.z), true); // position and looping
         if (music) music->setMinDistance(5.0f); // distance of full volume
 
-        node->setSound(music);
+        node->setParent(nodesJson[i][PARENT].string_value());
+        node->setScene(this);
 
+        for(int j = 0; j < nodesJson[i][CHILDREN].array_items().size(); j++) {
+            std::string childNode = nodesJson[i][CHILDREN].array_items()[j].string_value();
+            node->getNodes().push_back(childNode);
+        }
+
+        node->setSound(music);
+        nodes.insert(make_pair(nodesJson[i][NAME].string_value(), node));
     }
     
     for(int i = 0; i < backGroundColorVector.length(); i++) {

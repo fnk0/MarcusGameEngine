@@ -72,20 +72,20 @@ void ryanRedneck(FILE *F) {
 }
 
 void updateJson(Scene *scene) {
-    static float dScale = 0.0005f;
+    /*static float dScale = 0.0005f;
     for(int i = 0; i < scene->getMeshInstances().size(); i++) {
         // scale mesh instance
         
-        float scale = scene->getMeshInstances()[i]->T.scale[0];
+        float scale = scene->getNodes()[i]->T.scale[0];
         scale += dScale;
         if (scale > 1.25f) dScale = -0.0005f;
         if (scale < 0.25f) dScale = 0.0005f;
-        scene->getMeshInstances()[i]->setScale(glm::vec3(scale));
+        scene->getNodes()[i]->getMeshInstance()->setScale(glm::vec3(scale));
         
         // rotate mesh
         glm::quat r = glm::quat(glm::vec3(0.0f, 0.0051f, 0.00f));
-        scene->getMeshInstances()[i]->T.rotation *= r;
-    }
+        scene->getNodes()[i]->T.rotation *= r;
+    } */
 }
 
 void updateSound(Scene *scene) {
@@ -104,8 +104,11 @@ void renderJson(Scene *scene) {
     
     // draw scene
     //cout << "Number of instances: " << scene->meshInstances.size() << "\n";
-    for(int i = 0; i < scene->getMeshInstances().size(); i++) {
-        scene->getMeshInstances()[i]->draw(*scene->getCamera());
+    //for(int i = 0; i < scene->getNodes().size(); i++) {
+    //    scene->getNodes()[i]->draw(*scene->getCamera());
+    map<std::string, Node*> _map = scene->getNodes();
+    for(auto outer_iter=_map.begin(); outer_iter!=_map.end(); ++outer_iter) {
+        outer_iter->second->draw(*scene->getCamera());
     }
 }
 
@@ -127,9 +130,9 @@ int main(int numArgs, char **args)
     scene->loadScene(fileName);
 
 	// Play 3D sound
-	string soundFileName = scene->getWorldSettings()->getBackgroundMusic();
-	ISound* music = scene->getSoundEngine()->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
-	if (music) music->setMinDistance(5.0f); // distance of full volume
+	//string soundFileName = scene->getWorldSettings()->getBackgroundMusic();
+	//ISound* music = scene->getSoundEngine()->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
+	//if (music) music->setMinDistance(5.0f); // distance of full volume
     
     //loadScene(args[1]);
     //soundEngine->play2D(scene->getWorldSettings()->getBackgroundMusic().c_str(), true);
