@@ -13,20 +13,32 @@
 #include "EngineUtil.h"
 #include "MeshInstance.h"
 
+class MeshInstance;
+
 class Node {
 
 // Has a TRS -> Translation Rotation Scale
 // Childs also has a TRS, etc..1
 public:
     Transform T;
-    Node *parent;
+    std::string parent;
     MeshInstance *meshInstance;
-    vector<Node*> nodes;
+    vector<std::string> nodes;
     ISound *sound;
+    Scene* scene;
+
+
+    Scene *getScene() {
+        return scene;
+    }
+
+    void setScene(Scene *scene) {
+        Node::scene = scene;
+    }
 
     void refreshTransforms();
 
-    Transform const &getT() const {
+    Transform getT() {
         return T;
     }
 
@@ -34,11 +46,11 @@ public:
         Node::T = T;
     }
 
-    Node *getParent() const {
+    std::string getParent() {
         return parent;
     }
 
-    void setParent(Node *parent) {
+    void setParent(std::string parent) {
         Node::parent = parent;
     }
 
@@ -50,11 +62,11 @@ public:
         Node::meshInstance = meshInstance;
     }
 
-    vector<Node *> const &getNodes() const {
+    vector<std::string> getNodes() {
         return nodes;
     }
 
-    void setNodes(vector<Node *> const &nodes) {
+    void setNodes(vector<std::string> &nodes) {
         Node::nodes = nodes;
     }
 
@@ -68,7 +80,8 @@ public:
     
     // Look at the camera and see which direction is looking to (Easy way)
     // Hard eay is related to the World location of the Billboard. 
-    void draw(glm::mat4x4 &mat, glm::mat4x4 &matInverse, SceneCamera &cam);
+    //void draw(glm::mat4x4 &mat, glm::mat4x4 &matInverse, SceneCamera &cam);
+    void draw(SceneCamera &cam);
 };
 
 #endif /* defined(__GameEngineNew__Node__) */

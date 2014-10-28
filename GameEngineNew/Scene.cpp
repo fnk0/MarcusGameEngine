@@ -65,6 +65,14 @@ void Scene::loadScene(std::string &fileName) {
     gWindow = createOpenGLWindow(worldSettings->getWidth(), worldSettings->getHeight(), worldSettings->getWindowTitle().c_str(), worldSettings->getSpp());
     glfwSetKeyCallback(gWindow, Scene::keyCallback);
 
+    // loading sound engine stuff
+    this->setSoundEngine(createIrrKlangDevice());
+    // Start sound engine
+    //soundEngine = createIrrKlangDevice();
+    if (!this->getSoundEngine()) ERROR("Error initializing sound engine!!");
+    this->getSoundEngine()->setListenerPosition(vec3df(0, 0, 0), vec3df(0, 0, 1));
+    this->getSoundEngine()->setSoundVolume(0.25f); // master volume control
+
     cout << "Number of meshes: " << meshesJson.size() << "\n";
 
     for(int i = 0; i < meshesJson.size(); i++) {
@@ -175,17 +183,6 @@ void Scene::loadScene(std::string &fileName) {
             uniformVector.push_back(uniforms[i].string_value());
         }
 
-        glm::vec3 scale;
-        loadFloatsArray(&scale[0], meshInstancesJson[i][SCALE].array_items());
-
-        glm::vec3 translation;
-        loadFloatsArray(&translation[0], meshInstancesJson[i][TRANSLATION].array_items());
-        
-        glm::vec3 rotationVector;
-        loadFloatsArray(&rotationVector[0], meshInstancesJson[i][ROTATION].array_items());
-        
-        glm::quat rotation(rotationVector);
-
         for(int k = 0; k < colors.size(); k++) {
             NameIdVal<glm::vec4> color;
             color.name = colors[k][TYPE].string_value();
@@ -207,17 +204,50 @@ void Scene::loadScene(std::string &fileName) {
         instance->setMesh(meshes[meshName]);
         vertexShader = loadShader(meshInstancesJson[i][VERTEX_SHADER].string_value(), GL_VERTEX_SHADER);
         fragmentShader = loadShader(meshInstancesJson[i][FRAGMENT_SHADER].string_value(), GL_FRAGMENT_SHADER);
-        instance->setScale(scale);
-        instance->setTranslation(translation);
-        instance->setRotation(rotation);
         shaderProgram = createShaderProgram(vertexShader, fragmentShader);
         material.setShaderProgram(shaderProgram);
         instance->setMaterial(material);
         instance->setScene(this);
-        meshInstances.push_back(instance);
+        meshInstances.insert(make_pair(meshInstancesJson[i][NAME].string_value(), instance));
     };
 
+    for(int i = 0; i < nodesJson.size(); i++) {
+        Node* node = new Node();
 
+        glm::vec3 scale;
+        loadFloatsArray(&scale[0], nodesJson[i][SCALE].array_items());
+
+        glm::vec3 translation;
+        loadFloatsArray(&translation[0], nodesJson[i][TRANSLATION].array_items());
+
+        glm::vec3 rotationVector;
+        loadFloatsArray(&rotationVector[0], nodesJson[i][ROTATION].array_items());
+        glm::quat rotation(rotationVector);
+
+        node->T.scale = scale;
+        node->T.translation = translation;
+        node->T.rotation = rotation;
+        MeshInstance* inst = this->meshInstances[nodesJson[i][MESH_INSTANCE].string_value()];
+        inst->setT(node->getT());
+        node->setMeshInstance(inst);
+
+        Transform t = node->getT();
+        glm::vec4 _temp = glm::vec4(0,0,0,1) * t.transform;
+        string soundFileName = nodesJson[i][BACKGROUND_MUSIC].string_value();
+        ISound* music = this->getSoundEngine()->play3D(soundFileName.c_str(), vec3df(_temp.x, _temp.y, _temp.z), true); // position and looping
+        if (music) music->setMinDistance(5.0f); // distance of full volume
+
+        node->setParent(nodesJson[i][PARENT].string_value());
+        node->setScene(this);
+
+        for(int j = 0; j < nodesJson[i][CHILDREN].array_items().size(); j++) {
+            std::string childNode = nodesJson[i][CHILDREN].array_items()[j].string_value();
+            node->getNodes().push_back(childNode);
+        }
+
+        node->setSound(music);
+        nodes.insert(make_pair(nodesJson[i][NAME].string_value(), node));
+    }
     
     for(int i = 0; i < backGroundColorVector.length(); i++) {
         std::cout << "Color: " << backGroundColorVector[i] << "\n";

@@ -60,11 +60,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "someScene.json"
+            argument = "test.json"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "test.json"
+            argument = "test_copy.json"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

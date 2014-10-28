@@ -9,6 +9,7 @@
 #include "WorldSettings.h"
 #include "MeshInstance.h"
 #include "Light.h"
+#include "Node.h"
 
 // COMMONS
 #define IN_FILE "file"
@@ -81,6 +82,7 @@ class SceneCamera;
 class WorldSettings;
 class Mesh;
 class MeshInstance;
+class Node;
 
 class Scene {
 
@@ -89,7 +91,8 @@ private:
     SceneCamera* camera;
     map<std::string, Mesh*> meshes;
     map<std::string, RGBAImage*> textures;
-    vector<MeshInstance*> meshInstances;
+    map<std::string, MeshInstance*> meshInstances;
+    map<std::string, Node*> nodes;
     vector<SceneCamera*> cameras;
     ISoundEngine* soundEngine;
 
@@ -125,12 +128,20 @@ public:
         Scene::meshes = meshes;
     }
 
-    vector<MeshInstance *>  const &getMeshInstances() const {
+    map<string, MeshInstance *> const &getMeshInstances() const {
         return meshInstances;
     }
 
-    void setMeshInstances(vector<MeshInstance *> const &meshInstances) {
+    void setMeshInstances(map<string, MeshInstance *> const &meshInstances) {
         Scene::meshInstances = meshInstances;
+    }
+
+    map<std::string,Node *> getNodes() {
+        return nodes;
+    }
+
+    void setNodes(map<std::string, Node *> &nodes) {
+        Scene::nodes = nodes;
     }
 
     vector<SceneCamera *> const &getCameras() const {

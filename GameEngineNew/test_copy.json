@@ -34,6 +34,10 @@
         {
             "name": "cube",
             "file": "cubeCenter.ply"
+        },
+        {
+            "name": "aragorn",
+            "file": "Aragorn.ply"
         }
     ],
     "textures": [
@@ -93,6 +97,28 @@
                     "name": "texture1"
                 }
             ]
+        },
+        {
+            "name": "aragornInstance",
+            "mesh": "aragorn",
+            "vertexShader": "basicVertexShader.vs",
+            "fragmentShader": "multiLight.fs",
+            "colors": [
+                {
+                    "type": "uDiffuseColor",
+                    "value": [1, 1, 1, 1]
+                }
+            ],
+            "textures": [
+                {
+                    "type": "uDiffuseTex",
+                    "name": "texture1"
+                },
+                {
+                    "type": "uOtherTex",
+                    "name": "texture1"
+                }
+            ]
         }
     ],
     "nodes": [
@@ -106,11 +132,19 @@
             "backgroundMusic": "bell.wav",
             "children": [
                 {
-                    "node": "nodeName"
-                },
-                {
-                    "node": "node2"
+                    "name": "aragornNode"
                 }
+            ]
+        },
+        {
+            "name": "aragornNode",
+            "parent": "nodeName",
+            "meshInstance": "aragornInstance",
+            "scale": [0.5, 0.5, 0.5],
+            "rotation": [-1.8, 0, 0, 0],
+            "translation": [-1.8, 0.5, 2.2],
+            "backgroundMusic": "",
+            "children": [
             ]
         }
     ]

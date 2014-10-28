@@ -11,9 +11,6 @@
     <content url="file:///usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib">
       <sourceFolder url="file:///usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib" isTestSource="false" />
     </content>
-    <content url="file:///usr/local/lib/libglfw.3.0.dylib">
-      <sourceFolder url="file:///usr/local/lib/libglfw.3.0.dylib" isTestSource="false" />
-    </content>
     <content url="file:///usr/local/lib/libirrklang.dylib">
       <sourceFolder url="file:///usr/local/lib/libirrklang.dylib" isTestSource="false" />
     </content>

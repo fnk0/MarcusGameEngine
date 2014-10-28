@@ -155,6 +155,47 @@ public:
 		transform = Mtrans * Mrot * Mscale;  // transforms happen right to left
 		invTransform = glm::inverse(transform);
 	}
+
+
+    glm::vec3 getScale() {
+        return scale;
+    }
+
+    void setScale(const glm::vec3 &scale) {
+        Transform::scale = scale;
+    }
+
+    glm::quat getRotation() {
+        return rotation;
+    }
+
+    void setRotation(glm::quat &rotation) {
+        Transform::rotation = rotation;
+    }
+
+    glm::vec3 getTranslation()  {
+        return translation;
+    }
+
+    void setTranslation(glm::vec3 &translation) {
+        Transform::translation = translation;
+    }
+
+    glm::mat4x4 getTransform() {
+        return transform;
+    }
+
+    void setTransform(glm::mat4x4 &transform) {
+        Transform::transform = transform;
+    }
+
+    glm::mat4x4 getInvTransform() {
+        return invTransform;
+    }
+
+    void setInvTransform(glm::mat4x4 &invTransform) {
+        Transform::invTransform = invTransform;
+    }
 };
 
 //-------------------------------------------------------------------------//
