@@ -20,11 +20,11 @@ void Node::refreshTransforms() {
     T.refreshTransform();
 
     Node* _parent = scene->getNodes()[this->parent];
+    map<std::string, Node*> nodeMap = scene->getNodes();
     if(_parent != NULL) {
        //parent->T.refreshTransform();
        T.transform = T.transform * _parent->T.transform; //* childrenTransform.transform;
        for(int i = 0; i < nodes.size(); i++) {
-           map<std::string, Node*> nodeMap = scene->getNodes();
            nodeMap[nodes[i]]->refreshTransforms();
        }
     }
@@ -33,8 +33,28 @@ void Node::refreshTransforms() {
 //void Node::draw(glm::mat4x4 &mat, glm::mat4x4 &matInverse, SceneCamera &camera)
 void Node::draw(SceneCamera &camera)
 {
+    
     this->refreshTransforms();
-    meshInstance->setT(this->T);
+    
+    if(this->isBillboard) {
+        glm::vec3 cp = camera.getEye() - this->T.translation;
+        //printVec(cp);
+        float theta = atan2(cp.x, cp.z);
+        //this->T.rotation = glm::normalize(glm::quat(-theta, glm::vec3(0, 1, 0)));
+        
+        glm::mat4x4 rotationMatrix = glm::mat4x4(
+                cos(theta), 0.0, -sin(theta), 0.0,
+                0.0, 1.0, 0.0, 0.0,
+                sin(theta), 0.0, cos(theta), 0.0,
+                0.0, 0.0, 0.0, 1.0);
+        
+        this->T.transform *= rotationMatrix;
+        
+        //this->T.rotation = glm::quat(vp.x, vp.y, vp.z, 1);
+        //cout << "Theta: " << theta << endl;
+        //printMat(this->T.transform);
+    }
+
     meshInstance->material.bindMaterial(T, camera);
     if (meshInstance != NULL) meshInstance->draw(camera);
     else printf("Error! Null Mesh.");

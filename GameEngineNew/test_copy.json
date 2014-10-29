@@ -6,7 +6,7 @@
         "height": 800,
         "spp": 16,
         "backgroundColor": [0.5, 0.5, 0.4],
-        "backgroundMusic": "bell.wav"
+        "backgroundMusic": ""
     },
     
     "cameras": [
@@ -124,26 +124,25 @@
     "nodes": [
         {
             "name": "nodeName",
-            "parent": "parentNode",
+            "parent": "no",
             "meshInstance": "cubeInstance",
             "scale": [4, 0.1, 4],
-            "rotation": [0, 0, 0, 0],
+            "rotation": [0, 1, 0, 0],
             "translation": [0, 0, 0],
             "backgroundMusic": "bell.wav",
+            "is_billboard": false,
             "children": [
-                {
-                    "name": "aragornNode"
-                }
             ]
         },
         {
             "name": "aragornNode",
-            "parent": "nodeName",
+            "parent": "no",
             "meshInstance": "aragornInstance",
-            "scale": [0.5, 0.5, 0.5],
-            "rotation": [-1.8, 0, 0, 0],
+            "scale": [1, 1, 1],
+            "rotation": [0, 1, 0, 0],
             "translation": [-1.8, 0.5, 2.2],
             "backgroundMusic": "",
+            "is_billboard": true,
             "children": [
             ]
         }

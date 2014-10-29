@@ -220,15 +220,15 @@ void Scene::loadScene(std::string &fileName) {
         glm::vec3 translation;
         loadFloatsArray(&translation[0], nodesJson[i][TRANSLATION].array_items());
 
-        glm::vec3 rotationVector;
+        glm::vec4 rotationVector;
         loadFloatsArray(&rotationVector[0], nodesJson[i][ROTATION].array_items());
-        glm::quat rotation(rotationVector);
+        glm::vec3 vecRot(rotationVector.x, rotationVector.y, rotationVector.z);
+        glm::quat rotation(rotationVector.w, vecRot);
 
         node->T.scale = scale;
         node->T.translation = translation;
         node->T.rotation = rotation;
         MeshInstance* inst = this->meshInstances[nodesJson[i][MESH_INSTANCE].string_value()];
-        inst->setT(node->getT());
         node->setMeshInstance(inst);
 
         Transform t = node->getT();
@@ -238,6 +238,7 @@ void Scene::loadScene(std::string &fileName) {
         if (music) music->setMinDistance(5.0f); // distance of full volume
 
         node->setParent(nodesJson[i][PARENT].string_value());
+        node->isBillboard = nodesJson[i][IS_BILLBOARD].bool_value();
         node->setScene(this);
 
         for(int j = 0; j < nodesJson[i][CHILDREN].array_items().size(); j++) {

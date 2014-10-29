@@ -76,6 +76,7 @@
 #define PARENT "parent"
 #define MESH_INSTANCE "meshInstance"
 #define CHILDREN "children"
+#define IS_BILLBOARD "is_billboard"
 #define NODE "node"
 
 class SceneCamera;

@@ -28,27 +28,12 @@ public:
     MeshInstance(void);
 
     void setMesh(Mesh *mesh) { MeshInstance::mesh = mesh; }
-    void setScale(const glm::vec3 &s) { T.scale = s; }
-    void setRotation(const glm::quat &r) { T.rotation = r; }
-    void setTranslation(const glm::vec3 &t) { T.translation = t; }
-
-    void refreshTransform(void);
 
     void draw(SceneCamera &camera);
 
     Mesh *getMesh() const {
         return mesh;
     }
-
-
-    Transform const &getT() const {
-        return T;
-    }
-
-    void setT(Transform const &T) {
-        MeshInstance::T = T;
-    }
-
 
     Scene *getScene() const {
         return scene;
