@@ -80,7 +80,10 @@ public:
         SceneCamera::worldViewProject = worldViewProject;
     }
 
-    void translateGlobal(glm::vec3 &t) { eye += t; center += t; }
+    void translateGlobal(const glm::vec3 &t) {
+        eye += t;
+        center += t;
+    }
 
     void translateLocal(const glm::vec3 &t) {
         glm::vec3 zz = glm::normalize(eye - center);
@@ -103,7 +106,7 @@ public:
         glm::vec3 zz = glm::normalize(eye - center);
         glm::vec3 xx = glm::normalize(glm::cross(vup, zz));
         glm::vec3 yy = glm::cross(zz, xx);
-        glm::vec3 aa = xx*axis.x + yy*axis.y + zz*axis.z;
+        glm::vec3 aa = xx * axis.x + yy * axis.y + zz * axis.z;
         rotateGlobal(aa, angle);
     }
 };

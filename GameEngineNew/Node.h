@@ -14,6 +14,7 @@
 #include "MeshInstance.h"
 
 class MeshInstance;
+class Scene;
 
 class Node {
 
@@ -26,6 +27,7 @@ public:
     vector<std::string> nodes;
     ISound *sound;
     Scene* scene;
+    bool isBillboard = true;
 
 
     Scene *getScene() {

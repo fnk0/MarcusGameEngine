@@ -14,7 +14,7 @@
 		<string>https://github.com/fnk0/MarcusGameEngine.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>GameEngineNew.xcodeproj/project.xcworkspace</string>
+	<string>GameEngineNew.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7B13BCC5D561440023B18CFAA3768D2014E55A9B</key>
