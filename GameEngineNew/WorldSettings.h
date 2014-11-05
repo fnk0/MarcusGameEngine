@@ -3,7 +3,6 @@
 // Copyright (c) 2014 Marcus Gabilheri. All rights reserved.
 //
 
-
 #ifndef __GameEngineNew__WorldSettings_H_
 #define __GameEngineNew__WorldSettings_H_
 
