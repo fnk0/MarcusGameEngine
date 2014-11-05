@@ -11,7 +11,7 @@ Basic video game / rendering Engine created for a Game Engine class :)
   * Tile Editor
   * Grass and tree distribution
 
-* Vernonica
+* Veronica
   * Velocity and angular velocity
   * Ground Collision
   * Gravity
