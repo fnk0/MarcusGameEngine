@@ -4,6 +4,8 @@
 //
 
 #include "Scene.h"
+#include "CircleScript.h"
+#include "Scene.h"
 
 
 GLuint gLightBufferObject = NULL_HANDLE;
@@ -213,7 +215,9 @@ void Scene::loadScene(std::string &fileName) {
 
     for(int i = 0; i < nodesJson.size(); i++) {
         Node* node = new Node();
-
+        node->script = new CircleScript();
+        node->script->setNode(node);
+        
         glm::vec3 scale;
         loadFloatsArray(&scale[0], nodesJson[i][SCALE].array_items());
 

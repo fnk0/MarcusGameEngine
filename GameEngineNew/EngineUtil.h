@@ -156,6 +156,17 @@ public:
 		invTransform = glm::inverse(transform);
 	}
 
+    void change_translation(glm::vec3 translation) {
+        this->translation += translation;
+    }
+
+    void change_rotation(glm::quat rotation) {
+        this->rotation += rotation;
+    }
+
+    void change_scale(glm::vec3 scale) {
+        this->scale += scale;
+    }
 
     glm::vec3 getScale() {
         return scale;
