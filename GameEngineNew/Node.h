@@ -12,9 +12,11 @@
 #include <stdio.h>
 #include "EngineUtil.h"
 #include "MeshInstance.h"
+#include "Script.h"
 
 class MeshInstance;
 class Scene;
+class Script;
 
 class Node {
 
@@ -28,6 +30,7 @@ public:
     ISound *sound;
     Scene* scene;
     bool isBillboard = true;
+    Script* script;
 
 
     Scene *getScene() {

@@ -54,6 +54,10 @@ void Node::draw(SceneCamera &camera)
         //cout << "Theta: " << theta << endl;
         //printMat(this->T.transform);
     }
+    
+    if(script != NULL) {
+        script->run();
+    }
 
     meshInstance->material.bindMaterial(T, camera);
     if (meshInstance != NULL) meshInstance->draw(camera);
