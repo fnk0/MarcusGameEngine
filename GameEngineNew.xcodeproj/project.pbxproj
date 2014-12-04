@@ -109,6 +109,27 @@
 		BF8C7EDA8879119F4558FD15 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		BF8C7F059A3B0C8883D5A66E /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneCamera.cpp; sourceTree = "<group>"; };
+		CDD99DB11A3104F200F9B237 /* irrKlang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = irrKlang.h; sourceTree = "<group>"; };
+		CDD99DB21A31057000F9B237 /* ik_irrKlangTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_irrKlangTypes.h; sourceTree = "<group>"; };
+		CDD99DB31A31059700F9B237 /* ik_ESoundEngineOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ESoundEngineOptions.h; sourceTree = "<group>"; };
+		CDD99DB41A31059700F9B237 /* ik_ESoundOutputDrivers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ESoundOutputDrivers.h; sourceTree = "<group>"; };
+		CDD99DB51A31059700F9B237 /* ik_EStreamModes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_EStreamModes.h; sourceTree = "<group>"; };
+		CDD99DB61A31059700F9B237 /* ik_IAudioRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_IAudioRecorder.h; sourceTree = "<group>"; };
+		CDD99DB71A31059700F9B237 /* ik_IAudioStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_IAudioStream.h; sourceTree = "<group>"; };
+		CDD99DB81A31059700F9B237 /* ik_IAudioStreamLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_IAudioStreamLoader.h; sourceTree = "<group>"; };
+		CDD99DB91A31059700F9B237 /* ik_IFileFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_IFileFactory.h; sourceTree = "<group>"; };
+		CDD99DBA1A31059700F9B237 /* ik_IFileReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_IFileReader.h; sourceTree = "<group>"; };
+		CDD99DBB1A31059700F9B237 /* ik_IRefCounted.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_IRefCounted.h; sourceTree = "<group>"; };
+		CDD99DBC1A31059700F9B237 /* ik_ISound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ISound.h; sourceTree = "<group>"; };
+		CDD99DBD1A31059700F9B237 /* ik_ISoundDeviceList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ISoundDeviceList.h; sourceTree = "<group>"; };
+		CDD99DBE1A31059700F9B237 /* ik_ISoundEffectControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ISoundEffectControl.h; sourceTree = "<group>"; };
+		CDD99DBF1A31059700F9B237 /* ik_ISoundEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ISoundEngine.h; sourceTree = "<group>"; };
+		CDD99DC01A31059700F9B237 /* ik_ISoundMixedOutputReceiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ISoundMixedOutputReceiver.h; sourceTree = "<group>"; };
+		CDD99DC11A31059700F9B237 /* ik_ISoundSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ISoundSource.h; sourceTree = "<group>"; };
+		CDD99DC21A31059700F9B237 /* ik_ISoundStopEventReceiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ISoundStopEventReceiver.h; sourceTree = "<group>"; };
+		CDD99DC31A31059700F9B237 /* ik_IVirtualRefCounted.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_IVirtualRefCounted.h; sourceTree = "<group>"; };
+		CDD99DC41A31059700F9B237 /* ik_SAudioStreamFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_SAudioStreamFormat.h; sourceTree = "<group>"; };
+		CDD99DC51A31059700F9B237 /* ik_vec3d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_vec3d.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +190,27 @@
 				BF8C7EDA8879119F4558FD15 /* Scene.h */,
 				BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */,
 				BF8C7CE23F068AE0C64BD628 /* SceneCamera.h */,
+				CDD99DB11A3104F200F9B237 /* irrKlang.h */,
+				CDD99DB21A31057000F9B237 /* ik_irrKlangTypes.h */,
+				CDD99DB31A31059700F9B237 /* ik_ESoundEngineOptions.h */,
+				CDD99DB41A31059700F9B237 /* ik_ESoundOutputDrivers.h */,
+				CDD99DB51A31059700F9B237 /* ik_EStreamModes.h */,
+				CDD99DB61A31059700F9B237 /* ik_IAudioRecorder.h */,
+				CDD99DB71A31059700F9B237 /* ik_IAudioStream.h */,
+				CDD99DB81A31059700F9B237 /* ik_IAudioStreamLoader.h */,
+				CDD99DB91A31059700F9B237 /* ik_IFileFactory.h */,
+				CDD99DBA1A31059700F9B237 /* ik_IFileReader.h */,
+				CDD99DBB1A31059700F9B237 /* ik_IRefCounted.h */,
+				CDD99DBC1A31059700F9B237 /* ik_ISound.h */,
+				CDD99DBD1A31059700F9B237 /* ik_ISoundDeviceList.h */,
+				CDD99DBE1A31059700F9B237 /* ik_ISoundEffectControl.h */,
+				CDD99DBF1A31059700F9B237 /* ik_ISoundEngine.h */,
+				CDD99DC01A31059700F9B237 /* ik_ISoundMixedOutputReceiver.h */,
+				CDD99DC11A31059700F9B237 /* ik_ISoundSource.h */,
+				CDD99DC21A31059700F9B237 /* ik_ISoundStopEventReceiver.h */,
+				CDD99DC31A31059700F9B237 /* ik_IVirtualRefCounted.h */,
+				CDD99DC41A31059700F9B237 /* ik_SAudioStreamFormat.h */,
+				CDD99DC51A31059700F9B237 /* ik_vec3d.h */,
 				BF8C78FD43511EBB151C4F06 /* Mesh.cpp */,
 				BF8C7F059A3B0C8883D5A66E /* Mesh.h */,
 				BF8C7D0655A21126ED317DC6 /* MeshInstance.cpp */,

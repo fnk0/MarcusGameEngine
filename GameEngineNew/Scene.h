@@ -196,6 +196,12 @@ public:
         glBufferData(GL_UNIFORM_BUFFER, sizeof(Light) * MAX_LIGHTS, gLights, GL_STREAM_DRAW);
         glBindBuffer(GL_UNIFORM_BUFFER, 0); // unbind buffer
     }
+    
+    void updateNodes(const float dt) {
+        for(auto outer_iter=nodes.begin(); outer_iter!=nodes.end(); ++outer_iter) {
+            outer_iter->second->update(dt);
+        }
+    }
 };
 
 

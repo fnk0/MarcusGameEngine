@@ -31,6 +31,7 @@ public:
     Scene* scene;
     bool isBillboard = true;
     Script* script;
+    glm::vec3 velocity;
 
 
     Scene *getScene() {
@@ -49,6 +50,14 @@ public:
 
     void setT(Transform const &T) {
         Node::T = T;
+    }
+    
+    glm::vec3 getVelocity() {
+        return velocity;
+    }
+    
+    void setVelocity(const glm::vec3 &v) {
+        Node::velocity = v;
     }
 
     std::string getParent() {
@@ -81,6 +90,11 @@ public:
 
     void setSound(ISound *sound) {
         Node::sound = sound;
+    }
+    
+    void update(const float dt) {
+        Node::T->translation = T->translation + (Node::velocity) * dt;
+        Node::T->refreshTransform();
     }
     
     // Look at the camera and see which direction is looking to (Easy way)

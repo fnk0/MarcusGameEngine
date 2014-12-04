@@ -38,7 +38,7 @@ using namespace std;
 using namespace json11;
 
 // Sound (irrKlang)
-#include <irrKlang.h>
+#include "irrKlang.h"
 using namespace irrklang;
 
 //-------------------------------------------------------------------------//

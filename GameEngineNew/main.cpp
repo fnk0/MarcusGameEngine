@@ -9,6 +9,8 @@
 #include "EngineUtil.h"
 #include "Scene.h"
 
+const float TIMESTEP = float(1.0/60.0);
+
 //-------------------------------------------------------------------------//
 // Callback for Keyboard Input
 //-------------------------------------------------------------------------//
@@ -88,6 +90,8 @@ void updateJson(Scene *scene) {
         glm::quat r = glm::quat(glm::vec3(0.0f, 0.0051f, 0.00f));
         scene->getNodes()[i]->T.rotation *= r;
     } */
+    
+    scene->updateNodes(TIMESTEP);
 }
 
 void updateSound(Scene *scene) {
@@ -108,8 +112,7 @@ void renderJson(Scene *scene) {
     //cout << "Number of instances: " << scene->meshInstances.size() << "\n";
     //for(int i = 0; i < scene->getNodes().size(); i++) {
     //    scene->getNodes()[i]->draw(*scene->getCamera());
-    map<std::string, Node*> _map = scene->getNodes();
-    for(auto outer_iter=_map.begin(); outer_iter!=_map.end(); ++outer_iter) {
+    for(auto outer_iter=scene->getNodes().begin(); outer_iter!=scene->getNodes().end(); ++outer_iter) {
         outer_iter->second->draw(*scene->getCamera());
     }
 }
@@ -144,7 +147,7 @@ int main(int numArgs, char **args)
     
 	// render loop
 	while (true) {
-        //updateJson(scene);
+        updateJson(scene);
         renderJson(scene);
         updateSound(scene);
         keyboardCameraController(scene);
