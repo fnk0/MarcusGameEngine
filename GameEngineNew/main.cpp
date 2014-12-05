@@ -38,7 +38,7 @@ Camera dummyCamera;
 
 void keyboardCameraController(Scene *scene) {
     
-    float t = 0.025f;
+    float t = 1.5f;
     float r = 0.01f;
     
     glm::vec3 strifeLeft(-t, 0, 0);
@@ -60,8 +60,6 @@ void keyboardCameraController(Scene *scene) {
     if(glfwGetKey(scene->gWindow, GLFW_KEY_DOWN)) scene->getCamera()->translateLocal(moveBack);
     if(glfwGetKey(scene->gWindow, GLFW_KEY_LEFT)) scene->getCamera()->rotateGlobal(rotate, r);
     if(glfwGetKey(scene->gWindow, GLFW_KEY_RIGHT)) scene->getCamera()->rotateGlobal(rotate, -r);
-
-    
     
     scene->getCamera()->refreshTransform(scene->getWorldSettings()->getWidth(), scene->getWorldSettings()->getHeight());
 }

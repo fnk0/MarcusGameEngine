@@ -37,13 +37,17 @@
         },
         {
             "name": "aragorn",
-            "file": "Aragorn.ply"
+            "file": "legoloki.ply"
         }
     ],
     "textures": [
         {
             "name": "texture1",
             "file": "rock-texture.png"
+        },
+        {
+            "name": "bgTex",
+            "file": "game-background.png"
         }
     ],
     "lights": [
@@ -99,6 +103,24 @@
             ]
         },
         {
+            "name": "anotherCubeInstance",
+            "mesh": "cube",
+            "vertexShader": "basicVertexShader.vs",
+            "fragmentShader": "multiLight.fs",
+            "colors": [
+                {
+                    "type": "uDiffuseColor",
+                    "value": [1, 1, 1, 1]
+                }
+            ],
+                "textures": [
+                    {
+                        "type": "uDiffuseTex",
+                        "name": "bgTex"
+                    }
+                ]
+        },
+        {
             "name": "aragornInstance",
             "mesh": "aragorn",
             "vertexShader": "basicVertexShader.vs",
@@ -112,11 +134,7 @@
             "textures": [
                 {
                     "type": "uDiffuseTex",
-                    "name": "texture1"
-                },
-                {
-                    "type": "uOtherTex",
-                    "name": "texture1"
+                    "name": "bgTex"
                 }
             ]
         }
@@ -135,6 +153,18 @@
             ]
         },
         {
+            "name": "anotherNode",
+            "parent": "no",
+            "meshInstance": "anotherCubeInstance",
+            "scale": [2, 0.1, 2],
+            "rotation": [0, 1, 0, 0],
+            "translation": [2, 0, 0],
+            "backgroundMusic": "bell.wav",
+            "is_billboard": false,
+            "children": [
+              ]
+        },
+        {
             "name": "aragornNode",
             "parent": "no",
             "meshInstance": "aragornInstance",
@@ -142,7 +172,7 @@
             "rotation": [0, 1, 0, 0],
             "translation": [-1.8, 0.5, 2.2],
             "backgroundMusic": "",
-            "is_billboard": true,
+            "is_billboard": false,
             "children": [
             ]
         }

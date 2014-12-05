@@ -42,6 +42,8 @@
 /* Begin PBXFileReference section */
 		2C0902EC19F60C570074FE86 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = ../../../../../../usr/local/lib/libirrklang.dylib; sourceTree = "<group>"; };
 		2C0902EE19F60C570074FE86 /* libglfw3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.0.dylib; path = ../../../../../../usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib; sourceTree = "<group>"; };
+		2C2248DD1A1C35E4003ABF7F /* Scene2D.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Scene2D.json; sourceTree = "<group>"; };
+		2C2248DE1A1C38A8003ABF7F /* sphereCenter.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sphereCenter.ply; path = "../../PLY Meshes/sphereCenter.ply"; sourceTree = "<group>"; };
 		2C3AA1AB19AD63FE002E40B2 /* GameEngineNew */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GameEngineNew; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3AA1B019AD63FE002E40B2 /* GameEngineNew.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = GameEngineNew.1; sourceTree = "<group>"; };
 		2C3AA1C219AD642A002E40B2 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -80,6 +82,28 @@
 		2C8EE6A319B056C9003E8BFB /* monkeyScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = monkeyScene.json; sourceTree = "<group>"; };
 		2C9728F219EDB6F700BAB8B9 /* sprint1a.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sprint1a.json; sourceTree = "<group>"; };
 		2C9728F319EDB6F700BAB8B9 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
+		2CA4DF261A315E4500834B85 /* Megaman.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Megaman.ply; path = "../../PLY Meshes/Megaman.ply"; sourceTree = "<group>"; };
+		2CA4DF271A315E4500834B85 /* tree3.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = tree3.ply; path = "../../PLY Meshes/tree3.ply"; sourceTree = "<group>"; };
+		2CA4DF281A315E4500834B85 /* tree2.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = tree2.ply; path = "../../PLY Meshes/tree2.ply"; sourceTree = "<group>"; };
+		2CA4DF291A315E4500834B85 /* tree1.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = tree1.ply; path = "../../PLY Meshes/tree1.ply"; sourceTree = "<group>"; };
+		2CA4DF2A1A315E4500834B85 /* teapot.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = teapot.ply; path = "../../PLY Meshes/teapot.ply"; sourceTree = "<group>"; };
+		2CA4DF2B1A315E4500834B85 /* torus.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = torus.ply; path = "../../PLY Meshes/torus.ply"; sourceTree = "<group>"; };
+		2CA4DF2C1A315E4500834B85 /* square.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = square.ply; path = "../../PLY Meshes/square.ply"; sourceTree = "<group>"; };
+		2CA4DF2D1A315E4500834B85 /* cone.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cone.ply; path = "../../PLY Meshes/cone.ply"; sourceTree = "<group>"; };
+		2CA4DF2E1A315E4500834B85 /* cylinder.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cylinder.ply; path = "../../PLY Meshes/cylinder.ply"; sourceTree = "<group>"; };
+		2CA4DF2F1A315E4500834B85 /* sphere.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sphere.ply; path = "../../PLY Meshes/sphere.ply"; sourceTree = "<group>"; };
+		2CA4DF301A315E4500834B85 /* cubeCenter.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cubeCenter.ply; path = "../../PLY Meshes/cubeCenter.ply"; sourceTree = "<group>"; };
+		2CA4DF311A315E4500834B85 /* cylinderCenter.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cylinderCenter.ply; path = "../../PLY Meshes/cylinderCenter.ply"; sourceTree = "<group>"; };
+		2CA4DF321A315E4500834B85 /* cube.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cube.ply; path = "../../PLY Meshes/cube.ply"; sourceTree = "<group>"; };
+		2CA4DF331A315E4500834B85 /* marines.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = marines.ply; path = "../../PLY Meshes/marines.ply"; sourceTree = "<group>"; };
+		2CA4DF341A315E4500834B85 /* indy.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = indy.ply; path = "../../PLY Meshes/indy.ply"; sourceTree = "<group>"; };
+		2CA4DF351A315E4500834B85 /* Gandalf.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Gandalf.ply; path = "../../PLY Meshes/Gandalf.ply"; sourceTree = "<group>"; };
+		2CA4DF361A315E4500834B85 /* Aragorn.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Aragorn.ply; path = "../../PLY Meshes/Aragorn.ply"; sourceTree = "<group>"; };
+		2CA4DF371A315E4500834B85 /* legoloki.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = legoloki.ply; path = "../../PLY Meshes/legoloki.ply"; sourceTree = "<group>"; };
+		2CA4DF381A315E4500834B85 /* aerial_landscape.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = aerial_landscape.ply; path = "../../PLY Meshes/aerial_landscape.ply"; sourceTree = "<group>"; };
+		2CA4DF391A315E4500834B85 /* rock2.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rock2.ply; path = "../../PLY Meshes/rock2.ply"; sourceTree = "<group>"; };
+		2CA4DF3A1A315E4500834B85 /* rock1.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rock1.ply; path = "../../PLY Meshes/rock1.ply"; sourceTree = "<group>"; };
+		2CA4DF3B1A315E4500834B85 /* monkey.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = monkey.ply; path = "../../PLY Meshes/monkey.ply"; sourceTree = "<group>"; };
 		2CAFCBE819DB8B7100C86615 /* multiLight.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = multiLight.fs; sourceTree = "<group>"; };
 		2CB85A2219B23DAD00CB19E4 /* rock2.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock2.ply; sourceTree = "<group>"; };
 		2CB85A2319B23DAD00CB19E4 /* rock1.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock1.ply; sourceTree = "<group>"; };
@@ -214,6 +238,29 @@
 		2C80CD1F19B1C24900FBCF18 /* ply */ = {
 			isa = PBXGroup;
 			children = (
+				2CA4DF261A315E4500834B85 /* Megaman.ply */,
+				2CA4DF271A315E4500834B85 /* tree3.ply */,
+				2CA4DF281A315E4500834B85 /* tree2.ply */,
+				2CA4DF291A315E4500834B85 /* tree1.ply */,
+				2CA4DF2A1A315E4500834B85 /* teapot.ply */,
+				2CA4DF2B1A315E4500834B85 /* torus.ply */,
+				2CA4DF2C1A315E4500834B85 /* square.ply */,
+				2CA4DF2D1A315E4500834B85 /* cone.ply */,
+				2CA4DF2E1A315E4500834B85 /* cylinder.ply */,
+				2CA4DF2F1A315E4500834B85 /* sphere.ply */,
+				2CA4DF301A315E4500834B85 /* cubeCenter.ply */,
+				2CA4DF311A315E4500834B85 /* cylinderCenter.ply */,
+				2CA4DF321A315E4500834B85 /* cube.ply */,
+				2CA4DF331A315E4500834B85 /* marines.ply */,
+				2CA4DF341A315E4500834B85 /* indy.ply */,
+				2CA4DF351A315E4500834B85 /* Gandalf.ply */,
+				2CA4DF361A315E4500834B85 /* Aragorn.ply */,
+				2CA4DF371A315E4500834B85 /* legoloki.ply */,
+				2CA4DF381A315E4500834B85 /* aerial_landscape.ply */,
+				2CA4DF391A315E4500834B85 /* rock2.ply */,
+				2CA4DF3A1A315E4500834B85 /* rock1.ply */,
+				2CA4DF3B1A315E4500834B85 /* monkey.ply */,
+				2C2248DE1A1C38A8003ABF7F /* sphereCenter.ply */,
 				2CE6AB6A19DDD69300912786 /* cubeCenter.ply */,
 				2C42FB3A19BA3431001938DA /* Gandalf.ply */,
 				2C42FB3819BA17CA001938DA /* marines.ply */,
@@ -252,6 +299,7 @@
 		2C80CD2219B1C43A00FBCF18 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				2C2248DD1A1C35E4003ABF7F /* Scene2D.json */,
 				2C8EE6A319B056C9003E8BFB /* monkeyScene.json */,
 				BF8C73950C72144A8EBFED17 /* SomeScene.json */,
 				2C42FB3919BA17FC001938DA /* Marines.json */,

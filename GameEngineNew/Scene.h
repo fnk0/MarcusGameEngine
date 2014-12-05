@@ -51,11 +51,11 @@
 #define COLORS "colors"
 
 #define LIGHTS "lights"
-#define LIGHT_DIRECTION "uLightDirection"
-#define LIGHT_COLOR "uLightColor"
-#define LIGHT_POSITION "uLightPosition"
-#define ATTENUATION "uAttenuation"
-#define CONE_ANGLE "uConeAngles"
+#define LIGHT_DIRECTION "direction"
+#define LIGHT_COLOR "color"
+#define LIGHT_POSITION "position"
+#define ATTENUATION "attenuation"
+#define CONE_ANGLE "coneAngles"
 
 #define TYPE_AMBIENT_LIGHT "ambient"
 #define TYPE_DIRECTIONAL_LIGHT "directional"
@@ -76,7 +76,7 @@
 #define PARENT "parent"
 #define MESH_INSTANCE "meshInstance"
 #define CHILDREN "children"
-#define IS_BILLBOARD "is_billboard"
+#define IS_BILLBOARD "billboard"
 #define NODE "node"
 
 class SceneCamera;

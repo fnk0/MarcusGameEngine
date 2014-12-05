@@ -2,6 +2,9 @@
 <module type="CIDR_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$/../PLY Meshes/sphereCenter.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/sphereCenter.ply" isTestSource="false" />
+    </content>
     <content url="file:///usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib">
       <sourceFolder url="file:///usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib" isTestSource="false" />
     </content>
