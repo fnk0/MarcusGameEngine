@@ -52,7 +52,6 @@ void Node::draw(SceneCamera &camera)
     }
     
     if(this->scripts.size() > 0) {
-        std::cout << "We have scripts!" << std::endl;
         for(std::vector<Script*>::iterator it = this->scripts.begin(); it != this->scripts.end(); ++it) {
             (*it)->run();
         }

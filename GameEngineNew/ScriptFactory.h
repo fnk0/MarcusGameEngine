@@ -14,6 +14,7 @@
 #include <iostream>
 #include "Script.h"
 #include "CircleScript.h"
+#include "ThirdPersonScript.h"
 #include "Node.h"
 
 class ScriptFactory {
@@ -32,6 +33,11 @@ public:
             CircleScript* circleScript = new CircleScript();
             circleScript->setNode(this->node);
             script = circleScript;
+        }
+        else if(scriptName.compare("ThirdPersonScript") == 0) {
+            ThirdPersonScript* thirdPersonScript = new ThirdPersonScript();
+            thirdPersonScript->setNode(this->node);
+            script = thirdPersonScript;
         }
         
         return script;

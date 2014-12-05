@@ -46,13 +46,13 @@ void butThisDoesnt() {
 
 void keyboardCameraController(Scene *scene) {
     
-    float t = 0.025f;
-    float r = 0.01f;
+    float t = 0.1f;
+    float r = 0.05f;
     
     glm::vec3 strifeLeft(-t, 0, 0);
     glm::vec3 strifeRight(t, 0, 0);
-    glm::vec3 strifeUp(0, t, 0);
-    glm::vec3 strifeDown(0, -t, 0);
+    glm::vec3 strifeUp(0, t, -t);
+    glm::vec3 strifeDown(0, -t, t);
     glm::vec3 moveForward(0, 0, t);
     glm::vec3 moveBack(0, 0, -t);
     glm::vec3 rotate(0, 1, 0);
@@ -149,7 +149,7 @@ int main(int numArgs, char **args)
         //updateJson(scene);
         renderJson(scene);
         updateSound(scene);
-        keyboardCameraController(scene);
+        //keyboardCameraController(scene);
         
 		// handle input
 		glfwPollEvents();
@@ -160,7 +160,6 @@ int main(int numArgs, char **args)
 		glfwGetCursorPos(scene->gWindow, &xx, &yy);
 		//printf("%1.3f %1.3f ", xx, yy);
         
-		// print framerate
 //        next_game_tick += SKIP_TICKS;
 		double endTime = TIME();
 //        double time_elapsed = startTime - endTime;
