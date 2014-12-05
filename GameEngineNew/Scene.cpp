@@ -5,6 +5,7 @@
 
 #include "Scene.h"
 #include "CircleScript.h"
+#include "ScriptFactory.h"
 #include "Scene.h"
 
 
@@ -215,8 +216,13 @@ void Scene::loadScene(std::string &fileName) {
 
     for(int i = 0; i < nodesJson.size(); i++) {
         Node* node = new Node();
-        node->script = new CircleScript();
-        node->script->setNode(node);
+
+        ScriptFactory scriptFactory(node);
+        Json::array scriptsJson = nodesJson[i][SCRIPTS].array_items();
+        for(int j = 0; j < scriptsJson.size(); j++) {
+            std::string scriptName = scriptsJson[j].string_value();
+            node->setScript(scriptFactory.getScript(scriptName));
+        }
         
         glm::vec3 scale;
         loadFloatsArray(&scale[0], nodesJson[i][SCALE].array_items());
@@ -250,6 +256,8 @@ void Scene::loadScene(std::string &fileName) {
             node->getNodes().push_back(childNode);
         }
 
+        std::cout << "Creating node" << std::endl;
+        
         node->setSound(music);
         nodes.insert(make_pair(nodesJson[i][NAME].string_value(), node));
     }

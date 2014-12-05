@@ -22,7 +22,7 @@ private:
     std::map<std::string, void*> values;
     Node* node;
 public:
-    virtual void run(){};
+    virtual     void run(){};
     void set(std::string key, void* value);
     void* get(std::string key);
     Node* getNode() {

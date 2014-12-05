@@ -143,6 +143,9 @@
             "translation": [-1.8, 0.5, 2.2],
             "backgroundMusic": "",
             "is_billboard": false,
+            "scripts": [
+                        "CircleScript"
+            ],
             "children": [
             ]
         }
