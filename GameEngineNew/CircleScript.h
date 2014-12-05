@@ -50,6 +50,8 @@ public:
     
     void run() {
         
+        std::cout << "Happens\n";
+        
         // TODO
         this->theta += PI/128;
         

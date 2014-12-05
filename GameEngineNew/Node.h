@@ -30,8 +30,14 @@ public:
     ISound *sound;
     Scene* scene;
     bool isBillboard = true;
-    Script* script;
+    std::vector<Script*> scripts;
 
+    Node() {
+    };
+    
+    void setScript(Script* script) {
+        this->scripts.push_back(script);
+    };
 
     Scene *getScene() {
         return scene;

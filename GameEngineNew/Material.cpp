@@ -60,8 +60,6 @@ void Material::bindMaterial(Transform &T, SceneCamera &camera)
     loc = glGetUniformLocation(shaderProgram, OBJECT_PERSPECT_M);
     if (loc != -1) glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(objectWorldViewPerspect));
     
-    printMat(T.transform);
-    
     // MATERIAL COLOR
     for (int i = 0; i < (int) colors.size(); i++) {
         if (colors[i].id == -1) {
