@@ -78,6 +78,7 @@
 #define CHILDREN "children"
 #define IS_BILLBOARD "billboard"
 #define NODE "node"
+#define SCRIPTS "scripts"
 
 class SceneCamera;
 class WorldSettings;

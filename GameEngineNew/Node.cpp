@@ -49,10 +49,12 @@ void Node::draw(SceneCamera &camera)
                 0.0, 0.0, 0.0, 1.0);
         
         this->T.transform *= rotationMatrix;
-        
-        //this->T.rotation = glm::quat(vp.x, vp.y, vp.z, 1);
-        //cout << "Theta: " << theta << endl;
-        //printMat(this->T.transform);
+    }
+    
+    if(this->scripts.size() > 0) {
+        for(std::vector<Script*>::iterator it = this->scripts.begin(); it != this->scripts.end(); ++it) {
+            (*it)->run();
+        }
     }
 
     meshInstance->material.bindMaterial(T, camera);
