@@ -75,6 +75,7 @@
 #define NODES "nodes"
 #define PARENT "parent"
 #define MESH_INSTANCE "meshInstance"
+#define VELOCITY "velocity"
 #define CHILDREN "children"
 #define IS_BILLBOARD "is_billboard"
 #define NODE "node"
@@ -197,11 +198,7 @@ public:
         glBindBuffer(GL_UNIFORM_BUFFER, 0); // unbind buffer
     }
     
-    void updateNodes(const float dt) {
-        for(auto outer_iter=nodes.begin(); outer_iter!=nodes.end(); ++outer_iter) {
-            outer_iter->second->update(dt);
-        }
-    }
+    void updateNodes(const float dt);
 };
 
 

@@ -228,10 +228,14 @@ void Scene::loadScene(std::string &fileName) {
         loadFloatsArray(&rotationVector[0], nodesJson[i][ROTATION].array_items());
         glm::vec3 vecRot(rotationVector.x, rotationVector.y, rotationVector.z);
         glm::quat rotation(rotationVector.w, vecRot);
+        
+        glm::vec3 velocityVector;
+        loadFloatsArray(&velocityVector[0], nodesJson[i][VELOCITY].array_items());
 
         node->T.scale = scale;
         node->T.translation = translation;
         node->T.rotation = rotation;
+        node->setVelocity(velocityVector);
         MeshInstance* inst = this->meshInstances[nodesJson[i][MESH_INSTANCE].string_value()];
         node->setMeshInstance(inst);
 
@@ -276,6 +280,12 @@ void Scene::loadLights(GLint shaderProgram) {
         glUniform4fv(loc, MAX_LIGHTS * sizeof(lights) / 4, (float*) &lights[0]);
     }
 
+}
+
+void Scene::updateNodes(const float dt) {
+    for(auto outer_iter=nodes.begin(); outer_iter!=nodes.end(); ++outer_iter) {
+        outer_iter->second->update(dt);
+    }
 }
 
 void Scene::switchCamera(int camNum) {

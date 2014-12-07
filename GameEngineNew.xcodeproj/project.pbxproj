@@ -15,7 +15,6 @@
 		2C76C55D19B821C6005B64FB /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C76C55A19B821C6005B64FB /* lodepng.cpp */; };
 		2C76C56019B821DA005B64FB /* json11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C76C55E19B821DA005B64FB /* json11.cpp */; };
 		2C79140B19C9185400A7CC4B /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C79140919C9185400A7CC4B /* Light.cpp */; };
-		2C807FAD19F60D3500FDCCA1 /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0902EC19F60C570074FE86 /* libirrklang.dylib */; };
 		2C807FAF19F60D3500FDCCA1 /* libglfw3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0902EE19F60C570074FE86 /* libglfw3.3.0.dylib */; };
 		2C807FB119F60E2200FDCCA1 /* libGLEW.1.10.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C807FB019F60E2200FDCCA1 /* libGLEW.1.10.0.dylib */; };
 		404EC0C51A1301970095159A /* HastyVect3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 404EC0C31A1301970095159A /* HastyVect3.cpp */; };
@@ -27,6 +26,7 @@
 		BF8C791EFBCB737C660C6E5E /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C78FD43511EBB151C4F06 /* Mesh.cpp */; };
 		BF8C7DF24A944000A574BAD8 /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */; };
 		BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7B31E094E19BFB011CB7 /* WorldSettings.cpp */; };
+		CDA379D11A322377009F804F /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA379D01A322377009F804F /* libirrklang.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,7 +43,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C0902EC19F60C570074FE86 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = ../../../../../../usr/local/lib/libirrklang.dylib; sourceTree = "<group>"; };
 		2C0902EE19F60C570074FE86 /* libglfw3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.0.dylib; path = ../../../../../../usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib; sourceTree = "<group>"; };
 		2C3AA1AB19AD63FE002E40B2 /* GameEngineNew */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GameEngineNew; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3AA1B019AD63FE002E40B2 /* GameEngineNew.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = GameEngineNew.1; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		BF8C7EDA8879119F4558FD15 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		BF8C7F059A3B0C8883D5A66E /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneCamera.cpp; sourceTree = "<group>"; };
+		CDA379D01A322377009F804F /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libirrklang.dylib; sourceTree = "<group>"; };
 		CDD99DB11A3104F200F9B237 /* irrKlang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = irrKlang.h; sourceTree = "<group>"; };
 		CDD99DB21A31057000F9B237 /* ik_irrKlangTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_irrKlangTypes.h; sourceTree = "<group>"; };
 		CDD99DB31A31059700F9B237 /* ik_ESoundEngineOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ESoundEngineOptions.h; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C807FB119F60E2200FDCCA1 /* libGLEW.1.10.0.dylib in Frameworks */,
-				2C807FAD19F60D3500FDCCA1 /* libirrklang.dylib in Frameworks */,
+				CDA379D11A322377009F804F /* libirrklang.dylib in Frameworks */,
 				2C807FAF19F60D3500FDCCA1 /* libglfw3.3.0.dylib in Frameworks */,
 				2C3AA1C319AD642A002E40B2 /* OpenGL.framework in Frameworks */,
 			);
@@ -151,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				2C807FB019F60E2200FDCCA1 /* libGLEW.1.10.0.dylib */,
-				2C0902EC19F60C570074FE86 /* libirrklang.dylib */,
+				CDA379D01A322377009F804F /* libirrklang.dylib */,
 				2C0902EE19F60C570074FE86 /* libglfw3.3.0.dylib */,
 				2C3AA1C219AD642A002E40B2 /* OpenGL.framework */,
 				2C3AA1AD19AD63FE002E40B2 /* GameEngineNew */,
@@ -170,6 +170,7 @@
 		2C3AA1AD19AD63FE002E40B2 /* GameEngineNew */ = {
 			isa = PBXGroup;
 			children = (
+				CDA379CF1A322084009F804F /* IrrKlang */,
 				405C64A31A1C39B800E12C21 /* scripts */,
 				404EC0C21A13009B0095159A /* physics */,
 				2C76C55E19B821DA005B64FB /* json11.cpp */,
@@ -190,27 +191,6 @@
 				BF8C7EDA8879119F4558FD15 /* Scene.h */,
 				BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */,
 				BF8C7CE23F068AE0C64BD628 /* SceneCamera.h */,
-				CDD99DB11A3104F200F9B237 /* irrKlang.h */,
-				CDD99DB21A31057000F9B237 /* ik_irrKlangTypes.h */,
-				CDD99DB31A31059700F9B237 /* ik_ESoundEngineOptions.h */,
-				CDD99DB41A31059700F9B237 /* ik_ESoundOutputDrivers.h */,
-				CDD99DB51A31059700F9B237 /* ik_EStreamModes.h */,
-				CDD99DB61A31059700F9B237 /* ik_IAudioRecorder.h */,
-				CDD99DB71A31059700F9B237 /* ik_IAudioStream.h */,
-				CDD99DB81A31059700F9B237 /* ik_IAudioStreamLoader.h */,
-				CDD99DB91A31059700F9B237 /* ik_IFileFactory.h */,
-				CDD99DBA1A31059700F9B237 /* ik_IFileReader.h */,
-				CDD99DBB1A31059700F9B237 /* ik_IRefCounted.h */,
-				CDD99DBC1A31059700F9B237 /* ik_ISound.h */,
-				CDD99DBD1A31059700F9B237 /* ik_ISoundDeviceList.h */,
-				CDD99DBE1A31059700F9B237 /* ik_ISoundEffectControl.h */,
-				CDD99DBF1A31059700F9B237 /* ik_ISoundEngine.h */,
-				CDD99DC01A31059700F9B237 /* ik_ISoundMixedOutputReceiver.h */,
-				CDD99DC11A31059700F9B237 /* ik_ISoundSource.h */,
-				CDD99DC21A31059700F9B237 /* ik_ISoundStopEventReceiver.h */,
-				CDD99DC31A31059700F9B237 /* ik_IVirtualRefCounted.h */,
-				CDD99DC41A31059700F9B237 /* ik_SAudioStreamFormat.h */,
-				CDD99DC51A31059700F9B237 /* ik_vec3d.h */,
 				BF8C78FD43511EBB151C4F06 /* Mesh.cpp */,
 				BF8C7F059A3B0C8883D5A66E /* Mesh.h */,
 				BF8C7D0655A21126ED317DC6 /* MeshInstance.cpp */,
@@ -336,6 +316,34 @@
 			name = scripts;
 			sourceTree = "<group>";
 		};
+		CDA379CF1A322084009F804F /* IrrKlang */ = {
+			isa = PBXGroup;
+			children = (
+				CDD99DB11A3104F200F9B237 /* irrKlang.h */,
+				CDD99DB21A31057000F9B237 /* ik_irrKlangTypes.h */,
+				CDD99DB31A31059700F9B237 /* ik_ESoundEngineOptions.h */,
+				CDD99DB41A31059700F9B237 /* ik_ESoundOutputDrivers.h */,
+				CDD99DB51A31059700F9B237 /* ik_EStreamModes.h */,
+				CDD99DB61A31059700F9B237 /* ik_IAudioRecorder.h */,
+				CDD99DB71A31059700F9B237 /* ik_IAudioStream.h */,
+				CDD99DB81A31059700F9B237 /* ik_IAudioStreamLoader.h */,
+				CDD99DB91A31059700F9B237 /* ik_IFileFactory.h */,
+				CDD99DBA1A31059700F9B237 /* ik_IFileReader.h */,
+				CDD99DBB1A31059700F9B237 /* ik_IRefCounted.h */,
+				CDD99DBC1A31059700F9B237 /* ik_ISound.h */,
+				CDD99DBD1A31059700F9B237 /* ik_ISoundDeviceList.h */,
+				CDD99DBE1A31059700F9B237 /* ik_ISoundEffectControl.h */,
+				CDD99DBF1A31059700F9B237 /* ik_ISoundEngine.h */,
+				CDD99DC01A31059700F9B237 /* ik_ISoundMixedOutputReceiver.h */,
+				CDD99DC11A31059700F9B237 /* ik_ISoundSource.h */,
+				CDD99DC21A31059700F9B237 /* ik_ISoundStopEventReceiver.h */,
+				CDD99DC31A31059700F9B237 /* ik_IVirtualRefCounted.h */,
+				CDD99DC41A31059700F9B237 /* ik_SAudioStreamFormat.h */,
+				CDD99DC51A31059700F9B237 /* ik_vec3d.h */,
+			);
+			name = IrrKlang;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -346,6 +354,7 @@
 				2C3AA1A719AD63FE002E40B2 /* Sources */,
 				2C3AA1A819AD63FE002E40B2 /* Frameworks */,
 				2C3AA1A919AD63FE002E40B2 /* CopyFiles */,
+				CDA379CE1A321F2C009F804F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -381,6 +390,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CDA379CE1A321F2C009F804F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C3AA1A719AD63FE002E40B2 /* Sources */ = {
@@ -490,6 +515,8 @@
 					"$(inherited)",
 					/usr/local/lib,
 					/usr/local/Cellar/glew/1.10.0/lib,
+					/Users/veronep/Desktop/MarcusGameEngine/GameEngineNew,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -507,6 +534,8 @@
 					"$(inherited)",
 					/usr/local/lib,
 					/usr/local/Cellar/glew/1.10.0/lib,
+					/Users/veronep/Desktop/MarcusGameEngine/GameEngineNew,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

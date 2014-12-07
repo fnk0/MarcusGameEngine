@@ -47,6 +47,7 @@ GLFWwindow* createOpenGLWindow(int width, int height, const char *title, int sam
 	GLFWwindow *window = glfwCreateWindow(width, height, title, NULL, NULL);
 	if (window == NULL) {
 		glfwTerminate();
+        printf("%d %d\n", width, height);
 		ERROR("Failed to open GLFW window.", true);
 	}
 	glfwMakeContextCurrent(window);
@@ -211,6 +212,11 @@ FILE *openFileForReading(const string &fileName)
 {
 	string fullName;
 	bool fileExists = getFullFileName(fileName, fullName);
+    
+    printf("PRINTING PATH:\n");
+    for (int i=0; i<PATH.size(); i++) cout << PATH[i] << endl;
+    cout << endl;
+    
 	if (fileExists) {
 		cout << "Opening file '" << fileName << "'" << endl;
 		return fopen(fullName.c_str(), "rb");

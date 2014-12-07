@@ -93,8 +93,8 @@ public:
     }
     
     void update(const float dt) {
-        Node::T->translation = T->translation + (Node::velocity) * dt;
-        Node::T->refreshTransform();
+        Node::T.translation = T.translation + (Node::velocity) * dt;
+        Node::T.refreshTransform();
     }
     
     // Look at the camera and see which direction is looking to (Easy way)

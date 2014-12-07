@@ -10,142 +10,186 @@
     },
     
     "cameras": [
-        {
-            "name": "camera1",
-            "eye": [ 0, 6, 10],
-            "center": [ 0, 0, 1],
-            "vup": [ 0, 1, 0 ],
-            "fovy": 0.5,
-            "znear": 0.1,
-            "zfar": 1000
-        },
-        {
-            "name": "camera2",
-            "eye": [ 0, 1, 5],
-            "center": [ 1, 0, 1],
-            "vup": [ 2, 1, 0 ],
-            "fovy": 0.7,
-            "znear": 0.2,
-            "zfar": 2000
-        }
-    ],
-
+                {
+                "name": "camera1",
+                "eye": [ 0, 6, 10],
+                "center": [ 0, 0, 1],
+                "vup": [ 0, 1, 0 ],
+                "fovy": 0.5,
+                "znear": 0.1,
+                "zfar": 1000
+                },
+                {
+                "name": "camera2",
+                "eye": [ 0, 1, 5],
+                "center": [ 1, 0, 1],
+                "vup": [ 2, 1, 0 ],
+                "fovy": 0.7,
+                "znear": 0.2,
+                "zfar": 2000
+                }
+                ],
+    
     "meshes": [
-        {
-            "name": "cube",
-            "file": "cubeCenter.ply"
-        },
-        {
-            "name": "aragorn",
-            "file": "Aragorn.ply"
-        }
-    ],
+               {
+               "name": "cube",
+               "file": "cubeCenter.ply"
+               },
+               {
+               "name": "aragorn",
+               "file": "Aragorn.ply"
+               },
+               {
+               "name": "rock1",
+               "file": "sphereCenter.ply"
+               }
+               ],
     "textures": [
-        {
-            "name": "texture1",
-            "file": "rock-texture.png"
-        }
-    ],
+                 {
+                 "name": "texture1",
+                 "file": "rock-texture.png"
+                 },
+                 {
+                 "name": "earth",
+                 "file": "Earth.png"
+                 }
+                 ],
     "lights": [
-        {
-            "name": "light1",
-            "type": "directional",
-            "uLightDirection": [1, 1, 1, 0],
-            "uLightColor": [0.5, 0.5, 0.5, 1],
-            "uLightPosition": [0, 0, 0, 1],
-            "uAttenuation": [0, 0, 0, 0],
-            "uConeAngles": [0.5, 0.55, 0, 0]
-        },
-        {
-            "name": "light2",
-            "type": "point",
-            "uLightDirection": [0, 1, 0, 0],
-            "uLightColor": [12, 0, 0, 1],
-            "uLightPosition": [0, 2, 0, 1],
-            "uAttenuation": [1, 0, 1, 0],
-            "uConeAngles": [0.5, 0.55, 0, 0]
-        },
-        {
-            "name": "light3",
-            "type": "spot",
-            "uLightDirection": [0, -1, 1, 0],
-            "uLightColor": [0, 20, 10, 1],
-            "uLightPosition": [-2, 2, 0, 1],
-            "uAttenuation": [1, 0, 1, 0],
-            "uConeAngles": [0.2, 0.4, 0, 0]
-        }
-    ],
+               {
+               "name": "light1",
+               "type": "directional",
+               "uLightDirection": [1, 1, 1, 1],
+               "uLightColor": [1, 1, 1, 1],
+               "uLightPosition": [0, 0, 0, 1],
+               "uAttenuation": [0, 0, 0, 0],
+               "uConeAngles": [0.5, 0.55, 0, 0]
+               },
+               {
+               "name": "light2",
+               "type": "point",
+               "uLightDirection": [0, 1, 0, 0],
+               "uLightColor": [1, 1, 1, 1],
+               "uLightPosition": [0, 2, 0, 1],
+               "uAttenuation": [1, 0, 1, 0],
+               "uConeAngles": [0.5, 0.55, 0, 0]
+               },
+               {
+               "name": "light3",
+               "type": "spot",
+               "uLightDirection": [0, -1, 1, 0],
+               "uLightColor": [1, 1, 1, 1],
+               "uLightPosition": [-2, 2, 0, 1],
+               "uAttenuation": [1, 0, 1, 0],
+               "uConeAngles": [0.2, 0.4, 0, 0]
+               }
+               ],
     "meshInstances": [
-        {
-            "name": "cubeInstance",
-            "mesh": "cube",
-            "vertexShader": "basicVertexShader.vs",
-            "fragmentShader": "multiLight.fs",
-            "colors": [
-                {
-                    "type": "uDiffuseColor",
-                    "value": [1, 1, 1, 1]
-                }
-            ],
-            "textures": [
-                {
-                    "type": "uDiffuseTex",
-                    "name": "texture1"
-                },
-                {
-                    "type": "uOtherTex",
-                    "name": "texture1"
-                }
-            ]
-        },
-        {
-            "name": "aragornInstance",
-            "mesh": "aragorn",
-            "vertexShader": "basicVertexShader.vs",
-            "fragmentShader": "multiLight.fs",
-            "colors": [
-                {
-                    "type": "uDiffuseColor",
-                    "value": [1, 1, 1, 1]
-                }
-            ],
-            "textures": [
-                {
-                    "type": "uDiffuseTex",
-                    "name": "texture1"
-                },
-                {
-                    "type": "uOtherTex",
-                    "name": "texture1"
-                }
-            ]
-        }
-    ],
+                      {
+                      "name": "cubeInstance",
+                      "mesh": "cube",
+                      "vertexShader": "basicVertexShader.vs",
+                      "fragmentShader": "multiLight.fs",
+                      "colors": [
+                                 {
+                                 "type": "uDiffuseColor",
+                                 "value": [1, 1, 1, 1]
+                                 }
+                                 ],
+                      "textures": [
+                                   {
+                                   "type": "uDiffuseTex",
+                                   "name": "texture1"
+                                   },
+                                   {
+                                   "type": "uOtherTex",
+                                   "name": "texture1"
+                                   }
+                                   ]
+                      },
+                      {
+                      "name": "aragornInstance",
+                      "mesh": "aragorn",
+                      "vertexShader": "basicVertexShader.vs",
+                      "fragmentShader": "multiLight.fs",
+                      "colors": [
+                                 {
+                                 "type": "uDiffuseColor",
+                                 "value": [1, 1, 1, 1]
+                                 }
+                                 ],
+                      "textures": [
+                                   {
+                                   "type": "uDiffuseTex",
+                                   "name": "texture1"
+                                   },
+                                   {
+                                   "type": "uOtherTex",
+                                   "name": "texture1"
+                                   }
+                                   ]
+                      },
+                      {
+                      "name": "rockInstance",
+                      "mesh": "rock1",
+                      "vertexShader": "basicVertexShader.vs",
+                      "fragmentShader": "multiLight.fs",
+                      "colors": [
+                                 {
+                                 "type": "uDiffuseColor",
+                                 "value": [1, 1, 1, 1]
+                                 }
+                                 ],
+                      "textures": [
+                                   {
+                                   "type": "uDiffuseTex",
+                                   "name": "earth"
+                                   },
+                                   {
+                                   "type": "uOtherTex",
+                                   "name": "earth"
+                                   }
+                                   ]
+                      }
+                      ],
     "nodes": [
-        {
-            "name": "nodeName",
-            "parent": "no",
-            "meshInstance": "cubeInstance",
-            "scale": [4, 0.1, 4],
-            "rotation": [0, 1, 0, 0],
-            "translation": [0, 0, 0],
-            "backgroundMusic": "bell.wav",
-            "is_billboard": false,
-            "children": [
-            ]
-        },
-        {
-            "name": "aragornNode",
-            "parent": "no",
-            "meshInstance": "aragornInstance",
-            "scale": [1, 1, 1],
-            "rotation": [0, 1, 0, 0],
-            "translation": [-1.8, 0.5, 2.2],
-            "backgroundMusic": "",
-            "is_billboard": false,
-            "children": [
-            ]
-        }
-    ]
-
+              {
+              "name": "nodeName",
+              "parent": "no",
+              "meshInstance": "cubeInstance",
+              "scale": [100, 0.1, 100],
+              "rotation": [0, 1, 0, 0],
+              "translation": [0, 0, 0],
+              "velocity": [1.0, 0, 0],
+              "backgroundMusic": "bell.wav",
+              "is_billboard": false,
+              "children": [
+              ]
+              },
+              {
+              "name": "aragornNode",
+              "parent": "no",
+              "meshInstance": "aragornInstance",
+              "scale": [1, 1, 1],
+              "rotation": [0, 1, 0, 0],
+              "translation": [-1.8, 0.5, 2.2],
+              "backgroundMusic": "",
+              "is_billboard": true,
+              "children": [
+                           "rockNode"
+                           ]
+              },
+              {
+              "name": "rockNode",
+              "parent": "aragornNode",
+              "meshInstance": "rockInstance",
+              "scale": [1, 1, 1],
+              "rotation": [0, 1, 0, 0],
+              "translation": [0, 0, 0],
+              "backgroundMusic": "",
+              "is_billboard": false,
+              "children": [
+              ]
+              }
+              ]
+    
 }

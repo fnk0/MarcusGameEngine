@@ -112,7 +112,8 @@ void renderJson(Scene *scene) {
     //cout << "Number of instances: " << scene->meshInstances.size() << "\n";
     //for(int i = 0; i < scene->getNodes().size(); i++) {
     //    scene->getNodes()[i]->draw(*scene->getCamera());
-    for(auto outer_iter=scene->getNodes().begin(); outer_iter!=scene->getNodes().end(); ++outer_iter) {
+    map<std::string, Node*> _map = scene->getNodes();
+    for(auto outer_iter=_map.begin(); outer_iter!=_map.end(); ++outer_iter) {
         outer_iter->second->draw(*scene->getCamera());
     }
 }
@@ -129,7 +130,9 @@ int main(int numArgs, char **args)
 		cout << "Usage: Transforms sceneFile.scene" << endl;
 		exit(0);
 	}
-
+    
+    addToPath("/Users/veronep/Desktop/MarcusGameEngine/GameEngineNew/");
+    
     Scene* scene = new Scene();
     string fileName = args[1];
     scene->loadScene(fileName);
