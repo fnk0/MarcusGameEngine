@@ -89,6 +89,8 @@ public:
         Node::sound = sound;
     }
     
+    void translateLocal(glm::vec3 &translation);
+    
     // Look at the camera and see which direction is looking to (Easy way)
     // Hard eay is related to the World location of the Billboard. 
     //void draw(glm::mat4x4 &mat, glm::mat4x4 &matInverse, SceneCamera &cam);

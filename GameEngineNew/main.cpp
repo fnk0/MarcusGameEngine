@@ -46,7 +46,7 @@ void butThisDoesnt() {
 
 void keyboardCameraController(Scene *scene) {
     
-    float t = 1.5f;
+    float t = 2.5f;
     float r = 0.01f;
     
     glm::vec3 strifeLeft(-t, 0, 0);
@@ -56,8 +56,13 @@ void keyboardCameraController(Scene *scene) {
     glm::vec3 moveForward(0, 0, t);
     glm::vec3 moveBack(0, 0, -t);
     glm::vec3 rotate(0, 1, 0);
-    if(glfwGetKey(scene->gWindow, '1')) scene->switchCamera(1);
-    if(glfwGetKey(scene->gWindow, '2')) scene->switchCamera(2);
+    
+    if(!scene->hasPlayer) {
+        if(glfwGetKey(scene->gWindow, '1')) scene->switchCamera(1);
+        if(glfwGetKey(scene->gWindow, '2')) scene->switchCamera(2);
+
+    }
+    
     if(glfwGetKey(scene->gWindow, 'A')) scene->getCamera()->translateLocal(strifeLeft);
     if(glfwGetKey(scene->gWindow, 'D')) scene->getCamera()->translateLocal(strifeRight);
     if(glfwGetKey(scene->gWindow, 'W')) scene->getCamera()->translateLocal(strifeUp);

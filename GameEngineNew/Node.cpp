@@ -61,3 +61,8 @@ void Node::draw(SceneCamera &camera)
     if (meshInstance != NULL) meshInstance->draw(camera);
     else printf("Error! Null Mesh.");
 }
+
+void Node::translateLocal(glm::vec3 &translation) {
+    
+    this->T.translateLocal(translation, *this->scene->getCamera());
+}

@@ -70,6 +70,8 @@
 #define TEXTURES "textures"
 #define OTHER_TEX "uOtherTex"
 
+// Third person
+#define HAS_PLAYER "has_player"
 
 // Node constants
 #define NODES "nodes"
@@ -97,8 +99,9 @@ private:
     map<std::string, Node*> nodes;
     vector<SceneCamera*> cameras;
     ISoundEngine* soundEngine;
-
+    
 public:
+    bool hasPlayer;
     vector<Light> lights;
     GLFWwindow* gWindow = NULL;
     void loadScene(std::string &fileName);

@@ -58,6 +58,8 @@ void Scene::loadScene(std::string &fileName) {
     worldSettings->setWidth(worldSettingsJson[WIDTH].int_value());
     worldSettings->setHeight(worldSettingsJson[HEIGHT].int_value());
     worldSettings->setSpp(worldSettingsJson[SPP].int_value());
+    
+    this->hasPlayer = worldSettingsJson[HAS_PLAYER].bool_value();
 
     glm::vec3 backGroundColorVector;
     Json::array backgroundColor = worldSettingsJson[BACKGROUND_COLOR].array_items();

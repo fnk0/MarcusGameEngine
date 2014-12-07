@@ -69,6 +69,14 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "test_copy.json"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "awesomeScene.json"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "testScene.json"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
@@ -81,7 +89,7 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "treeScene4.json"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

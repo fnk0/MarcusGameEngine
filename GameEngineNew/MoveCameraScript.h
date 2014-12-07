@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "Script.h"
+#define PLAYER "player"
 
 class MoveCameraScript : public Script {
     
@@ -31,6 +32,7 @@ public:
     void pressDown();
     void pressLeft();
     void pressRight();
+    void refreshCamera();
 };
 
 #endif /* defined(__GameEngineNew__MoveCameraScript__) */

@@ -49,34 +49,78 @@ void MoveCameraScript::run() {
     
 }
 
+void MoveCameraScript::refreshCamera() {
+
+    this->scene->getCamera()->setEye(this->scene->getNodes()[PLAYER]->T.translation + (this->scene->getNodes()[PLAYER]->T.rotation * glm::vec3(0,0,1)) * 20.0f + 5.0f * glm::vec3(0,1,0));
+    this->scene->getCamera()->setCenter(this->scene->getNodes()[PLAYER]->T.translation + 3.0f * glm::vec3(0,1,0));
+    this->scene->getCamera()->refreshTransform(this->scene->getWorldSettings()->getWidth(), this->scene->getWorldSettings()->getHeight());
+}
+
 void MoveCameraScript::pressA() {
-    glm::vec3 strifeLeft(-t, 0, 0);
-    this->scene->getCamera()->translateLocal(strifeLeft);
+
+    if(this->scene->hasPlayer) {
+        glm::vec3 strifeLeft(-t, 0, 0);
+        this->scene->getNodes()[PLAYER]->translateLocal(strifeLeft);
+        this->refreshCamera();
+    } else {
+        glm::vec3 strifeLeft(-t, 0, 0);
+        this->scene->getCamera()->translateLocal(strifeLeft);
+    }
 }
 
 void MoveCameraScript::pressD() {
-    glm::vec3 strifeRight(t, 0, 0);
-    scene->getCamera()->translateLocal(strifeRight);
+
+    if(this->scene->hasPlayer) {
+        glm::vec3 strifeRight(t, 0, 0);
+        this->scene->getNodes()[PLAYER]->translateLocal(strifeRight);
+        this->refreshCamera();
+    } else {
+        glm::vec3 strifeRight(t, 0, 0);
+        scene->getCamera()->translateLocal(strifeRight);
+    }
 }
 
 void MoveCameraScript::pressW() {
-    glm::vec3 strifeUp(0, t, -t);
-    scene->getCamera()->translateLocal(strifeUp);
+
+    if(this->scene->hasPlayer) {
+        glm::vec3 strifeUp(0, 0, -t);
+        this->scene->getNodes()[PLAYER]->translateLocal(strifeUp);
+        this->refreshCamera();
+    } else {
+        glm::vec3 strifeUp(0, t, t);
+        scene->getCamera()->translateLocal(strifeUp);
+    }
 }
 
 void MoveCameraScript::pressS() {
-    glm::vec3 strifeDown(0, -t, t);
-    scene->getCamera()->translateLocal(strifeDown);
+
+    if(this->scene->hasPlayer) {
+        glm::vec3 strifeDown(0, 0, -t);
+        this->scene->getNodes()[PLAYER]->translateLocal(strifeDown);
+        this->refreshCamera();
+    } else {
+        glm::vec3 strifeDown(0, -t, t);
+        scene->getCamera()->translateLocal(strifeDown);
+    }
 }
 
 void MoveCameraScript::pressQ() {
     glm::vec3 rotate(0, 1, 0);
-    scene->getCamera()->rotateGlobal(rotate, r);
+
+    if(this->scene->hasPlayer) {
+        this->scene->getNodes()[PLAYER]->T.rotateGlobal(rotate, r);
+    } else {
+        scene->getCamera()->rotateGlobal(rotate, r);
+    }
 }
 
 void MoveCameraScript::pressE() {
     glm::vec3 rotate(0, 1, 0);
-    scene->getCamera()->rotateGlobal(rotate, -r);
+    if(this->scene->hasPlayer) {
+        this->scene->getNodes()[PLAYER]->T.rotateGlobal(rotate, r);
+    } else {
+        scene->getCamera()->rotateGlobal(rotate, -r);
+    }
 }
 
 void MoveCameraScript::pressUp() {
@@ -91,10 +135,18 @@ void MoveCameraScript::pressDown() {
 
 void MoveCameraScript::pressLeft() {
     glm::vec3 rotate(0, 1, 0);
-    scene->getCamera()->rotateGlobal(rotate, r);
+    if(this->scene->hasPlayer) {
+        this->scene->getNodes()[PLAYER]->T.rotateGlobal(rotate, r);
+    } else {
+        scene->getCamera()->rotateGlobal(rotate, r);
+    }
 }
 
 void MoveCameraScript::pressRight() {
     glm::vec3 rotate(0, 1, 0);
-    scene->getCamera()->rotateGlobal(rotate, -r);
+    if(this->scene->hasPlayer) {
+        this->scene->getNodes()[PLAYER]->T.rotateGlobal(rotate, r);
+    } else {
+        scene->getCamera()->rotateGlobal(rotate, -r);
+    }
 }

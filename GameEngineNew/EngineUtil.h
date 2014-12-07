@@ -35,6 +35,8 @@ using namespace std;
 #include <glm/ext.hpp>
 #include "json11.hpp"
 #include "Light.h"
+#include "SceneCamera.h"
+
 using namespace json11;
 
 // Sound (irrKlang)
@@ -207,6 +209,68 @@ public:
     void setInvTransform(glm::mat4x4 &invTransform) {
         Transform::invTransform = invTransform;
     }
+
+    void translateLocal(glm::vec3 moveVec, SceneCamera camera)
+    {
+        glm::mat4x4 rot = glm::toMat4(rotation);
+        glm::vec4 xAxis = glm::vec4(1,0,0,0);
+        glm::vec4 yAxis = glm::vec4(0,1,0,0);
+        glm::vec4 zAxis = glm::vec4(0,0,1,0);
+
+        glm::vec4 locX = rot * xAxis;
+        glm::vec4 locY = rot * yAxis;
+        glm::vec4 locZ = rot * zAxis;
+
+        locX *= moveVec.x;
+        locY *= moveVec.y;
+        locZ *= moveVec.z;
+
+        translation += glm::vec3(locX.x, locX.y, locX.z);
+        translation += glm::vec3(locY.x, locY.y, locY.z);
+        translation += glm::vec3(locZ.x, locZ.y, locZ.z);
+
+        cout << endl;
+    }
+
+    void rotateGlobal(glm::vec3 axis, float angle)
+    {
+        glm::mat4x4 R = glm::axisAngleMatrix(axis,angle);
+        float f = sin(angle/2);
+        glm::quat tempQuat;
+        tempQuat.x = axis.x * f;
+        tempQuat.y = axis.y * f;
+        tempQuat.z = axis.z * f;
+        tempQuat.w = cos(angle/2);
+
+        rotation = tempQuat * rotation;
+
+        refreshTransform();
+    }
+
+    void rotateLocal(glm::vec3 axis, float angle)
+    {
+        glm::mat4x4 rot = glm::toMat4(rotation);
+        glm::vec4 xAxis = glm::vec4(1,0,0,0);
+        glm::vec4 yAxis = glm::vec4(0,1,0,0);
+        glm::vec4 zAxis = glm::vec4(0,0,1,0);
+
+        glm::vec4 locX = rot * xAxis;
+        glm::vec4 locY = rot * yAxis;
+        glm::vec4 locZ = rot * zAxis;
+
+        locX *= axis.x;
+        locY *= axis.y;
+        locZ *= axis.z;
+
+        glm::vec3 locAxis = glm::vec3(locX.x, locX.y, locX.z);
+        locAxis += glm::vec3(locY.x, locY.y, locY.z);
+        locAxis += glm::vec3(locZ.x, locZ.y, locZ.z);
+
+
+        rotateGlobal(locAxis, angle);
+
+    }
+
 };
 
 //-------------------------------------------------------------------------//
