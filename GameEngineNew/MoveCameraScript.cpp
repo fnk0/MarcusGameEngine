@@ -59,7 +59,7 @@ void MoveCameraScript::refreshCamera() {
 void MoveCameraScript::pressA() {
 
     if(this->scene->hasPlayer) {
-        glm::vec3 strifeLeft(-t, 0, 0);
+        glm::vec3 strifeLeft(-1, 0, 0);
         this->scene->getNodes()[PLAYER]->translateLocal(strifeLeft);
         this->refreshCamera();
     } else {
@@ -71,7 +71,7 @@ void MoveCameraScript::pressA() {
 void MoveCameraScript::pressD() {
 
     if(this->scene->hasPlayer) {
-        glm::vec3 strifeRight(t, 0, 0);
+        glm::vec3 strifeRight(1, 0, 0);
         this->scene->getNodes()[PLAYER]->translateLocal(strifeRight);
         this->refreshCamera();
     } else {
@@ -83,7 +83,7 @@ void MoveCameraScript::pressD() {
 void MoveCameraScript::pressW() {
 
     if(this->scene->hasPlayer) {
-        glm::vec3 strifeUp(0, 0, -t);
+        glm::vec3 strifeUp(0, 0, -1);
         this->scene->getNodes()[PLAYER]->translateLocal(strifeUp);
         this->refreshCamera();
     } else {
@@ -95,7 +95,7 @@ void MoveCameraScript::pressW() {
 void MoveCameraScript::pressS() {
 
     if(this->scene->hasPlayer) {
-        glm::vec3 strifeDown(0, 0, -t);
+        glm::vec3 strifeDown(0, 0, 1);
         this->scene->getNodes()[PLAYER]->translateLocal(strifeDown);
         this->refreshCamera();
     } else {

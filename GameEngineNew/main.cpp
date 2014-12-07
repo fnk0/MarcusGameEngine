@@ -109,8 +109,8 @@ void renderJson(Scene *scene) {
     scene->updateLights();
     
     // draw scene
-    map<std::string, Node*> _map = scene->getNodes();
-    for(auto outer_iter=_map.begin(); outer_iter!=_map.end(); ++outer_iter) {
+    const map<std::string, Node*> _map = scene->getMapNodes();
+    for(auto outer_iter = _map.begin(); outer_iter!= _map.end(); ++outer_iter) {
         outer_iter->second->draw(*scene->getCamera());
     }
 }

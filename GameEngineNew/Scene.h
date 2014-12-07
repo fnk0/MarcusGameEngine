@@ -144,6 +144,10 @@ public:
     map<std::string,Node *> getNodes() {
         return nodes;
     }
+    
+    const map<std::string,Node *> getMapNodes() {
+        return nodes;
+    }
 
     void setNodes(map<std::string, Node *> &nodes) {
         Scene::nodes = nodes;

@@ -18,8 +18,8 @@ class MoveCameraScript : public Script {
     
 private:
     Scene* scene;
-    float t = 0.1f;
-    float r = 0.05f;
+    float t = 10.0f;
+    float r = 0.5f;
 public:
     void run();
     void pressA();

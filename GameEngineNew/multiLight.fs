@@ -64,10 +64,6 @@ void main()
     vec4 diffuseColor = uDiffuseColor;
     diffuseColor *= vColor;
     
-    if(uDiffuseTex != NULL) {
-        
-    }
-    
     diffuseColor *= texture(uDiffuseTex, vTexCo*uTextureScale);
     diffuseColor *= texture(uOtherTex, vTexCo*uTextureScale);
     

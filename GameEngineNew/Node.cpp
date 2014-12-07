@@ -18,7 +18,7 @@ void Node::refreshTransforms() {
     }
     */
     T.refreshTransform();
-
+    //const map<std::string, Node*> _map = scene->getNodes();
     Node* _parent = scene->getNodes()[this->parent];
     map<std::string, Node*> nodeMap = scene->getNodes();
     if(_parent != NULL) {
@@ -56,6 +56,8 @@ void Node::draw(SceneCamera &camera)
             (*it)->run();
         }
     }
+    
+    
 
     meshInstance->material.bindMaterial(T, camera);
     if (meshInstance != NULL) meshInstance->draw(camera);

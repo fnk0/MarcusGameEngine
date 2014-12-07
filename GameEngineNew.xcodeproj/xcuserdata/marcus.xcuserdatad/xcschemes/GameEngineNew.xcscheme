@@ -69,6 +69,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "test_copy.json"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "GameScene.json"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
