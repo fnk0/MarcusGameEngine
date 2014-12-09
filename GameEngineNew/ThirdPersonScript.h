@@ -13,6 +13,7 @@
 #include "Script.h"
 #include "MoveCameraScript.h"
 
+
 class ThirdPersonScript : public MoveCameraScript {
 
 private:
@@ -35,6 +36,8 @@ public:
     virtual void pressQ() override;
 
     virtual void pressE() override;
+
+    void shootBullet();
 };
 
 #endif /* defined(__GameEngineNew__ThirdPersonScript__) */

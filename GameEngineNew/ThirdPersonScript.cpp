@@ -15,6 +15,14 @@ void ThirdPersonScript::refreshCamera() {
     this->scene->getCamera()->refreshTransform(this->scene->getWorldSettings()->getWidth(), this->scene->getWorldSettings()->getHeight());
 }
 
+
+void ThirdPersonScript::shootBullet() {
+
+    if(glfwGetKey(this->scene->getGWindow(), GLFW_KEY_SPACE)) {
+
+    }
+}
+
 void ThirdPersonScript::pressA() {
     glm::vec3 strifeLeft(0.5, 0, 0);
     this->scene->getPlayerNode()->translateLocal(strifeLeft);

@@ -38,7 +38,7 @@ int gHeight = 600; // window height
 //ISoundEngine* soundEngine = NULL;
 ISound* music = NULL;
 
-void butThisDoesnt() {
+void ryanRedneck() {
     Camera dummyCamera;
     dummyCamera.refreshTransform(0,0);
     exit(EXIT_FAILURE);
@@ -119,6 +119,11 @@ void gameUpdate(Scene* scene) {
     
 }
 
+void mouseUpdate(Scene* scene, double x, double y, int w, int h) {
+    //double horizontalAngle += mouseSpeed * deltaTime * float(1024/2 - xpos );
+    //double verticalAngle   += mouseSpeed * deltaTime * float( 768/2 - ypos );
+}
+
 
 //-------------------------------------------------------------------------//
 // Main method
@@ -153,6 +158,11 @@ int main(int numArgs, char **args)
     
 	// render loop
 	while (true) {
+
+        int w, h;
+        glfwGetWindowSize(scene->gWindow, &w, &h);
+        glfwSetCursorPos(scene->getGWindow(), w / 2, h / 2);
+
         //updateJson(scene);
         renderJson(scene);
         updateSound(scene);
@@ -165,8 +175,10 @@ int main(int numArgs, char **args)
 		if (glfwWindowShouldClose(scene->gWindow) != 0) break;
         
 		double xx, yy;
-		glfwGetCursorPos(scene->gWindow, &xx, &yy);
+		glfwGetCursorPos(scene->gWindow, &xx, &yy, w, h);
 		//printf("%1.3f %1.3f ", xx, yy);
+
+        mouseUpdate(scene, xx, yy);
         
 //        next_game_tick += SKIP_TICKS;
 		double endTime = TIME();

@@ -9,8 +9,7 @@
 #ifndef __WallObjectScript_H_
 #define __WallObjectScript_H_
 
-
-class WallObjectScript : GameObjectScript {
+class WallObjectScript : public GameObjectScript {
 
 public:
 
@@ -19,6 +18,8 @@ private:
     virtual void run() override;
 
     virtual void doAction() override;
+
+    void refreshCamera();
 };
 
 

@@ -258,6 +258,7 @@ void Scene::loadScene(std::string &fileName) {
             node->getNodes().push_back(childNode);
         }
 
+
         std::cout << "Creating node" << std::endl;
         
         node->setSound(music);

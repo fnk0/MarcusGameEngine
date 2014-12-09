@@ -33,7 +33,7 @@ public:
     Scene* scene;
     bool isBillboard = true;
     std::vector<Script*> scripts;
-    float velocity = 1;
+    float velocity;
 
     Node() {
     };
@@ -106,6 +106,14 @@ public:
 
     void setScripts(vector<Script *> const &scripts) {
         Node::scripts = scripts;
+    }
+
+    float getVelocity() const {
+        return velocity;
+    }
+
+    void setVelocity(float velocity) {
+        Node::velocity = velocity;
     }
 
     void translateLocal(glm::vec3 &translation);

@@ -18,6 +18,7 @@
 #include "Node.h"
 #include "GameObjectScript.h"
 #include "RedObjectScript.h"
+#include "WallObjectScript.h"
 
 class ScriptFactory {
     
@@ -50,6 +51,11 @@ public:
             RedObjectScript*  redObjectScript = new RedObjectScript();
             redObjectScript->setNode(this->node);
             script = redObjectScript;
+        }
+        else if(scriptName == "WallObjectScript") {
+            WallObjectScript* wallObjectScript = new WallObjectScript();
+            wallObjectScript->setNode(this->node);
+            script = wallObjectScript;
         }
 
         return script;
