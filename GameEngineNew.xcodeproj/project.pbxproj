@@ -84,6 +84,9 @@
 		2C79140919C9185400A7CC4B /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
 		2C79140A19C9185400A7CC4B /* Light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Light.h; sourceTree = "<group>"; };
 		2C807FB019F60E2200FDCCA1 /* libGLEW.1.10.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.10.0.dylib; path = ../../../../../../usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib; sourceTree = "<group>"; };
+		2C810D431A36A9C700669B1A /* GameScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameScene.json; sourceTree = "<group>"; };
+		2C810D441A36A9E600669B1A /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
+		2C810D451A36A9E600669B1A /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
 		2C8218A519B9811700E88ACD /* legoloki.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = legoloki.ply; sourceTree = "<group>"; };
 		2C86E94A19AFC9BC00876CDA /* phongShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = phongShader.fs; sourceTree = "<group>"; };
 		2C86E94C19B0239100876CDA /* anotherVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = anotherVertexShader.vs; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 		2C80CD2119B1C25400FBCF18 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2C810D441A36A9E600669B1A /* blue.png */,
+				2C810D451A36A9E600669B1A /* red.png */,
 				40B9FF2A1A31529400AABF56 /* Earth.png */,
 				2C553A8319B97A8400431C8C /* facek_lego_angry.png */,
 				2C553A8419B97A8400431C8C /* lokitexture.png */,
@@ -333,6 +338,7 @@
 		2C80CD2219B1C43A00FBCF18 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				2C810D431A36A9C700669B1A /* GameScene.json */,
 				2C2248DD1A1C35E4003ABF7F /* Scene2D.json */,
 				2C8EE6A319B056C9003E8BFB /* monkeyScene.json */,
 				BF8C73950C72144A8EBFED17 /* SomeScene.json */,
