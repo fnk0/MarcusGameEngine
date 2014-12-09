@@ -54,15 +54,21 @@ public:
         const float TIMESTEP = float(1.0/60.0);
         Node *node = this->getNode();
         Scene *scene = node->getScene();
+        glm::vec3 velocity = node->getVelocity();
         
         if((node->T.translation.x >= 3) || (node->T.translation.x <= -3)) {
-            glm::vec3 velocity = node->getVelocity();
             glm::vec3 newVelocity = glm::vec3(-1.0 * velocity.x, -1.0 * velocity.y, -1.0 * velocity.z); // Reverse direction of travel.
             node->setVelocity(newVelocity);
         }
         
-        if(glfwGetKey(scene->gWindow, 'J')) node->accelerate(glm::vec3(0.1, 0, 0), TIMESTEP);
-        if(glfwGetKey(scene->gWindow, 'K')) node->accelerate(glm::vec3(-0.1, 0, 0), TIMESTEP);
+        if(glfwGetKey(scene->gWindow, 'J')) { // Speed up
+            if(velocity.x >= 0) node->accelerate(glm::vec3(0.1, 0, 0), TIMESTEP);
+            else node->accelerate(glm::vec3(-0.1, 0, 0), TIMESTEP);
+        }
+        if(glfwGetKey(scene->gWindow, 'K')) { // Slow down
+            if(velocity.x >= 0) node->accelerate(glm::vec3(-0.1, 0, 0), TIMESTEP);
+            else node->accelerate(glm::vec3(0.1, 0, 0), TIMESTEP);
+        }
         
         node->update(TIMESTEP);
     };
