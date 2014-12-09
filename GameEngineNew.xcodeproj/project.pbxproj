@@ -18,7 +18,6 @@
 		2C807FAF19F60D3500FDCCA1 /* libglfw3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0902EE19F60C570074FE86 /* libglfw3.3.0.dylib */; };
 		2C807FB119F60E2200FDCCA1 /* libGLEW.1.10.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C807FB019F60E2200FDCCA1 /* libGLEW.1.10.0.dylib */; };
 		404EC0C51A1301970095159A /* HastyVect3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 404EC0C31A1301970095159A /* HastyVect3.cpp */; };
-		405C64A61A1C39FD00E12C21 /* CircleScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 405C64A41A1C39FD00E12C21 /* CircleScript.cpp */; };
 		40A260C71A007E9A007212D4 /* Script.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40A260C51A007E9A007212D4 /* Script.cpp */; };
 		BF8C702C07FAA9CAF304B324 /* MeshInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7D0655A21126ED317DC6 /* MeshInstance.cpp */; };
 		BF8C74B7A9171D3A1D0352E6 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7867841F890720BC50DF /* Material.cpp */; };
@@ -28,12 +27,7 @@
 		BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7B31E094E19BFB011CB7 /* WorldSettings.cpp */; };
 		CD5345711A3425BA00550603 /* VelocityScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD53456F1A3425BA00550603 /* VelocityScript.cpp */; };
 		CDA379D11A322377009F804F /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA379D01A322377009F804F /* libirrklang.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
-		CDF945441A37B15A004673C6 /* ThirdPersonScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDF9453A1A37B15A004673C6 /* ThirdPersonScript.cpp */; };
-		CDF945451A37B15A004673C6 /* MoveCameraScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDF9453C1A37B15A004673C6 /* MoveCameraScript.cpp */; };
-		CDF945461A37B15A004673C6 /* GameObjectScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDF9453E1A37B15A004673C6 /* GameObjectScript.cpp */; };
-		CDF945471A37B15A004673C6 /* RedObjectScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDF945401A37B15A004673C6 /* RedObjectScript.cpp */; };
-		CDF945481A37B15A004673C6 /* WallObjectScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDF945421A37B15A004673C6 /* WallObjectScript.cpp */; };
-		CDF945511A37B2D6004673C6 /* ScriptFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDF9454F1A37B2D6004673C6 /* ScriptFactory.cpp */; };
+		CDF945571A37BD6B004673C6 /* CircleScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDF945551A37BD6B004673C6 /* CircleScript.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,8 +90,6 @@
 		2CE6AB6A19DDD69300912786 /* cubeCenter.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cubeCenter.ply; sourceTree = "<group>"; };
 		404EC0C31A1301970095159A /* HastyVect3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HastyVect3.cpp; sourceTree = "<group>"; };
 		404EC0C41A1301970095159A /* HastyVect3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HastyVect3.h; sourceTree = "<group>"; };
-		405C64A41A1C39FD00E12C21 /* CircleScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircleScript.cpp; sourceTree = "<group>"; };
-		405C64A51A1C39FD00E12C21 /* CircleScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleScript.h; sourceTree = "<group>"; };
 		40A260C51A007E9A007212D4 /* Script.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Script.cpp; sourceTree = "<group>"; };
 		40A260C61A007E9A007212D4 /* Script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Script.h; sourceTree = "<group>"; };
 		BF8C70F637B8CBB1A983C1DE /* test.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = test.json; sourceTree = "<group>"; };
@@ -139,24 +131,9 @@
 		CDD99DC31A31059700F9B237 /* ik_IVirtualRefCounted.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_IVirtualRefCounted.h; sourceTree = "<group>"; };
 		CDD99DC41A31059700F9B237 /* ik_SAudioStreamFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_SAudioStreamFormat.h; sourceTree = "<group>"; };
 		CDD99DC51A31059700F9B237 /* ik_vec3d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_vec3d.h; sourceTree = "<group>"; };
-		CDF9453A1A37B15A004673C6 /* ThirdPersonScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThirdPersonScript.cpp; sourceTree = "<group>"; };
-		CDF9453B1A37B15A004673C6 /* ThirdPersonScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdPersonScript.h; sourceTree = "<group>"; };
-		CDF9453C1A37B15A004673C6 /* MoveCameraScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveCameraScript.cpp; sourceTree = "<group>"; };
-		CDF9453D1A37B15A004673C6 /* MoveCameraScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveCameraScript.h; sourceTree = "<group>"; };
-		CDF9453E1A37B15A004673C6 /* GameObjectScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObjectScript.cpp; sourceTree = "<group>"; };
-		CDF9453F1A37B15A004673C6 /* GameObjectScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjectScript.h; sourceTree = "<group>"; };
-		CDF945401A37B15A004673C6 /* RedObjectScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RedObjectScript.cpp; sourceTree = "<group>"; };
-		CDF945411A37B15A004673C6 /* RedObjectScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedObjectScript.h; sourceTree = "<group>"; };
-		CDF945421A37B15A004673C6 /* WallObjectScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WallObjectScript.cpp; sourceTree = "<group>"; };
-		CDF945431A37B15A004673C6 /* WallObjectScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallObjectScript.h; sourceTree = "<group>"; };
-		CDF945491A37B16E004673C6 /* GameScene.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GameScene.json; sourceTree = "<group>"; };
-		CDF9454A1A37B16E004673C6 /* Scene2D.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Scene2D.json; sourceTree = "<group>"; };
 		CDF9454B1A37B17D004673C6 /* bigTex.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = bigTex.fs; sourceTree = "<group>"; };
-		CDF9454C1A37B18D004673C6 /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
-		CDF9454D1A37B18D004673C6 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
-		CDF9454E1A37B18D004673C6 /* Earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Earth.png; sourceTree = "<group>"; };
-		CDF9454F1A37B2D6004673C6 /* ScriptFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScriptFactory.cpp; sourceTree = "<group>"; };
-		CDF945501A37B2D6004673C6 /* ScriptFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptFactory.h; sourceTree = "<group>"; };
+		CDF945551A37BD6B004673C6 /* CircleScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircleScript.cpp; sourceTree = "<group>"; };
+		CDF945561A37BD6B004673C6 /* CircleScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleScript.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,8 +207,6 @@
 				2C72129C19EDFB2900BF51C1 /* Node.h */,
 				40A260C51A007E9A007212D4 /* Script.cpp */,
 				40A260C61A007E9A007212D4 /* Script.h */,
-				CDF9454F1A37B2D6004673C6 /* ScriptFactory.cpp */,
-				CDF945501A37B2D6004673C6 /* ScriptFactory.h */,
 			);
 			path = GameEngineNew;
 			sourceTree = "<group>";
@@ -304,9 +279,6 @@
 		2C80CD2119B1C25400FBCF18 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				CDF9454C1A37B18D004673C6 /* blue.png */,
-				CDF9454D1A37B18D004673C6 /* red.png */,
-				CDF9454E1A37B18D004673C6 /* Earth.png */,
 				2C553A8319B97A8400431C8C /* facek_lego_angry.png */,
 				2C553A8419B97A8400431C8C /* lokitexture.png */,
 				2C553A8519B97A8400431C8C /* BrickRound0105_5_S_BUMP.png */,
@@ -320,8 +292,6 @@
 		2C80CD2219B1C43A00FBCF18 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
-				CDF945491A37B16E004673C6 /* GameScene.json */,
-				CDF9454A1A37B16E004673C6 /* Scene2D.json */,
 				2C8EE6A319B056C9003E8BFB /* monkeyScene.json */,
 				BF8C73950C72144A8EBFED17 /* SomeScene.json */,
 				2C42FB3919BA17FC001938DA /* Marines.json */,
@@ -345,18 +315,8 @@
 		405C64A31A1C39B800E12C21 /* scripts */ = {
 			isa = PBXGroup;
 			children = (
-				405C64A41A1C39FD00E12C21 /* CircleScript.cpp */,
-				405C64A51A1C39FD00E12C21 /* CircleScript.h */,
-				CDF9453A1A37B15A004673C6 /* ThirdPersonScript.cpp */,
-				CDF9453B1A37B15A004673C6 /* ThirdPersonScript.h */,
-				CDF9453C1A37B15A004673C6 /* MoveCameraScript.cpp */,
-				CDF9453D1A37B15A004673C6 /* MoveCameraScript.h */,
-				CDF9453E1A37B15A004673C6 /* GameObjectScript.cpp */,
-				CDF9453F1A37B15A004673C6 /* GameObjectScript.h */,
-				CDF945401A37B15A004673C6 /* RedObjectScript.cpp */,
-				CDF945411A37B15A004673C6 /* RedObjectScript.h */,
-				CDF945421A37B15A004673C6 /* WallObjectScript.cpp */,
-				CDF945431A37B15A004673C6 /* WallObjectScript.h */,
+				CDF945551A37BD6B004673C6 /* CircleScript.cpp */,
+				CDF945561A37BD6B004673C6 /* CircleScript.h */,
 				CD53456F1A3425BA00550603 /* VelocityScript.cpp */,
 				CD5345701A3425BA00550603 /* VelocityScript.h */,
 			);
@@ -459,28 +419,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDF945461A37B15A004673C6 /* GameObjectScript.cpp in Sources */,
 				40A260C71A007E9A007212D4 /* Script.cpp in Sources */,
 				404EC0C51A1301970095159A /* HastyVect3.cpp in Sources */,
 				2C79140B19C9185400A7CC4B /* Light.cpp in Sources */,
 				2C76C55D19B821C6005B64FB /* lodepng.cpp in Sources */,
-				CDF945441A37B15A004673C6 /* ThirdPersonScript.cpp in Sources */,
 				2C76C55B19B821C6005B64FB /* main.cpp in Sources */,
 				2C72129D19EDFB2900BF51C1 /* Node.cpp in Sources */,
 				2C76C55C19B821C6005B64FB /* EngineUtil.cpp in Sources */,
 				CD5345711A3425BA00550603 /* VelocityScript.cpp in Sources */,
+				CDF945571A37BD6B004673C6 /* CircleScript.cpp in Sources */,
 				2C76C56019B821DA005B64FB /* json11.cpp in Sources */,
-				405C64A61A1C39FD00E12C21 /* CircleScript.cpp in Sources */,
-				CDF945481A37B15A004673C6 /* WallObjectScript.cpp in Sources */,
 				BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */,
 				BF8C756ABE591D6A6484685B /* Scene.cpp in Sources */,
 				BF8C7DF24A944000A574BAD8 /* SceneCamera.cpp in Sources */,
 				BF8C791EFBCB737C660C6E5E /* Mesh.cpp in Sources */,
 				BF8C702C07FAA9CAF304B324 /* MeshInstance.cpp in Sources */,
-				CDF945451A37B15A004673C6 /* MoveCameraScript.cpp in Sources */,
 				BF8C74B7A9171D3A1D0352E6 /* Material.cpp in Sources */,
-				CDF945471A37B15A004673C6 /* RedObjectScript.cpp in Sources */,
-				CDF945511A37B2D6004673C6 /* ScriptFactory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

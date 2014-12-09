@@ -49,7 +49,6 @@ public:
     };
     
     void run() {
-        
         // TODO
         this->theta += PI/128;
         
