@@ -131,7 +131,6 @@
 		CDD99DC31A31059700F9B237 /* ik_IVirtualRefCounted.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_IVirtualRefCounted.h; sourceTree = "<group>"; };
 		CDD99DC41A31059700F9B237 /* ik_SAudioStreamFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_SAudioStreamFormat.h; sourceTree = "<group>"; };
 		CDD99DC51A31059700F9B237 /* ik_vec3d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_vec3d.h; sourceTree = "<group>"; };
-		CDF9454B1A37B17D004673C6 /* bigTex.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = bigTex.fs; sourceTree = "<group>"; };
 		CDF945551A37BD6B004673C6 /* CircleScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircleScript.cpp; sourceTree = "<group>"; };
 		CDF945561A37BD6B004673C6 /* CircleScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleScript.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -237,7 +236,6 @@
 				2C86E94A19AFC9BC00876CDA /* phongShader.fs */,
 				2C6DB50D19AD68D100144047 /* textureShader.fs */,
 				2CAFCBE819DB8B7100C86615 /* multiLight.fs */,
-				CDF9454B1A37B17D004673C6 /* bigTex.fs */,
 			);
 			name = fragmentShaders;
 			sourceTree = "<group>";
