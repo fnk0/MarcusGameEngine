@@ -76,7 +76,7 @@
 #define PARENT "parent"
 #define MESH_INSTANCE "meshInstance"
 #define VELOCITY "velocity"
-#define SCRIPT "script"
+#define SCRIPTS "scripts"
 #define CHILDREN "children"
 #define IS_BILLBOARD "is_billboard"
 #define NODE "node"
@@ -98,8 +98,10 @@ private:
     map<std::string, Node*> nodes;
     vector<SceneCamera*> cameras;
     ISoundEngine* soundEngine;
+    Node* playerNode;
 
 public:
+    bool hasPlayer;
     vector<Light> lights;
     GLFWwindow* gWindow = NULL;
     void loadScene(std::string &fileName);
@@ -187,6 +189,18 @@ public:
 
     void setSoundEngine(ISoundEngine *soundEngine) {
         Scene::soundEngine = soundEngine;
+    }
+    
+    Node *getPlayerNode() const {
+        return playerNode;
+    }
+    
+    void deleteNode(std::string nodeName) {
+        nodes.erase(nodeName);
+    }
+    
+    void setPlayerNode(Node *playerNode) {
+        Scene::playerNode = playerNode;
     }
 
     void switchCamera(int camNum);
