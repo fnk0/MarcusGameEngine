@@ -55,19 +55,49 @@ public:
         Node *node = this->getNode();
         Scene *scene = node->getScene();
         glm::vec3 velocity = node->getVelocity();
+        float increment = 0.1;
+        float e = increment * TIMESTEP;
         
         if((node->T.translation.x >= 3) || (node->T.translation.x <= -3)) {
-            glm::vec3 newVelocity = glm::vec3(-1.0 * velocity.x, -1.0 * velocity.y, -1.0 * velocity.z); // Reverse direction of travel.
+            glm::vec3 newVelocity = glm::vec3(-1.0 * velocity.x, velocity.y, velocity.z); // Reverse direction of travel on x axis.
+            node->setVelocity(newVelocity);
+        }
+        if((node->T.translation.y >= 3) || (node->T.translation.y <= -3)) {
+            glm::vec3 newVelocity = glm::vec3(velocity.x, -1.0 * velocity.y, velocity.z); // Reverse direction of travel on y axis.
+            node->setVelocity(newVelocity);
+        }
+        if((node->T.translation.z >= 3) || (node->T.translation.z <= -3)) {
+            glm::vec3 newVelocity = glm::vec3(velocity.x, velocity.y, -1.0 * velocity.z); // Reverse direction of travel on z axis.
             node->setVelocity(newVelocity);
         }
         
-        if(glfwGetKey(scene->gWindow, 'J')) { // Speed up
-            if(velocity.x >= 0) node->accelerate(glm::vec3(0.1, 0, 0), TIMESTEP);
-            else node->accelerate(glm::vec3(-0.1, 0, 0), TIMESTEP);
+        
+        if(glfwGetKey(scene->gWindow, 'J')) { // Speed up in x direction
+            if(velocity.x >= 0) node->accelerate(glm::vec3(increment, 0, 0), TIMESTEP);
+            else node->accelerate(glm::vec3(-1.0 * increment, 0, 0), TIMESTEP);
         }
-        if(glfwGetKey(scene->gWindow, 'K')) { // Slow down
-            if(velocity.x >= 0) node->accelerate(glm::vec3(-0.1, 0, 0), TIMESTEP);
-            else node->accelerate(glm::vec3(0.1, 0, 0), TIMESTEP);
+        if(glfwGetKey(scene->gWindow, 'K')) { // Slow down in x direction
+            if(velocity.x > e) node->accelerate(glm::vec3(-1.0 * increment, 0, 0), TIMESTEP);
+            else if(velocity.x < -e) node->accelerate(glm::vec3(increment, 0, 0), TIMESTEP);
+            else node->accelerate(glm::vec3((-node->velocity.x)/TIMESTEP, 0, 0), TIMESTEP);  // Used to negate any small amount of velocity in the x direction.
+        }
+        if(glfwGetKey(scene->gWindow, 'L')) { // Speed up in y direction
+            if(velocity.y >= 0) node->accelerate(glm::vec3(0, increment, 0), TIMESTEP);
+            else node->accelerate(glm::vec3(0, -1.0 * increment, 0), TIMESTEP);
+        }
+        if(glfwGetKey(scene->gWindow, ';')) { // Slow down in y direction
+            if(velocity.y > e) node->accelerate(glm::vec3(0, -1.0 * increment, 0), TIMESTEP);
+            else if(velocity.y < -e) node->accelerate(glm::vec3(0, increment, 0), TIMESTEP);
+            else node->accelerate(glm::vec3(0, (-node->velocity.y)/TIMESTEP, 0), TIMESTEP);  // Used to negate any small amount of velocity in the y direction.
+        }
+        if(glfwGetKey(scene->gWindow, 'U')) { // Speed up in z direction
+            if(velocity.z >= 0) node->accelerate(glm::vec3(0, 0, increment), TIMESTEP);
+            else node->accelerate(glm::vec3(0, 0, -1.0 * increment), TIMESTEP);
+        }
+        if(glfwGetKey(scene->gWindow, 'I')) { // Slow down in z direction
+            if(velocity.z > e) node->accelerate(glm::vec3(0, 0, -1.0 * increment), TIMESTEP);
+            else if(velocity.z < -e) node->accelerate(glm::vec3(0, 0, increment), TIMESTEP);
+            else node->accelerate(glm::vec3(0, 0, (-node->velocity.z)/TIMESTEP), TIMESTEP);  // Used to negate any small amount of velocity in the z direction.
         }
         
         node->update(TIMESTEP);
