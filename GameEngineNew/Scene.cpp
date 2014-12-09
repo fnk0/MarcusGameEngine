@@ -258,6 +258,8 @@ void Scene::loadScene(std::string &fileName) {
             node->getNodes().push_back(childNode);
         }
 
+        node->setVelocity((float) nodesJson[i][VELOCITY].number_value());
+        node->setMass((float) nodesJson[i][MASS].number_value());
 
         std::cout << "Creating node" << std::endl;
         
