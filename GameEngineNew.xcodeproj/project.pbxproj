@@ -27,7 +27,6 @@
 		BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7B31E094E19BFB011CB7 /* WorldSettings.cpp */; };
 		CD5345711A3425BA00550603 /* VelocityScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD53456F1A3425BA00550603 /* VelocityScript.cpp */; };
 		CDA379D11A322377009F804F /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA379D01A322377009F804F /* libirrklang.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
-		CDF945571A37BD6B004673C6 /* CircleScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CDF945551A37BD6B004673C6 /* CircleScript.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -131,8 +130,6 @@
 		CDD99DC31A31059700F9B237 /* ik_IVirtualRefCounted.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_IVirtualRefCounted.h; sourceTree = "<group>"; };
 		CDD99DC41A31059700F9B237 /* ik_SAudioStreamFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_SAudioStreamFormat.h; sourceTree = "<group>"; };
 		CDD99DC51A31059700F9B237 /* ik_vec3d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_vec3d.h; sourceTree = "<group>"; };
-		CDF945551A37BD6B004673C6 /* CircleScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CircleScript.cpp; sourceTree = "<group>"; };
-		CDF945561A37BD6B004673C6 /* CircleScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleScript.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,8 +310,6 @@
 		405C64A31A1C39B800E12C21 /* scripts */ = {
 			isa = PBXGroup;
 			children = (
-				CDF945551A37BD6B004673C6 /* CircleScript.cpp */,
-				CDF945561A37BD6B004673C6 /* CircleScript.h */,
 				CD53456F1A3425BA00550603 /* VelocityScript.cpp */,
 				CD5345701A3425BA00550603 /* VelocityScript.h */,
 			);
@@ -425,7 +420,6 @@
 				2C72129D19EDFB2900BF51C1 /* Node.cpp in Sources */,
 				2C76C55C19B821C6005B64FB /* EngineUtil.cpp in Sources */,
 				CD5345711A3425BA00550603 /* VelocityScript.cpp in Sources */,
-				CDF945571A37BD6B004673C6 /* CircleScript.cpp in Sources */,
 				2C76C56019B821DA005B64FB /* json11.cpp in Sources */,
 				BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */,
 				BF8C756ABE591D6A6484685B /* Scene.cpp in Sources */,
