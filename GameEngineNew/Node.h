@@ -97,7 +97,7 @@ public:
     }
     
     void update(const float dt) {
-        Node::T.translation = T.translation + (Node::velocity);
+        Node::T.translation = T.translation + velocity;
         Node::T.refreshTransform();
     }
     
