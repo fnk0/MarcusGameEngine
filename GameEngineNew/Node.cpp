@@ -56,8 +56,6 @@ void Node::draw(SceneCamera &camera)
             (*it)->run();
         }
     }
-    
-    
 
     meshInstance->material.bindMaterial(T, camera);
     if (meshInstance != NULL) meshInstance->draw(camera);

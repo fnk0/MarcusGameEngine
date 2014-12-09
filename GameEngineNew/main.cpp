@@ -22,7 +22,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
     
 	if (action == GLFW_PRESS &&
 		((key >= 'A' && key <= 'Z') || (key >= '0' && key <= '9'))) {
-		printf("\n%c\n", (char)key);
+		//printf("\n%c\n", (char)key);
 	}
 }
 
@@ -115,6 +115,10 @@ void renderJson(Scene *scene) {
     }
 }
 
+void gameUpdate(Scene* scene) {
+    
+}
+
 
 //-------------------------------------------------------------------------//
 // Main method
@@ -152,6 +156,7 @@ int main(int numArgs, char **args)
         //updateJson(scene);
         renderJson(scene);
         updateSound(scene);
+        gameUpdate(scene);
         //keyboardCameraController(scene);
         
 		// handle input
@@ -170,8 +175,7 @@ int main(int numArgs, char **args)
 //        if(sleep_time > 0) {
 //            SLEEP(sleep_time);
 //        }
-        
-        
+
 		startTime = endTime;
         
 		// swap buffers

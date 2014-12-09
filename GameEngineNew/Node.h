@@ -15,6 +15,7 @@
 #include "Script.h"
 
 class MeshInstance;
+class Transform;
 class Scene;
 class Script;
 
@@ -24,6 +25,7 @@ class Node {
 // Childs also has a TRS, etc..1
 public:
     Transform T;
+    std::string name;
     std::string parent;
     MeshInstance *meshInstance;
     vector<std::string> nodes;
@@ -31,6 +33,7 @@ public:
     Scene* scene;
     bool isBillboard = true;
     std::vector<Script*> scripts;
+    float velocity = 1;
 
     Node() {
     };
@@ -88,7 +91,23 @@ public:
     void setSound(ISound *sound) {
         Node::sound = sound;
     }
-    
+
+    std::string getName() {
+        return name;
+    }
+
+    void setName(std::string name) {
+        Node::name = name;
+    }
+
+    vector<Script *> const &getScripts() const {
+        return scripts;
+    }
+
+    void setScripts(vector<Script *> const &scripts) {
+        Node::scripts = scripts;
+    }
+
     void translateLocal(glm::vec3 &translation);
     
     // Look at the camera and see which direction is looking to (Easy way)

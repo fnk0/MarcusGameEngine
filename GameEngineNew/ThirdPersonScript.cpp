@@ -7,3 +7,46 @@
 //
 
 #include "ThirdPersonScript.h"
+
+void ThirdPersonScript::refreshCamera() {
+    
+    this->scene->getCamera()->setEye(this->scene->getPlayerNode()->T.translation + (this->scene->getPlayerNode()->T.rotation * glm::vec3(0,0, -1)) * 20.0f + 5.0f * glm::vec3(0,1,0));
+    this->scene->getCamera()->setCenter(this->scene->getPlayerNode()->T.translation + 3.0f * glm::vec3(0,1,0));
+    this->scene->getCamera()->refreshTransform(this->scene->getWorldSettings()->getWidth(), this->scene->getWorldSettings()->getHeight());
+}
+
+void ThirdPersonScript::pressA() {
+    glm::vec3 strifeLeft(0.5, 0, 0);
+    this->scene->getPlayerNode()->translateLocal(strifeLeft);
+    this->refreshCamera();
+}
+
+void ThirdPersonScript::pressD() {
+    glm::vec3 strifeRight(-0.5, 0, 0);
+    this->scene->getPlayerNode()->translateLocal(strifeRight);
+    this->refreshCamera();;
+}
+
+void ThirdPersonScript::pressW() {
+    glm::vec3 strifeUp(0, 0, 1);
+    this->scene->getPlayerNode()->translateLocal(strifeUp);
+    this->refreshCamera();
+}
+
+void ThirdPersonScript::pressS() {
+    glm::vec3 strifeDown(0, 0, -1);
+    this->scene->getPlayerNode()->translateLocal(strifeDown);
+    this->refreshCamera();
+}
+
+void ThirdPersonScript::pressQ() {
+    glm::vec3 rotate(0, 0.5, 0);
+    this->scene->getPlayerNode()->T.rotateGlobal(rotate, r);
+    this->refreshCamera();
+}
+
+void ThirdPersonScript::pressE() {
+    glm::vec3 rotate(0, 0.5, 0);
+    this->scene->getPlayerNode()->T.rotateGlobal(rotate, -r);
+    this->refreshCamera();
+}

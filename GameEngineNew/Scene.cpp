@@ -261,8 +261,11 @@ void Scene::loadScene(std::string &fileName) {
         std::cout << "Creating node" << std::endl;
         
         node->setSound(music);
+        node->setName(nodesJson[i][NAME].string_value());
         nodes.insert(make_pair(nodesJson[i][NAME].string_value(), node));
     }
+
+    if(this->hasPlayer) this->setPlayerNode(nodes[PLAYER]);
     
     for(int i = 0; i < backGroundColorVector.length(); i++) {
         std::cout << "Color: " << backGroundColorVector[i] << "\n";

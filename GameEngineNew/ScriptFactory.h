@@ -16,6 +16,8 @@
 #include "CircleScript.h"
 #include "ThirdPersonScript.h"
 #include "Node.h"
+#include "GameObjectScript.h"
+#include "RedObjectScript.h"
 
 class ScriptFactory {
     
@@ -29,17 +31,27 @@ public:
     Script* getScript(std::string scriptName) {
         Script* script = new Script();
         
-        if(scriptName.compare("CircleScript") == 0) {
+        if(scriptName == "CircleScript") {
             CircleScript* circleScript = new CircleScript();
             circleScript->setNode(this->node);
             script = circleScript;
         }
-        else if(scriptName.compare("ThirdPersonScript") == 0) {
+        else if(scriptName == "GameObjectScript") {
+            GameObjectScript* gameObjectScript = new GameObjectScript();
+            gameObjectScript->setNode(this->node);
+            script = gameObjectScript;
+        }
+        else if(scriptName == "ThirdPersonScript") {
             ThirdPersonScript* thirdPersonScript = new ThirdPersonScript();
             thirdPersonScript->setNode(this->node);
             script = thirdPersonScript;
         }
-        
+        else if(scriptName == "RedObjectScript") {
+            RedObjectScript*  redObjectScript = new RedObjectScript();
+            redObjectScript->setNode(this->node);
+            script = redObjectScript;
+        }
+
         return script;
     };
     

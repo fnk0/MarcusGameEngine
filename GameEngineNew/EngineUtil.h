@@ -228,13 +228,10 @@ public:
         translation += glm::vec3(locX.x, locX.y, locX.z);
         translation += glm::vec3(locY.x, locY.y, locY.z);
         translation += glm::vec3(locZ.x, locZ.y, locZ.z);
-
-        cout << endl;
     }
 
     void rotateGlobal(glm::vec3 axis, float angle)
     {
-        glm::mat4x4 R = glm::axisAngleMatrix(axis,angle);
         float f = sin(angle/2);
         glm::quat tempQuat;
         tempQuat.x = axis.x * f;
@@ -242,7 +239,7 @@ public:
         tempQuat.z = axis.z * f;
         tempQuat.w = cos(angle/2);
 
-        rotation = tempQuat * rotation;
+        rotation = glm::normalize(tempQuat * rotation);
 
         refreshTransform();
     }
@@ -265,7 +262,6 @@ public:
         glm::vec3 locAxis = glm::vec3(locX.x, locX.y, locX.z);
         locAxis += glm::vec3(locY.x, locY.y, locY.z);
         locAxis += glm::vec3(locZ.x, locZ.y, locZ.z);
-
 
         rotateGlobal(locAxis, angle);
 

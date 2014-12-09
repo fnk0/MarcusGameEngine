@@ -11,28 +11,29 @@
 
 #include <stdio.h>
 #include "Script.h"
+#include "Node.h"
 #define PLAYER "player"
 
 class MoveCameraScript : public Script {
-    
-    
+
 private:
+   
+public:
     Scene* scene;
     float t = 10.0f;
     float r = 0.5f;
-public:
     void run();
-    void pressA();
-    void pressD();
-    void pressW();
-    void pressS();
-    void pressQ();
-    void pressE();
-    void pressUp();
-    void pressDown();
-    void pressLeft();
-    void pressRight();
-    void refreshCamera();
+    virtual void pressA();
+    virtual void pressD();
+    virtual void pressW();
+    virtual void pressS();
+    virtual void pressQ();
+    virtual void pressE();
+    virtual void pressUp();
+    virtual void pressDown();
+    virtual void pressLeft();
+    virtual void pressRight();
+
 };
 
 #endif /* defined(__GameEngineNew__MoveCameraScript__) */

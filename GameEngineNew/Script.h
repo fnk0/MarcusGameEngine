@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include "EngineUtil.h"
 #include <map>
 #include "Node.h"
 

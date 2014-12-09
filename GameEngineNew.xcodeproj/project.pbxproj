@@ -25,9 +25,11 @@
 		40B9FF301A31579E00AABF56 /* ThirdPersonScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40B9FF2E1A31579E00AABF56 /* ThirdPersonScript.cpp */; };
 		40B9FF331A315B4400AABF56 /* MoveCameraScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40B9FF311A315B4400AABF56 /* MoveCameraScript.cpp */; };
 		BF8C702C07FAA9CAF304B324 /* MeshInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7D0655A21126ED317DC6 /* MeshInstance.cpp */; };
+		BF8C71B9E34FF30FE823F9DE /* RedObjectScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C798EBB56E533A737580F /* RedObjectScript.cpp */; };
 		BF8C74B7A9171D3A1D0352E6 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7867841F890720BC50DF /* Material.cpp */; };
 		BF8C756ABE591D6A6484685B /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C768B6EA9DD0ACA350DD7 /* Scene.cpp */; };
 		BF8C791EFBCB737C660C6E5E /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C78FD43511EBB151C4F06 /* Mesh.cpp */; };
+		BF8C7A5716AB0E9D0E382C07 /* GameObjectScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7D7FE513C4FFC02D1610 /* GameObjectScript.cpp */; };
 		BF8C7DF24A944000A574BAD8 /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */; };
 		BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7B31E094E19BFB011CB7 /* WorldSettings.cpp */; };
 /* End PBXBuildFile section */
@@ -110,6 +112,7 @@
 		2CA4DF391A315E4500834B85 /* rock2.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rock2.ply; path = "../../PLY Meshes/rock2.ply"; sourceTree = "<group>"; };
 		2CA4DF3A1A315E4500834B85 /* rock1.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rock1.ply; path = "../../PLY Meshes/rock1.ply"; sourceTree = "<group>"; };
 		2CA4DF3B1A315E4500834B85 /* monkey.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = monkey.ply; path = "../../PLY Meshes/monkey.ply"; sourceTree = "<group>"; };
+		2CAD77EB1A357D7100F8A8C0 /* bigTex.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = bigTex.fs; sourceTree = "<group>"; };
 		2CAFCBE819DB8B7100C86615 /* multiLight.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = multiLight.fs; sourceTree = "<group>"; };
 		2CB85A2219B23DAD00CB19E4 /* rock2.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock2.ply; sourceTree = "<group>"; };
 		2CB85A2319B23DAD00CB19E4 /* rock1.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock1.ply; sourceTree = "<group>"; };
@@ -123,7 +126,6 @@
 		407266E41A30FCAC007CC149 /* ScriptFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptFactory.h; sourceTree = "<group>"; };
 		40A260C51A007E9A007212D4 /* Script.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Script.cpp; sourceTree = "<group>"; };
 		40A260C61A007E9A007212D4 /* Script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Script.h; sourceTree = "<group>"; };
-		40B9FF291A31512600AABF56 /* sphereCenter.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sphereCenter.ply; sourceTree = "<group>"; };
 		40B9FF2A1A31529400AABF56 /* Earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Earth.png; sourceTree = "<group>"; };
 		40B9FF2E1A31579E00AABF56 /* ThirdPersonScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThirdPersonScript.cpp; sourceTree = "<group>"; };
 		40B9FF2F1A31579E00AABF56 /* ThirdPersonScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdPersonScript.h; sourceTree = "<group>"; };
@@ -134,15 +136,19 @@
 		BF8C73950C72144A8EBFED17 /* SomeScene.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = SomeScene.json; sourceTree = "<group>"; };
 		BF8C73FA8ED612CB38501395 /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
 		BF8C768B6EA9DD0ACA350DD7 /* Scene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene.cpp; sourceTree = "<group>"; };
+		BF8C76E5116EB4E269AD1F4C /* GameObjectScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameObjectScript.h; sourceTree = "<group>"; };
 		BF8C7739E6283636D31BB1AF /* MeshInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshInstance.h; sourceTree = "<group>"; };
 		BF8C774E2A6C77C9ED8D510B /* test_copy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test_copy.json; sourceTree = "<group>"; };
 		BF8C7867841F890720BC50DF /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Material.cpp; sourceTree = "<group>"; };
 		BF8C78FD43511EBB151C4F06 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
+		BF8C798EBB56E533A737580F /* RedObjectScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RedObjectScript.cpp; sourceTree = "<group>"; };
 		BF8C7B31E094E19BFB011CB7 /* WorldSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldSettings.cpp; sourceTree = "<group>"; };
 		BF8C7CE23F068AE0C64BD628 /* SceneCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneCamera.h; sourceTree = "<group>"; };
 		BF8C7D0655A21126ED317DC6 /* MeshInstance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeshInstance.cpp; sourceTree = "<group>"; };
+		BF8C7D7FE513C4FFC02D1610 /* GameObjectScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObjectScript.cpp; sourceTree = "<group>"; };
 		BF8C7EDA8879119F4558FD15 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		BF8C7F059A3B0C8883D5A66E /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		BF8C7F50360567F443BC93B7 /* RedObjectScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedObjectScript.h; sourceTree = "<group>"; };
 		BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneCamera.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -248,6 +254,7 @@
 				2C86E94A19AFC9BC00876CDA /* phongShader.fs */,
 				2C6DB50D19AD68D100144047 /* textureShader.fs */,
 				2CAFCBE819DB8B7100C86615 /* multiLight.fs */,
+				2CAD77EB1A357D7100F8A8C0 /* bigTex.fs */,
 			);
 			name = fragmentShaders;
 			sourceTree = "<group>";
@@ -356,6 +363,10 @@
 				40B9FF2F1A31579E00AABF56 /* ThirdPersonScript.h */,
 				40B9FF311A315B4400AABF56 /* MoveCameraScript.cpp */,
 				40B9FF321A315B4400AABF56 /* MoveCameraScript.h */,
+				BF8C7D7FE513C4FFC02D1610 /* GameObjectScript.cpp */,
+				BF8C76E5116EB4E269AD1F4C /* GameObjectScript.h */,
+				BF8C798EBB56E533A737580F /* RedObjectScript.cpp */,
+				BF8C7F50360567F443BC93B7 /* RedObjectScript.h */,
 			);
 			name = scripts;
 			sourceTree = "<group>";
@@ -429,6 +440,8 @@
 				BF8C74B7A9171D3A1D0352E6 /* Material.cpp in Sources */,
 				40B9FF331A315B4400AABF56 /* MoveCameraScript.cpp in Sources */,
 				407266E51A30FCAC007CC149 /* ScriptFactory.cpp in Sources */,
+				BF8C7A5716AB0E9D0E382C07 /* GameObjectScript.cpp in Sources */,
+				BF8C71B9E34FF30FE823F9DE /* RedObjectScript.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

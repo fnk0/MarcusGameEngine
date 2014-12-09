@@ -21,6 +21,20 @@ public:
         MoveCameraScript::run();
         
     };
+    
+    virtual void refreshCamera();
+
+    virtual void pressA() override;
+
+    virtual void pressD() override;
+
+    virtual void pressW() override;
+
+    virtual void pressS() override;
+
+    virtual void pressQ() override;
+
+    virtual void pressE() override;
 };
 
 #endif /* defined(__GameEngineNew__ThirdPersonScript__) */
