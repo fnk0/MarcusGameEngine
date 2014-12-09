@@ -159,7 +159,6 @@
               "scale": [100, 0.1, 100],
               "rotation": [0, 1, 0, 0],
               "translation": [0, 0, 0],
-              "velocity": [1.0, 0, 0],
               "backgroundMusic": "bell.wav",
               "is_billboard": false,
               "children": [
@@ -172,6 +171,8 @@
               "scale": [1, 1, 1],
               "rotation": [0, 1, 0, 0],
               "translation": [-1.8, 0.5, 2.2],
+              "velocity": [0.1, 0, 0],
+              "script": "VelocityScript",
               "backgroundMusic": "",
               "is_billboard": true,
               "children": [

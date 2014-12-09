@@ -26,6 +26,7 @@
 		BF8C791EFBCB737C660C6E5E /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C78FD43511EBB151C4F06 /* Mesh.cpp */; };
 		BF8C7DF24A944000A574BAD8 /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */; };
 		BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7B31E094E19BFB011CB7 /* WorldSettings.cpp */; };
+		CD5345711A3425BA00550603 /* VelocityScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD53456F1A3425BA00550603 /* VelocityScript.cpp */; };
 		CDA379D11A322377009F804F /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA379D01A322377009F804F /* libirrklang.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,8 @@
 		BF8C7EDA8879119F4558FD15 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		BF8C7F059A3B0C8883D5A66E /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneCamera.cpp; sourceTree = "<group>"; };
+		CD53456F1A3425BA00550603 /* VelocityScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VelocityScript.cpp; sourceTree = "<group>"; };
+		CD5345701A3425BA00550603 /* VelocityScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VelocityScript.h; sourceTree = "<group>"; };
 		CDA379D01A322377009F804F /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libirrklang.dylib; sourceTree = "<group>"; };
 		CDD99DB11A3104F200F9B237 /* irrKlang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = irrKlang.h; sourceTree = "<group>"; };
 		CDD99DB21A31057000F9B237 /* ik_irrKlangTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_irrKlangTypes.h; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 			children = (
 				405C64A41A1C39FD00E12C21 /* CircleScript.cpp */,
 				405C64A51A1C39FD00E12C21 /* CircleScript.h */,
+				CD53456F1A3425BA00550603 /* VelocityScript.cpp */,
+				CD5345701A3425BA00550603 /* VelocityScript.h */,
 			);
 			name = scripts;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				2C76C55B19B821C6005B64FB /* main.cpp in Sources */,
 				2C72129D19EDFB2900BF51C1 /* Node.cpp in Sources */,
 				2C76C55C19B821C6005B64FB /* EngineUtil.cpp in Sources */,
+				CD5345711A3425BA00550603 /* VelocityScript.cpp in Sources */,
 				2C76C56019B821DA005B64FB /* json11.cpp in Sources */,
 				405C64A61A1C39FD00E12C21 /* CircleScript.cpp in Sources */,
 				BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */,

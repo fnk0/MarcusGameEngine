@@ -150,7 +150,7 @@ int main(int numArgs, char **args)
     
 	// render loop
 	while (true) {
-        updateJson(scene);
+        //updateJson(scene);
         renderJson(scene);
         updateSound(scene);
         keyboardCameraController(scene);

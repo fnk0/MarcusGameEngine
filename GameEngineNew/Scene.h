@@ -76,6 +76,7 @@
 #define PARENT "parent"
 #define MESH_INSTANCE "meshInstance"
 #define VELOCITY "velocity"
+#define SCRIPT "script"
 #define CHILDREN "children"
 #define IS_BILLBOARD "is_billboard"
 #define NODE "node"

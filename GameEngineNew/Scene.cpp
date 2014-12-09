@@ -5,6 +5,7 @@
 
 #include "Scene.h"
 #include "CircleScript.h"
+#include "VelocityScript.h"
 #include "Scene.h"
 
 
@@ -215,8 +216,19 @@ void Scene::loadScene(std::string &fileName) {
 
     for(int i = 0; i < nodesJson.size(); i++) {
         Node* node = new Node();
-        node->script = new CircleScript();
-        node->script->setNode(node);
+        
+        std::string scriptName = nodesJson[i][SCRIPT].string_value();
+        Script *script;
+        if(scriptName.compare("VelocityScript") == 0) {
+            script = new VelocityScript();
+            node->script = script;
+            node->script->setNode(node);
+        }
+        else if(scriptName.compare("CircleScript") == 0) {
+            script = new CircleScript();
+            node->script = script;
+            node->script->setNode(node);
+        }
         
         glm::vec3 scale;
         loadFloatsArray(&scale[0], nodesJson[i][SCALE].array_items());

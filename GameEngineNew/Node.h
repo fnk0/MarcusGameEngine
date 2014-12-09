@@ -59,6 +59,10 @@ public:
     void setVelocity(const glm::vec3 &v) {
         Node::velocity = v;
     }
+    
+    void accelerate(const glm::vec3 &acceleration, const float dt) {
+        Node::velocity = velocity + acceleration * dt;
+    }
 
     std::string getParent() {
         return parent;
@@ -93,7 +97,7 @@ public:
     }
     
     void update(const float dt) {
-        Node::T.translation = T.translation + (Node::velocity) * dt;
+        Node::T.translation = T.translation + (Node::velocity);
         Node::T.refreshTransform();
     }
     
