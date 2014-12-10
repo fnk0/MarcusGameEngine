@@ -27,7 +27,7 @@
 		BF8C7DF24A944000A574BAD8 /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */; };
 		BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7B31E094E19BFB011CB7 /* WorldSettings.cpp */; };
 		CD5345711A3425BA00550603 /* VelocityScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD53456F1A3425BA00550603 /* VelocityScript.cpp */; };
-		CDA379D11A322377009F804F /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA379D01A322377009F804F /* libirrklang.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
+		CD994D131A37D80F001FEEDE /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD994D121A37D80F001FEEDE /* libirrklang.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -111,7 +111,7 @@
 		BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneCamera.cpp; sourceTree = "<group>"; };
 		CD53456F1A3425BA00550603 /* VelocityScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VelocityScript.cpp; sourceTree = "<group>"; };
 		CD5345701A3425BA00550603 /* VelocityScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VelocityScript.h; sourceTree = "<group>"; };
-		CDA379D01A322377009F804F /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libirrklang.dylib; sourceTree = "<group>"; };
+		CD994D121A37D80F001FEEDE /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libirrklang.dylib; sourceTree = "<group>"; };
 		CDD99DB11A3104F200F9B237 /* irrKlang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = irrKlang.h; sourceTree = "<group>"; };
 		CDD99DB21A31057000F9B237 /* ik_irrKlangTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_irrKlangTypes.h; sourceTree = "<group>"; };
 		CDD99DB31A31059700F9B237 /* ik_ESoundEngineOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_ESoundEngineOptions.h; sourceTree = "<group>"; };
@@ -140,8 +140,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD994D131A37D80F001FEEDE /* libirrklang.dylib in Frameworks */,
 				2C807FB119F60E2200FDCCA1 /* libGLEW.1.10.0.dylib in Frameworks */,
-				CDA379D11A322377009F804F /* libirrklang.dylib in Frameworks */,
 				2C807FAF19F60D3500FDCCA1 /* libglfw3.3.0.dylib in Frameworks */,
 				2C3AA1C319AD642A002E40B2 /* OpenGL.framework in Frameworks */,
 			);
@@ -154,8 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				2C807FB019F60E2200FDCCA1 /* libGLEW.1.10.0.dylib */,
-				CDA379D01A322377009F804F /* libirrklang.dylib */,
 				2C0902EE19F60C570074FE86 /* libglfw3.3.0.dylib */,
+				CD994D121A37D80F001FEEDE /* libirrklang.dylib */,
 				2C3AA1C219AD642A002E40B2 /* OpenGL.framework */,
 				2C3AA1AD19AD63FE002E40B2 /* GameEngineNew */,
 				2C3AA1AC19AD63FE002E40B2 /* Products */,
@@ -521,7 +521,7 @@
 					"$(inherited)",
 					/usr/local/lib,
 					/usr/local/Cellar/glew/1.10.0/lib,
-					/Users/veronep/Desktop/MarcusGameEngine/GameEngineNew,
+					/Users/veronep/Desktop/VeronicaBranch3/MarcusGameEngine/GameEngineNew,
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -540,7 +540,7 @@
 					"$(inherited)",
 					/usr/local/lib,
 					/usr/local/Cellar/glew/1.10.0/lib,
-					/Users/veronep/Desktop/MarcusGameEngine/GameEngineNew,
+					/Users/veronep/Desktop/VeronicaBranch3/MarcusGameEngine/GameEngineNew,
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
