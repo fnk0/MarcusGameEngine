@@ -18,7 +18,7 @@ void Node::refreshTransforms() {
     }
     */
     T.refreshTransform();
-
+    //const map<std::string, Node*> _map = scene->getNodes();
     Node* _parent = scene->getNodes()[this->parent];
     map<std::string, Node*> nodeMap = scene->getNodes();
     if(_parent != NULL) {
@@ -49,17 +49,20 @@ void Node::draw(SceneCamera &camera)
                 0.0, 0.0, 0.0, 1.0);
         
         this->T.transform *= rotationMatrix;
-        
-        //this->T.rotation = glm::quat(vp.x, vp.y, vp.z, 1);
-        //cout << "Theta: " << theta << endl;
-        //printMat(this->T.transform);
     }
     
-    if(script != NULL) {
-        script->run();
+    if(this->scripts.size() > 0) {
+        for(std::vector<Script*>::iterator it = this->scripts.begin(); it != this->scripts.end(); ++it) {
+            (*it)->run();
+        }
     }
 
     meshInstance->material.bindMaterial(T, camera);
     if (meshInstance != NULL) meshInstance->draw(camera);
     else printf("Error! Null Mesh.");
+}
+
+void Node::translateLocal(glm::vec3 &translation) {
+    
+    this->T.translateLocal(translation, *this->scene->getCamera());
 }

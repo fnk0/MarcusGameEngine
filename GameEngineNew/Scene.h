@@ -51,11 +51,11 @@
 #define COLORS "colors"
 
 #define LIGHTS "lights"
-#define LIGHT_DIRECTION "uLightDirection"
-#define LIGHT_COLOR "uLightColor"
-#define LIGHT_POSITION "uLightPosition"
-#define ATTENUATION "uAttenuation"
-#define CONE_ANGLE "uConeAngles"
+#define LIGHT_DIRECTION "direction"
+#define LIGHT_COLOR "color"
+#define LIGHT_POSITION "position"
+#define ATTENUATION "attenuation"
+#define CONE_ANGLE "coneAngles"
 
 #define TYPE_AMBIENT_LIGHT "ambient"
 #define TYPE_DIRECTIONAL_LIGHT "directional"
@@ -70,6 +70,8 @@
 #define TEXTURES "textures"
 #define OTHER_TEX "uOtherTex"
 
+// Third person
+#define HAS_PLAYER "has_player"
 
 // Node constants
 #define NODES "nodes"
@@ -78,8 +80,9 @@
 #define VELOCITY "velocity"
 #define SCRIPT "script"
 #define CHILDREN "children"
-#define IS_BILLBOARD "is_billboard"
+#define IS_BILLBOARD "billboard"
 #define NODE "node"
+#define SCRIPTS "scripts"
 
 class SceneCamera;
 class WorldSettings;
@@ -98,8 +101,10 @@ private:
     map<std::string, Node*> nodes;
     vector<SceneCamera*> cameras;
     ISoundEngine* soundEngine;
-
+    Node* playerNode;
+    
 public:
+    bool hasPlayer;
     vector<Light> lights;
     GLFWwindow* gWindow = NULL;
     void loadScene(std::string &fileName);
@@ -140,6 +145,10 @@ public:
     }
 
     map<std::string,Node *> getNodes() {
+        return nodes;
+    }
+    
+    const map<std::string,Node *> getMapNodes() {
         return nodes;
     }
 
@@ -187,6 +196,19 @@ public:
 
     void setSoundEngine(ISoundEngine *soundEngine) {
         Scene::soundEngine = soundEngine;
+    }
+
+
+    Node *getPlayerNode() const {
+        return playerNode;
+    }
+
+    void deleteNode(std::string nodeName) {
+        nodes.erase(nodeName);
+    }
+
+    void setPlayerNode(Node *playerNode) {
+        Scene::playerNode = playerNode;
     }
 
     void switchCamera(int camNum);

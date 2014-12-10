@@ -15,6 +15,7 @@
 #include "Script.h"
 
 class MeshInstance;
+class Transform;
 class Scene;
 class Script;
 
@@ -24,6 +25,7 @@ class Node {
 // Childs also has a TRS, etc..1
 public:
     Transform T;
+    std::string name;
     std::string parent;
     MeshInstance *meshInstance;
     vector<std::string> nodes;
@@ -33,6 +35,12 @@ public:
     Script* script;
     glm::vec3 velocity;
 
+    Node() {
+    };
+    
+    void setScript(Script* script) {
+        this->scripts.push_back(script);
+    };
 
     Scene *getScene() {
         return scene;
@@ -95,6 +103,24 @@ public:
     void setSound(ISound *sound) {
         Node::sound = sound;
     }
+
+    std::string getName() {
+        return name;
+    }
+
+    void setName(std::string name) {
+        Node::name = name;
+    }
+
+    vector<Script *> const &getScripts() const {
+        return scripts;
+    }
+
+    void setScripts(vector<Script *> const &scripts) {
+        Node::scripts = scripts;
+    }
+
+    void translateLocal(glm::vec3 &translation);
     
     void update(const float dt) {
         Node::T.translation = T.translation + velocity;

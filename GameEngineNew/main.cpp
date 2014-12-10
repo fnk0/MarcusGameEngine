@@ -8,6 +8,7 @@
 
 #include "EngineUtil.h"
 #include "Scene.h"
+#include <stdlib.h>
 
 const float TIMESTEP = float(1.0/60.0);
 
@@ -23,7 +24,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
     
 	if (action == GLFW_PRESS &&
 		((key >= 'A' && key <= 'Z') || (key >= '0' && key <= '9'))) {
-		printf("\n%c\n", (char)key);
+		//printf("\n%c\n", (char)key);
 	}
 }
 
@@ -38,22 +39,32 @@ int gHeight = 600; // window height
 
 //ISoundEngine* soundEngine = NULL;
 ISound* music = NULL;
-Camera dummyCamera;
+
+void butThisDoesnt() {
+    Camera dummyCamera;
+    dummyCamera.refreshTransform(0,0);
+    exit(EXIT_FAILURE);
+}
 
 void keyboardCameraController(Scene *scene) {
     
-    float t = 0.025f;
+    float t = 2.5f;
     float r = 0.01f;
     
     glm::vec3 strifeLeft(-t, 0, 0);
     glm::vec3 strifeRight(t, 0, 0);
-    glm::vec3 strifeUp(0, t, 0);
-    glm::vec3 strifeDown(0, -t, 0);
+    glm::vec3 strifeUp(0, t, -t);
+    glm::vec3 strifeDown(0, -t, t);
     glm::vec3 moveForward(0, 0, t);
     glm::vec3 moveBack(0, 0, -t);
     glm::vec3 rotate(0, 1, 0);
-    if(glfwGetKey(scene->gWindow, '1')) scene->switchCamera(1);
-    if(glfwGetKey(scene->gWindow, '2')) scene->switchCamera(2);
+    
+    if(!scene->hasPlayer) {
+        if(glfwGetKey(scene->gWindow, '1')) scene->switchCamera(1);
+        if(glfwGetKey(scene->gWindow, '2')) scene->switchCamera(2);
+
+    }
+    
     if(glfwGetKey(scene->gWindow, 'A')) scene->getCamera()->translateLocal(strifeLeft);
     if(glfwGetKey(scene->gWindow, 'D')) scene->getCamera()->translateLocal(strifeRight);
     if(glfwGetKey(scene->gWindow, 'W')) scene->getCamera()->translateLocal(strifeUp);
@@ -64,15 +75,8 @@ void keyboardCameraController(Scene *scene) {
     if(glfwGetKey(scene->gWindow, GLFW_KEY_DOWN)) scene->getCamera()->translateLocal(moveBack);
     if(glfwGetKey(scene->gWindow, GLFW_KEY_LEFT)) scene->getCamera()->rotateGlobal(rotate, r);
     if(glfwGetKey(scene->gWindow, GLFW_KEY_RIGHT)) scene->getCamera()->rotateGlobal(rotate, -r);
-
-    
     
     scene->getCamera()->refreshTransform(scene->getWorldSettings()->getWidth(), scene->getWorldSettings()->getHeight());
-}
-
-void ryanRedneck(FILE *F) {
-    cout << "Unicorn!!" << endl;
-    dummyCamera.refreshTransform((float)gWidth, (float)gHeight);
 }
 
 void updateJson(Scene *scene) {
@@ -109,19 +113,23 @@ void renderJson(Scene *scene) {
     scene->updateLights();
     
     // draw scene
-    //cout << "Number of instances: " << scene->meshInstances.size() << "\n";
-    //for(int i = 0; i < scene->getNodes().size(); i++) {
-    //    scene->getNodes()[i]->draw(*scene->getCamera());
-    map<std::string, Node*> _map = scene->getNodes();
-    for(auto outer_iter=_map.begin(); outer_iter!=_map.end(); ++outer_iter) {
+    const map<std::string, Node*> _map = scene->getMapNodes();
+    for(auto outer_iter = _map.begin(); outer_iter!= _map.end(); ++outer_iter) {
         outer_iter->second->draw(*scene->getCamera());
     }
+}
+
+void gameUpdate(Scene* scene) {
+    
 }
 
 
 //-------------------------------------------------------------------------//
 // Main method
 //-------------------------------------------------------------------------//
+
+//const int FRAMES_PER_SECOND = 30;
+//const int SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
 
 int main(int numArgs, char **args)
 {
@@ -147,13 +155,15 @@ int main(int numArgs, char **args)
     
 	// start time (used to time framerate)
 	double startTime = TIME();
+//    double next_game_tick = startTime;
     
 	// render loop
 	while (true) {
         //updateJson(scene);
         renderJson(scene);
         updateSound(scene);
-        keyboardCameraController(scene);
+        gameUpdate(scene);
+        //keyboardCameraController(scene);
         
 		// handle input
 		glfwPollEvents();
@@ -164,13 +174,17 @@ int main(int numArgs, char **args)
 		glfwGetCursorPos(scene->gWindow, &xx, &yy);
 		//printf("%1.3f %1.3f ", xx, yy);
         
-		// print framerate
+//        next_game_tick += SKIP_TICKS;
 		double endTime = TIME();
-		//printf("\rFPS: %1.0f  ", 1.0/(endTime-startTime));
+//        double time_elapsed = startTime - endTime;
+//        double sleep_time = next_game_tick - time_elapsed;
+//        if(sleep_time > 0) {
+//            SLEEP(sleep_time);
+//        }
+
 		startTime = endTime;
         
 		// swap buffers
-		//SLEEP(1); // sleep 1 millisecond to avoid busy waiting
 		glfwSwapBuffers(scene->gWindow);
 	}
     

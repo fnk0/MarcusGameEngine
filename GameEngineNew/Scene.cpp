@@ -58,6 +58,8 @@ void Scene::loadScene(std::string &fileName) {
     worldSettings->setWidth(worldSettingsJson[WIDTH].int_value());
     worldSettings->setHeight(worldSettingsJson[HEIGHT].int_value());
     worldSettings->setSpp(worldSettingsJson[SPP].int_value());
+    
+    this->hasPlayer = worldSettingsJson[HAS_PLAYER].bool_value();
 
     glm::vec3 backGroundColorVector;
     Json::array backgroundColor = worldSettingsJson[BACKGROUND_COLOR].array_items();
@@ -266,9 +268,14 @@ void Scene::loadScene(std::string &fileName) {
             node->getNodes().push_back(childNode);
         }
 
+        std::cout << "Creating node" << std::endl;
+        
         node->setSound(music);
+        node->setName(nodesJson[i][NAME].string_value());
         nodes.insert(make_pair(nodesJson[i][NAME].string_value(), node));
     }
+
+    if(this->hasPlayer) this->setPlayerNode(nodes[PLAYER]);
     
     for(int i = 0; i < backGroundColorVector.length(); i++) {
         std::cout << "Color: " << backGroundColorVector[i] << "\n";

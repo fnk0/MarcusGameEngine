@@ -63,6 +63,7 @@ void main()
     // compute the diffuse color (uniformDiffuseColor * vertexColor * textureColor)
     vec4 diffuseColor = uDiffuseColor;
     diffuseColor *= vColor;
+    
     diffuseColor *= texture(uDiffuseTex, vTexCo*uTextureScale);
     diffuseColor *= texture(uOtherTex, vTexCo*uTextureScale);
     

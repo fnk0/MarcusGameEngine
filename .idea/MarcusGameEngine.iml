@@ -2,6 +2,87 @@
 <module type="CIDR_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$/../PLY Meshes/Aragorn.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/Aragorn.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/Gandalf.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/Gandalf.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/Megaman.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/Megaman.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/aerial_landscape.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/aerial_landscape.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/cone.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/cone.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/cube.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/cube.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/cubeCenter.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/cubeCenter.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/cylinder.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/cylinder.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/cylinderCenter.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/cylinderCenter.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/indy.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/indy.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/legoloki.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/legoloki.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/marines.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/marines.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/monkey.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/monkey.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/rock1.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/rock1.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/rock2.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/rock2.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/sphere.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/sphere.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/sphereCenter.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/sphereCenter.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/square.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/square.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/teapot.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/teapot.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/torus.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/torus.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/tree1.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/tree1.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/tree2.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/tree2.ply" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../PLY Meshes/tree3.ply">
+      <sourceFolder url="file://$MODULE_DIR$/../PLY Meshes/tree3.ply" isTestSource="false" />
+    </content>
+    <content url="file:///usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib">
+      <sourceFolder url="file:///usr/local/Cellar/glew/1.10.0/lib/libGLEW.1.10.0.dylib" isTestSource="false" />
+    </content>
+    <content url="file:///usr/local/Cellar/glew/1.11.0/lib/libGLEW.1.11.0.dylib">
+      <sourceFolder url="file:///usr/local/Cellar/glew/1.11.0/lib/libGLEW.1.11.0.dylib" isTestSource="false" />
+    </content>
+    <content url="file:///usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib">
+      <sourceFolder url="file:///usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib" isTestSource="false" />
+    </content>
+    <content url="file:///usr/local/lib/libirrklang.dylib">
+      <sourceFolder url="file:///usr/local/lib/libirrklang.dylib" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

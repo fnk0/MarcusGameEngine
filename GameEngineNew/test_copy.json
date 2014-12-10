@@ -1,14 +1,14 @@
-{
-    "worldSettings":
     {
+    "worldSettings": {
         "windowTitle": "Some Scene",
         "width": 1200,
         "height": 800,
         "spp": 16,
         "backgroundColor": [0.5, 0.5, 0.4],
-        "backgroundMusic": ""
+        "backgroundMusic": "",
+        "has_player": true
     },
-    
+
     "cameras": [
                 {
                 "name": "camera1",

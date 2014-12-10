@@ -1,4 +1,4 @@
-//
+    //
 // Created by Marcus Gabilheri on 9/4/14.
 // Copyright (c) 2014 Marcus Gabilheri. All rights reserved.
 //
@@ -97,7 +97,7 @@ public:
         glm::vec4 zz = glm::vec4(eye - center, 0);
         glm::vec4 Rzz = R*zz;
         center = eye - glm::vec3(Rzz);
-        //
+
         glm::vec4 up = glm::vec4(vup, 0);
         glm::vec4 Rup = R*up;
         vup = glm::vec3(Rup);
