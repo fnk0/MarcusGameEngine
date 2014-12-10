@@ -202,7 +202,7 @@ void Scene::loadScene(std::string &fileName) {
             tex.val = textures[s];
             material.addTexture(tex);
         }
-        
+         
         std::string meshName = meshInstancesJson[i][MESH].string_value();
         instance->setMesh(meshes[meshName]);
         vertexShader = loadShader(meshInstancesJson[i][VERTEX_SHADER].string_value(), GL_VERTEX_SHADER);
