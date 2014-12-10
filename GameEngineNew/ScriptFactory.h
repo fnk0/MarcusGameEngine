@@ -18,6 +18,7 @@
 #include "Node.h"
 #include "GameObjectScript.h"
 #include "RedObjectScript.h"
+#include "VelocityScript.h"
 
 class ScriptFactory {
     
@@ -50,6 +51,11 @@ public:
             RedObjectScript*  redObjectScript = new RedObjectScript();
             redObjectScript->setNode(this->node);
             script = redObjectScript;
+        }
+        else if(scriptName == "VelocityScript") {
+            VelocityScript* velocityScript = new VelocityScript();
+            velocityScript->setNode(this->node);
+            script = velocityScript;
         }
 
         return script;

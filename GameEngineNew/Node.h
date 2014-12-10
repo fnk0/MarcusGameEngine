@@ -32,7 +32,7 @@ public:
     ISound *sound;
     Scene* scene;
     bool isBillboard = true;
-    Script* script;
+    std::vector<Script*> scripts;
     glm::vec3 velocity;
 
     Node() {

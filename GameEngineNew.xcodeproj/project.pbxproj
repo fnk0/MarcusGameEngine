@@ -155,6 +155,7 @@
 		BF8C7F059A3B0C8883D5A66E /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		BF8C7F50360567F443BC93B7 /* RedObjectScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedObjectScript.h; sourceTree = "<group>"; };
 		BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneCamera.cpp; sourceTree = "<group>"; };
+		BF8C7FBFB04188EACA1D705D /* WallObjectScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallObjectScript.h; sourceTree = "<group>"; };
 		CD53456F1A3425BA00550603 /* VelocityScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VelocityScript.cpp; sourceTree = "<group>"; };
 		CD5345701A3425BA00550603 /* VelocityScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VelocityScript.h; sourceTree = "<group>"; };
 		CD994D121A37D80F001FEEDE /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libirrklang.dylib; sourceTree = "<group>"; };
@@ -392,6 +393,16 @@
 			children = (
 				405C64A41A1C39FD00E12C21 /* CircleScript.cpp */,
 				405C64A51A1C39FD00E12C21 /* CircleScript.h */,
+				40B9FF2E1A31579E00AABF56 /* ThirdPersonScript.cpp */,
+				40B9FF2F1A31579E00AABF56 /* ThirdPersonScript.h */,
+				40B9FF311A315B4400AABF56 /* MoveCameraScript.cpp */,
+				40B9FF321A315B4400AABF56 /* MoveCameraScript.h */,
+				BF8C7D7FE513C4FFC02D1610 /* GameObjectScript.cpp */,
+				BF8C76E5116EB4E269AD1F4C /* GameObjectScript.h */,
+				BF8C798EBB56E533A737580F /* RedObjectScript.cpp */,
+				BF8C7F50360567F443BC93B7 /* RedObjectScript.h */,
+				BF8C739901AF2FC07A395431 /* WallObjectScript.cpp */,
+				BF8C7FBFB04188EACA1D705D /* WallObjectScript.h */,
 				CD53456F1A3425BA00550603 /* VelocityScript.cpp */,
 				CD5345701A3425BA00550603 /* VelocityScript.h */,
 			);
