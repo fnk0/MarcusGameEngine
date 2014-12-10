@@ -1,0 +1,222 @@
+{
+    "worldSettings" : {
+        "windowTitle" : "Marcus Game",
+        "backgroundMusic" : "",
+        "backgroundColor" : [ 0.0, 0.5, 1.0, 1.0 ],
+        "width" : 1024,
+        "height" : 768,
+        "spp" : 16,
+        "has_player": true
+    },
+    "cameras" : [ {
+                 "name" : "sceneCamera",
+                 "eye" : [ 0.0, 0.0, 10.0 ],
+                 "center" : [ 0.0, 0.0, 0.0 ],
+                 "vup" : [ 0.0, 1.0, 0.0 ],
+                 "fovy" : 0.5,
+                 "znear" : 0.1,
+                 "zfar" : 1000
+                 } ],
+    "meshes" : [ {
+                "name" : "cubeMesh",
+                "file" : "cubeCenter.ply"
+                },
+                {
+                "name" : "monkeyMesh",
+                "file" : "monkeyTex.ply"
+                },
+                {
+                "name" : "track",
+                "file" : "racetrack.ply"
+                }
+                
+                ],
+    "meshInstances" : [ {
+                       "name" : "cubeInstance",
+                       "mesh" : "cubeMesh",
+                       "vertexShader" : "basicVertexShader.vs",
+                       "fragmentShader" : "multiLight.fs",
+                       "textures" : [ {
+                                     "name" : "rockTex",
+                                     "type" : "uDiffuseTex"
+                                     } ],
+                       "colors" : [ {
+                                   "type" : "uDiffuseColor",
+                                   "value" : [ 1.0, 1.0, 1.0, 1.0 ]
+                                   } ]
+                       },
+                       {
+                       "name" : "floorInstance",
+                       "mesh" : "cubeMesh",
+                       "vertexShader" : "basicVertexShader.vs",
+                       "fragmentShader" : "bigTex.fs",
+                       "textures" : [ {
+                                     "name" : "rockTex",
+                                     "type" : "uDiffuseTex"
+                                     } ],
+                       "colors" : [ {
+                                   "type" : "uDiffuseColor",
+                                   "value" : [ 1.0, 1.0, 1.0, 1.0 ]
+                                   } ]
+                       },
+                       {
+                       "name" : "monkey",
+                       "mesh" : "monkeyMesh",
+                       "vertexShader" : "basicVertexShader.vs",
+                       "fragmentShader" : "multiLight.fs",
+                       "textures" : [ {
+                                     "name" : "hexTex",
+                                     "type" : "uDiffuseTex"
+                                     } ],
+                       "colors" : [ {
+                                   "type" : "uDiffuseColor",
+                                   "value" : [ 1.0, 1.0, 0.0, 1.0 ]
+                                   } ]
+                       }, {
+                       "name" : "blueCube",
+                       "mesh" : "cubeMesh",
+                       "vertexShader" : "basicVertexShader.vs",
+                       "fragmentShader" : "multiLight.fs",
+                       "textures" : [ {
+                                     "name" : "blueTex",
+                                     "type" : "uDiffuseTex"
+                                     } ],
+                       "colors" : [ {
+                                   "type" : "uDiffuseTex",
+                                   "value" : [ 1.0, 1.0, 1.0, 1.0 ]
+                                   } ]
+                       }, {
+                       "name" : "yellowCube",
+                       "mesh" : "cubeMesh",
+                       "vertexShader" : "basicVertexShader.vs",
+                       "fragmentShader" : "multiLight.fs",
+                       "textures" : [ {
+                                     "name" : "yellowTex",
+                                     "type" : "uDiffuseTex"
+                                     } ],
+                       "colors" : [ {
+                                   "type" : "uDiffuseTex",
+                                   "value" : [ 1.0, 1.0, 1.0, 1.0 ]
+                                   } ]
+                       }, {
+                       "name" : "redCube",
+                       "mesh" : "cubeMesh",
+                       "vertexShader" : "basicVertexShader.vs",
+                       "fragmentShader" : "multiLight.fs",
+                       "textures" : [ {
+                                     "name" : "redTex",
+                                     "type" : "uDiffuseTex"
+                                     } ],
+                       "colors" : [ {
+                                   "type" : "uDiffuseTex",
+                                   "value" : [ 1.0, 1.0, 1.0, 1.0 ]
+                                   } ]
+                       }, {
+                       "name" : "grenCube",
+                       "mesh" : "cubeMesh",
+                       "vertexShader" : "basicVertexShader.vs",
+                       "fragmentShader" : "multiLight.fs",
+                       "textures" : [ {
+                                     "name" : "greenTex",
+                                     "type" : "uDiffuseTex"
+                                     } ],
+                       "colors" : [ {
+                                   "type" : "uDiffuseTex",
+                                   "value" : [ 1.0, 1.0, 1.0, 1.0 ]
+                                   } ]
+                       } ],
+    "textures" : [ {
+                  "name" : "hexTex",
+                  "file" : "hex.png"
+                  }, {
+                  "name" : "rockTex",
+                  "file" : "rock-texture.png"
+                  }, {
+                  "name" : "greenTex",
+                  "file" : "green.png"
+                  }, {
+                  "name" : "blueTex",
+                  "file" : "blue.png"
+                  }, {
+                  "name" : "yellowTex",
+                  "file" : "yellow.png"
+                  }, {
+                  "name" : "redTex",
+                  "file" : "red.png"
+                  } ],
+    "lights" : [ {
+                "name" : "light2d",
+                "type" : "testLightType",
+                "color" : [ 1.0, 1.0, 1.0, 1.0 ],
+                "direction" : [ 0.0, 1.0, 0.0, 1.0 ],
+                "position" : [ 1.0, 1.0, 1.0, 1.0 ],
+                "attenuation" : [ 1.0, 1.0, 1.0, 1.0 ],
+                "coneAngles" : [ 1.0, 1.0, 1.0, 1.0 ]
+                } ],
+    "nodes" : [ 
+               {
+               "name" : "bigFloorNode",
+               "parent" : "",
+               "meshInstance" : "floorInstance",
+               "backgroundMusic" : "",
+               "camera" : "camera",
+               "type" : "type",
+               "scale" : [ 1000.0, 0.2, 1000.0 ],
+               "rotation" : [ 0.0, 1.0, 0.0, 1.0 ],
+               "translation" : [ 0.0, 0.0, 0.0 ],
+               "mass" : 0,
+               "children" : [ ],
+               "scripts" : [ "noScript" ],
+               "is_billboard" : false,
+               "billboard" : false
+               }, 
+               {
+               "name" : "wallNode",
+               "parent" : "",
+               "meshInstance" : "cubeInstance",
+               "backgroundMusic" : "",
+               "camera" : "camera",
+               "type" : "type",
+               "scale" : [ 20, 10, 1 ],
+               "rotation" : [ 0.0, 1.0, 0.0, 1.0 ],
+               "translation" : [ -10, 0.5, -10 ],
+               "mass" : 0,
+               "children" : [ ],
+               "scripts" : [ "noScript" ],
+               "is_billboard" : false,
+               "billboard" : false
+               },
+               {
+               "name" : "player",
+               "parent" : "",
+               "meshInstance" : "monkey",
+               "backgroundMusic" : "",
+               "camera" : "camera",
+               "type" : "",
+               "scale" : [ 1.0, 1.0, 1.0 ],
+               "rotation" : [ 0.0, 1, 0, 1.0 ],
+               "translation" : [ 0.0, 1, 0.0 ],
+               "mass" : 0,
+               "children" : [ ],
+               "scripts" : [ "ThirdPersonScript" ],
+               "is_billboard" : false,
+               "billboard" : false
+               }, {
+               "name" : "8a0f7d8de8d048debf69a8f33db6b6b8",
+               "parent" : "",
+               "meshInstance" : "redCube",
+               "backgroundMusic" : "",
+               "camera" : "camera",
+               "type" : "redNode",
+               "scale": [1, 1, 1],
+               "rotation": [0, 1, 0, 0],
+               "translation": [10, 10, 10],
+               "velocity": [0.1, 0, 0],
+               "mass" : 0,
+               "children" : [ ],
+               "scripts" : [ "VelocityScript" ],
+               "is_billboard" : false,
+               "billboard" : false
+               }
+               ]
+}

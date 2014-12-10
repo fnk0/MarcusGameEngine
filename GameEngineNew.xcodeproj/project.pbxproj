@@ -158,6 +158,9 @@
 		BF8C7FBFB04188EACA1D705D /* WallObjectScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallObjectScript.h; sourceTree = "<group>"; };
 		CD53456F1A3425BA00550603 /* VelocityScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VelocityScript.cpp; sourceTree = "<group>"; };
 		CD5345701A3425BA00550603 /* VelocityScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VelocityScript.h; sourceTree = "<group>"; };
+		CD7688FB1A38123700F2CB25 /* velocity_test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = velocity_test.json; sourceTree = "<group>"; };
+		CD7688FC1A38160000F2CB25 /* veronica_demo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = veronica_demo.json; sourceTree = "<group>"; };
+		CD7688FE1A38218E00F2CB25 /* sphere.ply */ = {isa = PBXFileReference; lastKnownFileType = text; path = sphere.ply; sourceTree = "<group>"; };
 		CD994D121A37D80F001FEEDE /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libirrklang.dylib; sourceTree = "<group>"; };
 		CDD99DB11A3104F200F9B237 /* irrKlang.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = irrKlang.h; sourceTree = "<group>"; };
 		CDD99DB21A31057000F9B237 /* ik_irrKlangTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ik_irrKlangTypes.h; sourceTree = "<group>"; };
@@ -325,6 +328,7 @@
 				2CA4DF3A1A315E4500834B85 /* rock1.ply */,
 				2CA4DF3B1A315E4500834B85 /* monkey.ply */,
 				2C2248DE1A1C38A8003ABF7F /* sphereCenter.ply */,
+				CD7688FE1A38218E00F2CB25 /* sphere.ply */,
 				2CE6AB6A19DDD69300912786 /* cubeCenter.ply */,
 				2C42FB3A19BA3431001938DA /* Gandalf.ply */,
 				2C42FB3819BA17CA001938DA /* marines.ply */,
@@ -374,7 +378,9 @@
 				BF8C70F637B8CBB1A983C1DE /* test.json */,
 				2C9728F219EDB6F700BAB8B9 /* sprint1a.json */,
 				2C9728F319EDB6F700BAB8B9 /* TemplateIcon2x.png */,
+				CD7688FB1A38123700F2CB25 /* velocity_test.json */,
 				BF8C774E2A6C77C9ED8D510B /* test_copy.json */,
+				CD7688FC1A38160000F2CB25 /* veronica_demo.json */,
 			);
 			name = scenes;
 			sourceTree = "<group>";

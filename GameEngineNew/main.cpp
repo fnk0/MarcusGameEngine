@@ -139,7 +139,11 @@ int main(int numArgs, char **args)
 		exit(0);
 	}
     
-    addToPath("/Users/veronep/Desktop/MarcusGameEngine/GameEngineNew/");
+    string sceneFileName = args[1];
+    int separatorIndex = (int)sceneFileName.find_last_of("/");
+    if (separatorIndex < 0) separatorIndex = (int) sceneFileName.find_last_of("\\");
+    if (separatorIndex > 0) addToPath(sceneFileName.substr(0, separatorIndex+1));
+    //addToPath("/Users/veronep/Desktop/VeronicaBranch3/MarcusGameEngine/GameEngineNew/");
     
     Scene* scene = new Scene();
     string fileName = args[1];

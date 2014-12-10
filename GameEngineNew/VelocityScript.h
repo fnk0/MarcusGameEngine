@@ -58,15 +58,15 @@ public:
         float increment = 0.1;
         float e = increment * TIMESTEP;
         
-        if((node->T.translation.x >= 3) || (node->T.translation.x <= -3)) {
+        if((node->T.translation.x >= 13) || (node->T.translation.x <= 7)) {
             glm::vec3 newVelocity = glm::vec3(-1.0 * velocity.x, velocity.y, velocity.z); // Reverse direction of travel on x axis.
             node->setVelocity(newVelocity);
         }
-        if((node->T.translation.y >= 3) || (node->T.translation.y <= -3)) {
+        if((node->T.translation.y >= 13) || (node->T.translation.y <= 7)) {
             glm::vec3 newVelocity = glm::vec3(velocity.x, -1.0 * velocity.y, velocity.z); // Reverse direction of travel on y axis.
             node->setVelocity(newVelocity);
         }
-        if((node->T.translation.z >= 3) || (node->T.translation.z <= -3)) {
+        if((node->T.translation.z >= 13) || (node->T.translation.z <= 7)) {
             glm::vec3 newVelocity = glm::vec3(velocity.x, velocity.y, -1.0 * velocity.z); // Reverse direction of travel on z axis.
             node->setVelocity(newVelocity);
         }
