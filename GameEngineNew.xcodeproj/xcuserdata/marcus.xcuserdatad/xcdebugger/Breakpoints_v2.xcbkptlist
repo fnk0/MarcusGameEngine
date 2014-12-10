@@ -191,8 +191,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "144"
             endingLineNumber = "144"
-            landmarkName = "class Scene"
-            landmarkType = "3">
+            landmarkName = "setMeshInstances(map&lt;string, MeshInstance *&gt; const &amp;meshInstances)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

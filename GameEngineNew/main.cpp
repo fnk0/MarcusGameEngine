@@ -8,6 +8,7 @@
 
 #include "EngineUtil.h"
 #include "Scene.h"
+#include "ThirdPersonScript.h"
 #include <stdlib.h>
 
 //-------------------------------------------------------------------------//
@@ -144,6 +145,13 @@ int main(int numArgs, char **args)
     string fileName = args[1];
     scene->loadScene(fileName);
 
+    if(scene->hasPlayer) {
+        ThirdPersonScript* pscript = new ThirdPersonScript();
+        pscript->setNode(scene->getPlayerNode());
+        pscript->run();
+        pscript->refreshCamera();
+    }
+
 	// Play 3D sound
 	//string soundFileName = scene->getWorldSettings()->getBackgroundMusic();
 	//ISound* music = scene->getSoundEngine()->play3D(soundFileName.c_str(), vec3df(0, 0, 10), true); // position and looping
@@ -159,10 +167,6 @@ int main(int numArgs, char **args)
 	// render loop
 	while (true) {
 
-        int w, h;
-        glfwGetWindowSize(scene->gWindow, &w, &h);
-        glfwSetCursorPos(scene->getGWindow(), w / 2, h / 2);
-
         //updateJson(scene);
         renderJson(scene);
         updateSound(scene);
@@ -175,10 +179,8 @@ int main(int numArgs, char **args)
 		if (glfwWindowShouldClose(scene->gWindow) != 0) break;
         
 		double xx, yy;
-		glfwGetCursorPos(scene->gWindow, &xx, &yy, w, h);
+		glfwGetCursorPos(scene->gWindow, &xx, &yy);
 		//printf("%1.3f %1.3f ", xx, yy);
-
-        mouseUpdate(scene, xx, yy);
         
 //        next_game_tick += SKIP_TICKS;
 		double endTime = TIME();

@@ -61,6 +61,9 @@
 		2C42FB3819BA17CA001938DA /* marines.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = marines.ply; sourceTree = "<group>"; };
 		2C42FB3919BA17FC001938DA /* Marines.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Marines.json; sourceTree = "<group>"; };
 		2C42FB3A19BA3431001938DA /* Gandalf.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gandalf.ply; sourceTree = "<group>"; };
+		2C4B75001A37FB9800029754 /* brick1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brick1.jpg; sourceTree = "<group>"; };
+		2C4B75011A37FD4100029754 /* GameTest2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameTest2.json; sourceTree = "<group>"; };
+		2C4B75021A37FD8800029754 /* sphereHighPoly.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sphereHighPoly.ply; sourceTree = "<group>"; };
 		2C553A8319B97A8400431C8C /* facek_lego_angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facek_lego_angry.png; sourceTree = "<group>"; };
 		2C553A8419B97A8400431C8C /* lokitexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lokitexture.png; sourceTree = "<group>"; };
 		2C553A8519B97A8400431C8C /* BrickRound0105_5_S_BUMP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickRound0105_5_S_BUMP.png; sourceTree = "<group>"; };
@@ -277,6 +280,7 @@
 		2C80CD1F19B1C24900FBCF18 /* ply */ = {
 			isa = PBXGroup;
 			children = (
+				2C4B75021A37FD8800029754 /* sphereHighPoly.ply */,
 				2CA4DF261A315E4500834B85 /* Megaman.ply */,
 				2CA4DF271A315E4500834B85 /* tree3.ply */,
 				2CA4DF281A315E4500834B85 /* tree2.ply */,
@@ -325,6 +329,7 @@
 		2C80CD2119B1C25400FBCF18 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2C4B75001A37FB9800029754 /* brick1.jpg */,
 				2C810D441A36A9E600669B1A /* blue.png */,
 				2C810D451A36A9E600669B1A /* red.png */,
 				40B9FF2A1A31529400AABF56 /* Earth.png */,
@@ -341,6 +346,7 @@
 		2C80CD2219B1C43A00FBCF18 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				2C4B75011A37FD4100029754 /* GameTest2.json */,
 				2C810D431A36A9C700669B1A /* GameScene.json */,
 				2C2248DD1A1C35E4003ABF7F /* Scene2D.json */,
 				2C8EE6A319B056C9003E8BFB /* monkeyScene.json */,
