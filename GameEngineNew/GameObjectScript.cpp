@@ -13,10 +13,9 @@ void GameObjectScript::run() {
 
     if(this->intersects()) {
         this->doAction();
-        std::cout << "Map Size: " << this->scene->getNodes().size() << std::endl;
+        //std::cout << "Map Size: " << this->scene->getNodes().size() << std::endl;
     }
 }
-
 
 void GameObjectScript::doAction() {
 

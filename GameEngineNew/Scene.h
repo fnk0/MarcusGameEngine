@@ -83,6 +83,7 @@
 #define SCRIPTS "scripts"
 #define MASS "mass"
 #define VELOCITY "velocity"
+#define RADIUS "radius"
 
 class SceneCamera;
 class WorldSettings;
