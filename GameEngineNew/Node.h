@@ -123,7 +123,7 @@ public:
     void translateLocal(glm::vec3 &translation);
     
     void update(const float dt) {
-        Node::T.translation = T.translation + velocity;
+        Node::T.translation = T.translation + velocity * dt;
         Node::T.refreshTransform();
     }
     
