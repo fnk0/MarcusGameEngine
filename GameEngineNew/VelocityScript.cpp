@@ -21,15 +21,15 @@ void VelocityScript::run() {
         VelocityScript::doAction(intersectingNode);
     }
     else {
-        if((node->T.translation.x >= 7) || (node->T.translation.x <= 0)) {
+        if((node->T.translation.x >= 15) || (node->T.translation.x <= 0)) {
             glm::vec3 newVelocity = glm::vec3(-1.0 * velocity.x, velocity.y, velocity.z); // Reverse direction of travel on x axis.
             node->setVelocity(newVelocity);
         }
-        if((node->T.translation.y >= 7) || (node->T.translation.y <= 0)) {
+        if((node->T.translation.y >= 15) || (node->T.translation.y <= 0)) {
             glm::vec3 newVelocity = glm::vec3(velocity.x, -1.0 * velocity.y, velocity.z); // Reverse direction of travel on y axis.
             node->setVelocity(newVelocity);
         }
-        if((node->T.translation.z >= 7) || (node->T.translation.z <= 0)) {
+        if((node->T.translation.z >= 15) || (node->T.translation.z <= 0)) {
             glm::vec3 newVelocity = glm::vec3(velocity.x, velocity.y, -1.0 * velocity.z); // Reverse direction of travel on z axis.
             node->setVelocity(newVelocity);
         }
