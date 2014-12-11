@@ -83,6 +83,7 @@
 #define IS_BILLBOARD "billboard"
 #define NODE "node"
 #define SCRIPTS "scripts"
+#define MASS "mass"
 
 class SceneCamera;
 class WorldSettings;

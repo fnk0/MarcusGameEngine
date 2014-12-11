@@ -34,6 +34,7 @@ public:
     bool isBillboard = true;
     std::vector<Script*> scripts;
     glm::vec3 velocity;
+    float mass;
 
     Node() {
     };
@@ -125,6 +126,14 @@ public:
     void update(const float dt) {
         Node::T.translation = T.translation + velocity * dt;
         Node::T.refreshTransform();
+    }
+    
+    float getMass() const {
+        return mass;
+    }
+    
+    void setMass(const float m) {
+        Node::mass = m;
     }
     
     // Look at the camera and see which direction is looking to (Easy way)
