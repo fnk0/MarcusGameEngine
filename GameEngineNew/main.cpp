@@ -115,6 +115,7 @@ void renderJson(Scene *scene) {
     // draw scene
     const map<std::string, Node*> _map = scene->getMapNodes();
     for(auto outer_iter = _map.begin(); outer_iter!= _map.end(); ++outer_iter) {
+        //if(outer_iter->second->getName() == "player") printVec(outer_iter->second->T.translation);
         outer_iter->second->draw(*scene->getCamera());
     }
 }
@@ -163,7 +164,7 @@ int main(int numArgs, char **args)
     
 	// render loop
 	while (true) {
-        //updateJson(scene);
+        updateJson(scene);
         renderJson(scene);
         updateSound(scene);
         gameUpdate(scene);

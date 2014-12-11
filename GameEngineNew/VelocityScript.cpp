@@ -10,7 +10,7 @@
 
 void VelocityScript::run() {
     const float TIMESTEP = float(1.0/60.0);
-    Node *node = this->getNode();
+    Node *node = getNode();
     Scene *scene = node->getScene();
     glm::vec3 velocity = node->getVelocity();
     float increment = 0.1;
@@ -62,32 +62,41 @@ void VelocityScript::run() {
                 else if(velocity.z < -e) node->accelerate(glm::vec3(0, 0, increment), TIMESTEP);
                 else node->accelerate(glm::vec3(0, 0, (-node->velocity.z)/TIMESTEP), TIMESTEP);  // Used to negate any small amount of velocity in the z direction.
             }
-            
-            node->update(TIMESTEP);
         }
     }
 };
 
 Node* VelocityScript::intersects() {
     bool didCollide = false;
-    Node* collisionNode;
-    Scene* scene = this->getNode()->getScene();
+    Scene* scene = getNode()->getScene();
     const map<std::string, Node*> map = scene->getMapNodes();
     for(auto outer_iter = map.begin(); outer_iter != map.end(); outer_iter++) {
-        didCollide = glm::dot(this->getNode()->T.translation - outer_iter->second->T.translation, this->getNode()->T.translation - outer_iter->second->T.translation) < (0.5 + 0.7)*(0.5 + 0.7);  //radii
-        if(didCollide) {
-            collisionNode = outer_iter->second;
-            break;
+        if(getNode()->getName() == "player") {
+            printVec(getNode()->T.translation);
+        }
+        if(getNode()->getName() != outer_iter->second->getName()) {
+            float dotProduct = glm::dot(getNode()->T.translation - outer_iter->second->T.translation, getNode()->T.translation - outer_iter->second->T.translation);
+            float dSquared = (getNode()->getRadius() + outer_iter->second->getRadius())*(getNode()->getRadius() + outer_iter->second->getRadius());
+            didCollide = dotProduct < dSquared;
+            if(didCollide) {
+                //printf("dot product: %f\n", dotProduct);
+                //printf("dSquared: %f\n", dSquared);
+                //printVec(getNode()->T.translation);
+                //printVec(outer_iter->second->T.translation);
+                Node* collisionNode = outer_iter->second;
+                return collisionNode;
+            }
         }
     }
-    return collisionNode;
+    return nullptr;
 }
 
 void VelocityScript::doAction(Node* intersectingNode) {
-    const float kSpring = 4.0;
+    const float kSpring = 250.0;
     const float TIMESTEP = float(1.0/60.0);
-    Node* currentNode = this->getNode();
+    Node* currentNode = getNode();
     glm::vec3 distance = intersectingNode->T.translation - currentNode->T.translation;
+    printVec(distance);
     
     glm::vec3 FD = glm::normalize(distance);
     float mass0 = currentNode->getMass();

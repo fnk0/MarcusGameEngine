@@ -32,6 +32,7 @@
 		BF8C7D13BA0350E36FAAC24E /* WallObjectScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C739901AF2FC07A395431 /* WallObjectScript.cpp */; };
 		BF8C7DF24A944000A574BAD8 /* SceneCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */; };
 		BF8C7E59402B238286AAC2EE /* WorldSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF8C7B31E094E19BFB011CB7 /* WorldSettings.cpp */; };
+		CD07D2FF1A3935AD00CCC179 /* ThirdPersonDetachedScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD07D2FD1A3935AD00CCC179 /* ThirdPersonDetachedScript.cpp */; };
 		CD5345711A3425BA00550603 /* VelocityScript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CD53456F1A3425BA00550603 /* VelocityScript.cpp */; };
 		CD994D131A37D80F001FEEDE /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD994D121A37D80F001FEEDE /* libirrklang.dylib */; };
 /* End PBXBuildFile section */
@@ -156,6 +157,8 @@
 		BF8C7F50360567F443BC93B7 /* RedObjectScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedObjectScript.h; sourceTree = "<group>"; };
 		BF8C7F943818E12BC3B3F32E /* SceneCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneCamera.cpp; sourceTree = "<group>"; };
 		BF8C7FBFB04188EACA1D705D /* WallObjectScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallObjectScript.h; sourceTree = "<group>"; };
+		CD07D2FD1A3935AD00CCC179 /* ThirdPersonDetachedScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThirdPersonDetachedScript.cpp; sourceTree = "<group>"; };
+		CD07D2FE1A3935AD00CCC179 /* ThirdPersonDetachedScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdPersonDetachedScript.h; sourceTree = "<group>"; };
 		CD53456F1A3425BA00550603 /* VelocityScript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VelocityScript.cpp; sourceTree = "<group>"; };
 		CD5345701A3425BA00550603 /* VelocityScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VelocityScript.h; sourceTree = "<group>"; };
 		CD7688FB1A38123700F2CB25 /* velocity_test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = velocity_test.json; sourceTree = "<group>"; };
@@ -401,6 +404,8 @@
 				405C64A51A1C39FD00E12C21 /* CircleScript.h */,
 				40B9FF2E1A31579E00AABF56 /* ThirdPersonScript.cpp */,
 				40B9FF2F1A31579E00AABF56 /* ThirdPersonScript.h */,
+				CD07D2FD1A3935AD00CCC179 /* ThirdPersonDetachedScript.cpp */,
+				CD07D2FE1A3935AD00CCC179 /* ThirdPersonDetachedScript.h */,
 				40B9FF311A315B4400AABF56 /* MoveCameraScript.cpp */,
 				40B9FF321A315B4400AABF56 /* MoveCameraScript.h */,
 				BF8C7D7FE513C4FFC02D1610 /* GameObjectScript.cpp */,
@@ -514,6 +519,7 @@
 				40A260C71A007E9A007212D4 /* Script.cpp in Sources */,
 				404EC0C51A1301970095159A /* HastyVect3.cpp in Sources */,
 				2C79140B19C9185400A7CC4B /* Light.cpp in Sources */,
+				CD07D2FF1A3935AD00CCC179 /* ThirdPersonDetachedScript.cpp in Sources */,
 				2C76C55D19B821C6005B64FB /* lodepng.cpp in Sources */,
 				40B9FF301A31579E00AABF56 /* ThirdPersonScript.cpp in Sources */,
 				2C76C55B19B821C6005B64FB /* main.cpp in Sources */,

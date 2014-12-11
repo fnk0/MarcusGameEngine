@@ -255,12 +255,14 @@ void Scene::loadScene(std::string &fileName) {
         loadFloatsArray(&velocityVector[0], nodesJson[i][VELOCITY].array_items());
         
         float mass = nodesJson[i][MASS].number_value();
+        float radius = nodesJson[i][RADIUS].number_value();
 
         node->T.scale = scale;
         node->T.translation = translation;
         node->T.rotation = rotation;
         node->setVelocity(velocityVector);
         node->setMass(mass);
+        node->setRadius(radius);
         MeshInstance* inst = this->meshInstances[nodesJson[i][MESH_INSTANCE].string_value()];
         node->setMeshInstance(inst);
 

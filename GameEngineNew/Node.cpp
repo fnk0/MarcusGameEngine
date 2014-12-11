@@ -58,6 +58,7 @@ void Node::draw(SceneCamera &camera)
     }
 
     meshInstance->material.bindMaterial(T, camera);
+    //printVec(T.translation);
     if (meshInstance != NULL) meshInstance->draw(camera);
     else printf("Error! Null Mesh.");
 }

@@ -84,6 +84,7 @@
 #define NODE "node"
 #define SCRIPTS "scripts"
 #define MASS "mass"
+#define RADIUS "radius"
 
 class SceneCamera;
 class WorldSettings;

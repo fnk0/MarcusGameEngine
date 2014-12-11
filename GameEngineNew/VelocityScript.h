@@ -28,32 +28,7 @@ private:
     Node* intersects();
 public:
     void doAction(Node*);
-    
-    void setNode(Node* node) {
-        // Setting our node
-        Script::setNode(node);
-        
-        /*
-         
-         //
-         // This temporarily saves our transform so we can use it again later.
-         //
-         
-         glm::vec3 scale;
-         glm::quat rotation;
-         glm::vec3 translation;
-         glm::mat4x4 transform;
-         glm::mat4x4 invTransform;
-         */
-        Transform temp = this->getNode()->T;
-        Transform t;
-        t.scale = temp.scale;
-        t.rotation = temp.rotation;
-        t.translation = temp.translation;
-        t.transform = temp.transform;
-        t.invTransform = temp.transform;
-        
-    };    
+       
 };
 
 #endif /* defined(__GameEngineNew__VelocityScript__) */

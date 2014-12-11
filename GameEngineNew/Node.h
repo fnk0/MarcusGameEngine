@@ -35,6 +35,7 @@ public:
     std::vector<Script*> scripts;
     glm::vec3 velocity;
     float mass;
+    float radius;
 
     Node() {
     };
@@ -134,6 +135,14 @@ public:
     
     void setMass(const float m) {
         Node::mass = m;
+    }
+    
+    float getRadius() const {
+        return radius;
+    }
+    
+    void setRadius(const float r) {
+        Node::radius = r;
     }
     
     // Look at the camera and see which direction is looking to (Easy way)
