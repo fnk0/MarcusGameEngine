@@ -20,6 +20,9 @@ private:
     virtual void doAction() override;
 
     void refreshCamera();
+
+public:
+    virtual bool intersects() override;
 };
 
 

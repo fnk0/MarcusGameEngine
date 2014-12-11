@@ -261,7 +261,7 @@ void Scene::loadScene(std::string &fileName) {
         node->setVelocity((float) nodesJson[i][VELOCITY].number_value());
         node->setMass((float) nodesJson[i][MASS].number_value());
 
-        std::cout << "Creating node" << std::endl;
+        //std::cout << "Creating node" << std::endl;
         
         node->setSound(music);
         node->setName(nodesJson[i][NAME].string_value());

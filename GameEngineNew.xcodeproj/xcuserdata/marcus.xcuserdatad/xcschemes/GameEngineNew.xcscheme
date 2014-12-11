@@ -60,12 +60,16 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "test.json"
+            argument = "Scene2d.json"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "Scene2d.json"
+            argument = "GameTest3.json"
             isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "TestScene.json"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "test_copy.json"
@@ -76,12 +80,8 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "awesomeScene.json"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
             argument = "GameTest2.json"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

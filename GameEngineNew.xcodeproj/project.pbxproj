@@ -69,6 +69,8 @@
 		2C553A8519B97A8400431C8C /* BrickRound0105_5_S_BUMP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BrickRound0105_5_S_BUMP.png; sourceTree = "<group>"; };
 		2C553A8619B97A8400431C8C /* brick_rocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brick_rocks.png; sourceTree = "<group>"; };
 		2C553A8819B97A8F00431C8C /* aerial_landscape.ply */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aerial_landscape.ply; sourceTree = "<group>"; };
+		2C59254A1A3916DB00FE0379 /* GameTest3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = GameTest3.json; path = ../../../sceneFile/GameTest3.json; sourceTree = "<group>"; };
+		2C59254B1A391AA200FE0379 /* TestScene.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestScene.json; sourceTree = "<group>"; };
 		2C6DB50919AD68D100144047 /* diffuseTexture.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = diffuseTexture.fs; sourceTree = "<group>"; };
 		2C6DB50A19AD68D100144047 /* basicVertexShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = basicVertexShader.vs; sourceTree = "<group>"; };
 		2C6DB50B19AD68D100144047 /* monkeyScene.scene */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = monkeyScene.scene; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 		2C80CD2219B1C43A00FBCF18 /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				2C59254A1A3916DB00FE0379 /* GameTest3.json */,
 				2C4B75011A37FD4100029754 /* GameTest2.json */,
 				2C810D431A36A9C700669B1A /* GameScene.json */,
 				2C2248DD1A1C35E4003ABF7F /* Scene2D.json */,
@@ -356,6 +359,7 @@
 				2C9728F219EDB6F700BAB8B9 /* sprint1a.json */,
 				2C9728F319EDB6F700BAB8B9 /* TemplateIcon2x.png */,
 				BF8C774E2A6C77C9ED8D510B /* test_copy.json */,
+				2C59254B1A391AA200FE0379 /* TestScene.json */,
 			);
 			name = scenes;
 			sourceTree = "<group>";

@@ -17,7 +17,7 @@ class GameObjectScript : public Script{
 public:
     Scene* scene;
     virtual void run() override;
-    bool intersects();
+    virtual bool intersects();
     virtual void doAction();
 };
 

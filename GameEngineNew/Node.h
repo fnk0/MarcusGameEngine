@@ -34,6 +34,7 @@ public:
     bool isBillboard = true;
     std::vector<Script*> scripts;
     float velocity, mass;
+    bool wPressed, sPressed, dPressed, aPressed = false;
 
     Node() {
     };

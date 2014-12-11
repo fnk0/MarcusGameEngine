@@ -26,24 +26,28 @@ void ThirdPersonScript::shootBullet() {
 void ThirdPersonScript::pressA() {
     glm::vec3 strifeLeft(0.5, 0, 0);
     this->scene->getPlayerNode()->translateLocal(strifeLeft);
+    this->getNode()->aPressed = true;
     this->refreshCamera();
 }
 
 void ThirdPersonScript::pressD() {
     glm::vec3 strifeRight(-0.5, 0, 0);
     this->scene->getPlayerNode()->translateLocal(strifeRight);
+    this->getNode()->dPressed = true;
     this->refreshCamera();;
 }
 
 void ThirdPersonScript::pressW() {
     glm::vec3 strifeUp(0, 0, 1);
     this->scene->getPlayerNode()->translateLocal(strifeUp);
+    this->getNode()->wPressed = true;
     this->refreshCamera();
 }
 
 void ThirdPersonScript::pressS() {
     glm::vec3 strifeDown(0, 0, -1);
     this->scene->getPlayerNode()->translateLocal(strifeDown);
+    this->getNode()->sPressed = true;
     this->refreshCamera();
 }
 
