@@ -71,9 +71,9 @@ Node* VelocityScript::intersects() {
     Scene* scene = getNode()->getScene();
     const map<std::string, Node*> map = scene->getMapNodes();
     for(auto outer_iter = map.begin(); outer_iter != map.end(); outer_iter++) {
-        if(getNode()->getName() == "player") {
+        /*if(getNode()->getName() == "player") {
             printVec(getNode()->T.translation);
-        }
+        }*/
         if(getNode()->getName() != outer_iter->second->getName()) {
             float dotProduct = glm::dot(getNode()->T.translation - outer_iter->second->T.translation, getNode()->T.translation - outer_iter->second->T.translation);
             float dSquared = (getNode()->getRadius() + outer_iter->second->getRadius())*(getNode()->getRadius() + outer_iter->second->getRadius());
